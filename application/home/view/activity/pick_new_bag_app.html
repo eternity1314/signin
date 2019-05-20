@@ -1,0 +1,101 @@
+{extend name="public/base" /}
+{block name="header"}
+<title>天天领现金</title>
+__BASE_CSS__
+__JQUERY__
+__BASE_JS__
+__LAYER_JS__
+{/block}
+{block name="body"}
+<div class="ctn-withdraw">已提现：{$withdraw_price/100}元</div>
+<ul class="ctn-pick">
+    <li>一起来拆红包领现金吧~</li>
+    <li class="main">
+        <div class="title">
+            已拆<span class="on">{:sprintf('%.2f', $open_price/100)}</span>元，
+            仅差<span class="on">{:sprintf('%.2f', $surplus_price/100)}</span>元可提现
+        </div>
+        <div class="progress-bar flex">
+            <p class="progress flex1"><i style="width: {$open_percent}%"></i></p>
+            <button class="btn-share">提现</button>
+        </div>
+    </li>
+    <li class="redpack flex">
+        <div class="flex1"><span class="on">23:59:59.9</span>后红包将失效</div>
+        <button>红包记录>></button>
+    </li>
+</ul>
+<div class="btns">
+    <button class="btn-share">发给好友帮我拆</button>
+</div>
+<p class="award-tips">新APP用户可帮拆10倍以上金额</p>
+
+{notempty name="cash"}
+<div class="ctn-money flex">
+    <ul class="flex1">
+        <li>你有<span class="on">{$cash['price']/100}元</span>现金未领取,领取后随时提现</li>
+        <li>剩余
+            <time>{$cash['countdown']}</time>
+            过期
+        </li>
+    </ul>
+    <button class="btn-cash-open" level="{$user_level}">领取</button>
+</div>
+{/notempty}
+{lt name="user_level" value="3"}
+{notempty name="cash_record"}
+<div class="income">
+    <p class="title">当前一共错过<span class="on">{$cash_total/100}元</span></p>
+    <ul class="mt-main">
+        {foreach $cash_record as $v}
+        <li class="flex">
+            <div class="flex1">
+                <h3>你有<span class="on">{$v['price']/100}元</span>现金未领取,领取后随时提现</h3>
+                <time>{:date('m-d H:i', $v['time_end'])}</time>
+            </div>
+            <i class="disabled">已过期</i>
+        </li>
+        {/foreach}
+    </ul>
+</div>
+{/notempty}
+{else/}
+__LAYUI_CSS__
+__LAYUI_JS__
+<script>
+    link_load_jd = "{:url('api/goods/search_local_jd')}?sort_type=1";
+    link_load_pdd = "{:url('api/goods/channel_goods')}?channel_type=1";
+</script>
+<div class="ctn-goods">
+    <div class="title"></div>
+    <dl class="flex">
+        <dt class="flex1" event="jd">京东</dt>
+        <dt class="flex1" event="pdd">拼多多</dt>
+    </dl>
+    <ul class="flex" event="jd"></ul>
+    <ul class="flex hide" event="pdd"></ul>
+    <div class="more"></div>
+</div>
+{/lt}
+{notempty name="withdraw"}
+<div class="ctn-top-mq marquee">
+    <ul>
+        {foreach $withdraw as $v}
+        <li>
+            <span><em style="background-image: url({$v['avator']})"></em>{$v['nickname']}提现了{$v['price']}元</span>
+        </li>
+        {/foreach}
+    </ul>
+</div>
+{/notempty}
+<link href="__PUBLIC__/activity/pick_new/index.css?v=1.1" rel="stylesheet">
+<script>
+    open_record = {$open_record ? json_encode($open_record) : '[]'};
+    wx_share = {$wx_share ? json_encode($wx_share) : '[]'};
+    active_time = ["{:date('Y-m-d',$active['begin_time'])}", "{:date('Y-m-d',$active['end_time']-1)}"];
+    account = {$account};
+    award = {$award? json_encode($award) : '""'};
+    marquee_step = 6;
+</script>
+<script src="__PUBLIC__/activity/pick_new/bag.js?v=1.1"></script>
+{/block}

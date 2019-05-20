@@ -1,0 +1,112 @@
+{extend name="public/base" /}
+{block name="header"}
+    <title>我的</title>
+    __BASE_CSS__
+    <link rel="stylesheet" href="__PUBLIC__/static/user/everlast.css"/>
+
+{/block}
+{block name="body"}
+    <div class="super-share-wrap">
+        <div class="super-share-container">
+            <div class="super-share-box1-container">
+                <h3 class="ssb1-title">送100M币给您的好友兑现</h3>
+                <div class="ssb1-content">
+                    <p class="ssb1-content-session">
+                        好友首次下载蚂蚁习惯APP送100M币，同时送您200M币，每天自动结算兑现
+                    </p>
+                </div>
+            </div>
+            <div class="super-share-box1-container super-share-mt-l">
+                <h3 class="ssb1-title">送完红包后您可获得</h3>
+                <div class="ssb1-content">
+                    <p class="ssb1-content-session">
+                        下级好友每参与1次早起计划，奖励您20个M币；下级好友每阅读一篇文章，自身获得10M币，同时上供给您20M币
+                    </p>
+                    <p class="ssb1-content-session">
+                        每天早中晚对自己所在城市问安，分别获得10/20/30M币；好友对战如出现平局，双方各额外奖励2M币/局
+                    </p>
+                    <p class="ssb1-content-session">
+                        下级好友在福利频道领券省钱购买商品，您将直接获得佣金奖励，如果您是超级会员，收益还能再提升10倍以上，享超级权益：1）自推订单佣金提升60%；：2）下级好友订单佣金提成60%：3）无限下级好友订单佣金提成40%；：4）无限下级升级会员费用提成30元/季，300元/年等
+                    </p>
+                    <a href="{:url(\'goods/user_equities\')}" class="link">>>查看超级会员权益</a>
+                </div>
+            </div>
+
+            <div onclick="btn_click()" class="super-share-button"><span>点我，分享给小伙伴们</span></div>
+            <div>
+                <div class="super-share-box2-container">
+                    <p class="ssb2-title">晒收益</p>
+                    <div class="ssb2-content">
+                        <p class="ssb1-content-session">
+                            让小伙们都来看看，蚂蚁习惯帮助你培养好习惯的同时也帮你赚了多少钱，与其每天睡懒觉百浪费钱，不如一起加入啦
+                        </p>
+                    </div>
+                    <div class="ssb2-btn-right" onclick="window.location.href = '{:url(\'user/invite\')}'"><p class="text">现在去晒</p></div>
+                </div>
+                <div class="super-share-box2-container super-share-mt-s">
+                        <p class="ssb2-title">发优惠券给好友赚高拥金额</p>
+                        <div class="ssb2-content">
+                            <p class="ssb1-content-session">
+                                将任意商品链接发送给小伙伴，终生绑定关系，不仅帮助小伙伴们省了钱，自己还能终生获得佣金奖励，超级会员奖励再提升10倍以上
+                            </p>
+                        </div>
+                        <div onclick="link_click()" class="ssb2-btn-right"><p class="text">现在分享</p></div>
+                </div>
+                <!-- <div class="super-share-box2-container super-share-mt-s">
+                    <p class="ssb2-title">阅读健康文章知识有赚钱</p>
+                    <div class="ssb2-content">
+                        <p class="ssb1-content-session">
+                            日常生活小技巧、健康知识、趣味文章视频别独自享受，分享给小伙伴们也看看，不仅帮助了他们，同时还帮助自己赚更多钱
+                        </p>
+                    </div>
+                    <div class="ssb2-btn-right" data-url="{:url('article/index')}">现在分享</div>
+                </div> -->
+                <div class="super-share-box2-container super-share-mt-s">
+                    <p class="ssb2-title">超级大招-建微信群</p>
+                    <div class="ssb2-content">
+                        <p class="ssb1-content-session">
+                            相信群体的力量，以上提升收益的方法都可以利用群体的力量无限放大，还可以互相扫码加为好友彼此膜拜，每天被1位好友膜拜即可得10个M币，一般人别说，因为说了也不懂
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+function btn_click(){
+    var invite_code = "{$invite_code}";
+
+    try {
+        window.qushenghuo.def_share('{"title":"好习惯好生活就能分钱啦，免费送你10元现金体验", "desc":"早起、阅读、运动等，你只要有好习惯就能赚钱，轻松月入过万，不信你拿送你10元体验就知道，满1元即可提现", "img":"{:config(\'site.url\')}/static/user/img/super-share-bg.jpg", "url":"{:config(\'site.url\')}{:url(\'user/invite_page\')}?invite_code='+ invite_code +'"}')
+    } catch(error) {
+        console.log(error)
+    }
+
+    try {
+        window.webkit.messageHandlers.def_share.postMessage('{"title":"好习惯好生活就能分钱啦，免费送你10元现金体验", "desc":"早起、阅读、运动等，你只要有好习惯就能赚钱，轻松月入过万，不信你拿送你10元体验就知道，满1元即可提现", "img":"{:config(\'site.url\')}/static/user/img/super-share-bg.jpg", "url":"{:config(\'site.url\')}{:url(\'user/invite_page\')}?invite_code='+ invite_code +'"}')
+    } catch(error) {
+        console.log(error)
+    }
+}
+function link_click(){
+    try {
+        window.qushenghuo.goto_goods_link()
+    } catch(error) {
+        console.log(error)
+    }
+
+    try {
+        window.webkit.messageHandlers.goto_goods_link.postMessage(null)
+    } catch(error) {
+        console.log(error)
+    }
+}
+
+function def_share(para){
+    console.log(para)
+}
+function goto_goods_link(){
+    console.log(2);
+}
+</script>
+{/block}

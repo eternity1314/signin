@@ -1,0 +1,18 @@
+.poster-container{
+	width: 100%;
+	padding: 10px 10px 60px;
+}
+.poster-container img{
+	width: 100%;
+}
+.btips{
+	position: fixed;
+	bottom: 60px;
+	left: 0;
+	background-color: #FDE6E2;
+	color: #FE664E;
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+}

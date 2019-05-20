@@ -1,0 +1,104 @@
+{extend name="public/base" /}
+{block name="header"}
+<title>0.1元抢购</title>
+__BASE_CSS__
+__LAYUI_CSS__
+<link rel="stylesheet" href="__PUBLIC__/activity/point_one_buy/index.css"/>
+__JQUERY__
+__BASE_JS__
+__LAYER_JS__
+__LAYUI_JS__
+{/block}
+{block name="body"}
+<div class="wrap help-bg">
+    <div class="help-top-bar flex">
+        <section class="marquee flex1">
+            <ul>
+                {foreach $withdraw as $v}
+                <li><img src="{$v['avator']}">恭喜{$v['nickname']}抢购成功</li>
+                {/foreach}
+            </ul>
+        </section>
+        <i class="btn-rule">规则</i>
+    </div>
+    {php}$class_name = $join['is_share'] == 0 || $join['status'] == 2 ? 'hide' : '';{/php}
+    <div class="help-container help-mt">
+        <div class="hp-goods flex">
+            <p class="hp-p"><img src="{$join['goods_img']}" alt=""></p>
+            <p class="hp-t flex1">{$join['goods_name']}</p>
+        </div>
+        {if condition="$join['status'] == 2"}
+        <div class="buy-status big">抢购成功</div>
+        <div class="btns">
+            <button class="btn-link-quan" onclick="quan_link_pdd()">直接购买，收货后返还你{$join['price']}元</button>
+            <button class="btn-change" onclick="join_charge()">不购买，我要兑换成现金{$join['price']*0.7}元</button>
+        </div>
+        {else/}
+        <ul class="success-bar flex">
+            <li class="flex1">成功率<span class="on txt-percent">{$join['success_rate']}</span></li>
+            <li>{$join['snap_up_count']}人正抢购此商品</li>
+        </ul>
+        <div class="success-tips">成功率越高，越容易抢到</div>
+        <div class="progress-bar"><i style="width: {$join['success_rate']}%"></i></div>
+        <ul class="progress-tips flex">
+            <li>0%</li>
+            <li>100%</li>
+        </ul>
+        <div class="btns">
+            {if condition="$join['is_share'] == 0"}
+            <button class="btn-share">分享到微信群，开始抢购</button>
+            {else/}
+            <button class="btn-share">求助好友，提升成功率</button>
+            {/if}
+            <button class="btn-buy {$class_name}">等不及了，马上抢购</button>
+        </div>
+        {/if}
+    </div>
+
+    <div class="help-container {$class_name}">
+        <ul class="avatar">
+            {foreach $help as $v}
+            <li style="background-image: url({$v['avator']})"></li>
+            {/foreach}
+        </ul>
+        <ul class="hp-tips flex">
+            <li class="flex1">好友共帮你提升<span class="on">{$help_up_rate}%</span></li>
+            <li>（新APP用户助力提升10倍以上）</li>
+        </ul>
+        <ul class="hp-status flex" onclick="layer_open_upgrade()">
+            <li class="flex1">{$join['same_count']}人与您成功率相同</li>
+            <button class="btn-upgrade">优先抢到></button>
+            {lt name="user_level" value="3"}
+            <script>
+                level_promote = 3;
+            </script>
+            {/lt}
+        </ul>
+    </div>
+
+    <div class="ctn-goods">
+        <fieldset>
+            <legend>推荐商品</legend>
+        </fieldset>
+        <ul class="flex" event="pdd"></ul>
+        <div class="more"></div>
+    </div>
+</div>
+<script src="__PUBLIC__/activity/point_one_buy/index.js"></script>
+<script>
+    id = {$join['id']};
+    goods_id = {$join['goods_id']};
+    goods_price = {$join['price']};
+    success_rate = {$join['success_rate']};
+    is_share = {$join['is_share']};
+    link_load_pdd = 'http://' + location.host + '/home/activity/po_buy_goods_data/';
+    wx_share = {$wx_share ? json_encode($wx_share) : '[]'};
+    award = {$award? json_encode($award) : '""'};
+    if (!is_share) {
+        wx_share.success = share_success;
+        setTimeout(function () {
+            $('.btn-share:eq(0)').click();
+        }, 1000)
+    }
+</script>
+{/block}

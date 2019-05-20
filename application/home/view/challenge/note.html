@@ -1,0 +1,61 @@
+{extend name="public/base" /}
+{block name="header"}
+<title>本族收入</title>
+__BASE_CSS__
+<link rel="stylesheet" href="__PUBLIC__/static/challenge/note.css">
+__JQUERY__
+__LAYER_JS__
+__BASE_JS__
+<script src="__PUBLIC__/static/challenge/note.js?v=2.5.0"></script>
+{/block}
+{block name="body"}
+<div class="ctn-header flex">
+    <em style="background-image: url({$user['avator']})"></em>
+    <section class="flex1">
+        <h3>{$user['nickname']}</h3>
+        <h5>在族里打卡已赚￥{$income_room}</h5>
+    </section>
+    <a class="btn-poster" href="{$link_poster}">邀请有奖</a>
+</div>
+<div class="ctn-income mt-main">
+    <ul class="flex">
+        <li class="all-income flex1">
+            <h3>总收益</h3>
+            <h5>{$all_income}</h5>
+            <button class="point">详细</button>
+        </li>
+        <li class="balance flex1">
+            <h3>账户余额</h3>
+            <h5>{$user['balance']/100}</h5>
+            <button class="btn-withdraw">提现</button>
+        </li>
+        <li class="withdraw flex1">
+            <h3>已提现</h3>
+            <h5>{$withdraw_pass}</h5>
+            <button class="point">详细</button>
+        </li>
+    </ul>
+    <p>总收益 = 生活习惯奖励+订单佣金收入+免单补贴+合伙人奖励</p>
+</div>
+<div class="ctn-tool mt-main">
+    <ul class="flex">
+        <button class="btn-store flex1" level="{$user_level}">我的店铺</button>
+        <a class="btn-mb flex1" href="{:url('home/user/mb')}">我的M币</a>
+        <a class="btn-customer flex1" href="{:url('home/user/contack_customer')}">联系客服</a>
+    </ul>
+    {if condition="$is_me"}
+    <a class="btn edit-room" href="{:url('room')}?room_id={$room_id}">编辑/续期/推荐族群 ></a>
+    {/if}
+</div>
+{notempty name="wx_share"}
+<script>
+    wx_share = JSON.parse('{$wx_share | raw | json_encode}');
+</script>
+{/notempty}
+{notempty name="wx_config"}
+<script>
+    wx_config = '{$wx_config | raw | json_encode}';
+</script>
+{/notempty}
+{include file="public/footer_challenge"/}
+{/block}

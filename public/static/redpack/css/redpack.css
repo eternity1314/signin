@@ -1,0 +1,397 @@
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-appearance: none;
+}
+
+body {
+    background-color: #f4f4f4;
+    color: #444444;
+    font-size: 18px;
+}
+
+.send-box {
+    width: 90%;
+    margin: 16px auto 0;
+}
+
+.input {
+    margin-top: 20px;
+}
+
+.send-box .input {
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 15px 10px;
+    margin: 20px 0 6px;
+    border-radius: 4px;
+}
+
+.send-box .input.luck:before {
+    content: "";
+    display: inline-block;
+    width: 1.2em;
+    height: 1em;
+    background: url(../img/pin.png) no-repeat;
+    background-size: contain;
+}
+
+.send-box .input input {
+    border: 0;
+    flex: 1;
+    text-align: right;
+    padding: 0 1em 0 0;
+}
+
+.send-box .input input::-webkit-input-placeholder {
+    color: #aaa;
+}
+
+.send-box .msg {
+    margin: 20px 0 6px;
+    height: 100px;
+}
+
+.send-box .msg input {
+    /*display: block;*/
+    /*width: 100%;*/
+    /*background-color: #fff;*/
+    /*border: 0;*/
+    /*padding: 15px;*/
+    margin: -56px 0 0;
+    text-align: left;
+}
+
+.send-box .paid {
+    margin: 38px auto;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.send-box .submit {
+    background-color: #f76d44;
+    color: #fff;
+    border: 0;
+    width: 100%;
+    height: 50px;
+    border-radius: 6px;
+    /*padding: 1.4em 0;*/
+    font-size: 16px;
+}
+
+.send-box .submit:disabled {
+    background-color: rgba(247, 109, 68, .5);
+}
+
+.tips {
+    font-size: 14px;
+}
+
+.send-box .btips {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 10px;
+    text-align: center;
+    color: #b5b5b5;
+    font-size: 12px;
+}
+
+.pay {
+    display: flex;
+    margin: 10px 0 0;
+    color: #b5b5b5;
+    font-size: 12px;
+    align-items: center;
+}
+
+.pay .balance {
+    flex: 1;
+}
+
+.send-box.rmb .input:first-of-type span:first-of-type:after {
+    content: "金额";
+}
+
+.send-box.rmb .input:first-of-type span:last-of-type:after {
+    content: "元";
+}
+
+.send-box.rmb .tips > span:after {
+    content: "人民币";
+}
+
+.send-box.rmb .tips a span:after {
+    content: "M币";
+}
+
+.send-box.rmb .paid:before {
+    content: "￥";
+    font-size: 14px;
+}
+
+.send-box.rmb .pay.integral {
+    display: none;
+}
+
+.send-box.integral .input:first-of-type span:first-of-type:after {
+    content: "M币";
+}
+
+.send-box.integral .input:first-of-type span:last-of-type:after {
+    content: "分";
+}
+
+.send-box.integral .tips > span:after {
+    content: "M币";
+}
+
+.send-box.integral .tips a span:after {
+    content: "人民币";
+}
+
+.send-box.integral .paid:after {
+    content: "分";
+    font-size: 14px;
+}
+
+.send-box.integral .pay.rmb {
+    display: none;
+}
+
+/*/*/
+
+.send-box.mb .input:first-of-type span:first-of-type:after {
+    content: "M币";
+}
+
+.send-box.mb .input:first-of-type span:last-of-type:after {
+    content: "个";
+}
+
+.send-box.mb .tips > span:after {
+    content: "M币";
+}
+
+.send-box.mb .tips a span:after {
+    content: "人民币";
+}
+
+.send-box.mb .paid:after {
+    content: "M币";
+    font-size: 14px;
+}
+
+.send-box.mb .pay.rmb {
+    display: none;
+}
+
+.label-checkbox .checkbox {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    border-radius: 2px;
+    box-sizing: border-box;
+    border: 1px solid #b7b7b7;
+    z-index: 0;
+    margin: 0;
+    padding: 0;
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    position: relative;
+    vertical-align: top;
+    font-size: 12px;
+    margin-right: 5px;
+}
+
+.label-checkbox input[type=checkbox]:checked + .checkbox {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20x%3D'0px'%20y%3D'0px'%20viewBox%3D'0%200%2012%209'%20xml%3Aspace%3D'preserve'%3E%3Cpolygon%20fill%3D'%23b7b7b7'%20points%3D'12%2C0.7%2011.3%2C0%203.9%2C7.4%200.7%2C4.2%200%2C4.9%203.9%2C8.8%203.9%2C8.8%203.9%2C8.8%20'%2F%3E%3C%2Fsvg%3E");
+    background-size: 9px 9px;
+}
+
+.color-main {
+    color: #169aff !important;
+}
+
+.hide {
+    display: none !important;
+}
+
+input[type=checkbox], input[type=radio] {
+    display: none;
+}
+
+.ctn-set header, .ctn-pic header {
+    text-align: center;
+    padding: 16px 0;
+    background-color: #fff;
+}
+
+.ctn-set header .point, .ctn-pic header .point {
+    float: left;
+}
+
+.ctn-set header .point:after, .ctn-pic header .point:after {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+}
+
+.ctn-set ul li {
+    background-color: #fff;
+    padding: 16px 10px;
+    margin-top: 10px;
+    line-height: 1em;
+    cursor: pointer;
+}
+
+.ctn-set ul li:before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 1em;
+    background-color: #fe6249;
+    margin: 0 10px 0 0;
+    vertical-align: top;
+}
+
+.ctn-set ul li i {
+    text-align: right;
+    float: right;
+    color: #aaa;
+    font-size: 12px;
+}
+
+.layui-m-layer .select {
+    width: 100%;
+    margin: -62px 0 0 0;
+    background-color: transparent;
+    -webkit-animation-fill-mode: none;
+    animation-fill-mode: none;
+    font-size: 16px;
+}
+
+.layui-m-layer .select ul {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    text-align: center;
+}
+
+.layui-m-layer .select ul dd {
+    background-color: #f4f4f4;
+    color: #fe6249;
+    padding: 12px 0;
+}
+
+.layui-m-layer .select ul li {
+    padding: 20px 0;
+    cursor: pointer;
+}
+
+.layui-m-layer .select ul li + li {
+    border-top: 1px solid #f4f4f4;
+}
+
+.layui-m-layer .select ul li i {
+    display: block;
+    color: #aaa;
+    font-size: 12px;
+}
+
+.layer-pic {
+    background-color: #f3f3f3;
+    pointer-events: auto !important;
+    z-index: 9;
+    padding: 10px 2% 0;
+    text-align: center;
+}
+
+.layer-pic .webuploader-pick {
+    width: 150px;
+    height: 150px;
+}
+
+.layer-pic .main {
+    background-color: #fff;
+    position: relative;
+    padding: 50px 20px 20px;
+}
+
+.layer-pic .main p {
+    margin: 10px 0 0;
+    line-height: 20px;
+    color: #aaa;
+}
+
+.layer-pic .main button {
+    background-color: #FD482C;
+    display: block;
+    width: 100%;
+    height: 50px;
+    margin: 50px auto 0;
+    border-radius: 50px;
+    color: #fff;
+    font-size: 16px;
+}
+
+.layer-pic .uploader {
+    position: relative;
+    /*padding-top: 48%;*/
+    margin: 2em auto 0;
+    width: 150px;
+    height: 150px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-size: cover;
+}
+
+.uploader.none:before {
+    content: "";
+    display: block;
+    width: 5%;
+    height: 50%;
+    border-radius: 5em;
+    background-color: #E1E1E1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.uploader.none:after {
+    content: "";
+    display: block;
+    width: 50%;
+    height: 5%;
+    border-radius: 5em;
+    background-color: #E1E1E1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.label-set:before {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    background: url(../img/icon-set.png) 50% no-repeat;
+    background-size: contain;
+    vertical-align: top;
+}
+
+.mysend {
+    display: block;
+    font-size: 14px;
+    color: #169aff;
+    text-align: center;
+    margin: 14% 0 0;
+}

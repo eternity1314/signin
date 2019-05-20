@@ -1,0 +1,104 @@
+header {
+    padding: 22px 15px 20px;
+    background-color: #fff;
+}
+
+header span {
+    color: #333;
+}
+
+header i {
+    display: block;
+    font-size: 40px;
+    font-weight: bold;
+    margin: 4px 0 0;
+}
+
+header .award i {
+    font-size: 30px;
+}
+
+.income a {
+    width: 60px;
+    height: 60px;
+    line-height: 120px;
+    color: #feb631;
+    margin: 0 50px 0 0;
+    background: url(img/icon-mymb.png) 50% 0 no-repeat;
+    background-size: contain;
+}
+
+.award {
+    padding: 30px 0;
+    border-bottom: 1px solid #f4f4f4;
+    margin: 0 0 14px;
+}
+
+.remark li:first-child {
+    color: #fe6249;
+    font-size: 15px;
+}
+
+.remark li:last-child {
+    color: #999;
+    font-size: 13px;
+    margin: 8px 0 0;
+}
+
+.list {
+    background-color: #fff;
+    /*margin: 10px 0 0;*/
+    padding: 0 15px;
+    overflow: hidden;
+}
+
+.list li {
+    padding: 10px 0;
+    line-height: 1.8em;
+    border-bottom: 1px solid #f4f4f4;
+}
+
+.list li p:first-child {
+    font-size: 18px;
+    color: #fe6249;
+}
+
+.list li p:first-child span {
+    color: initial;
+    font-size: 15px;
+}
+
+.list li p:last-child {
+    color: #999;
+    margin: 6px 0 0;
+    font-size: 12px;
+}
+
+dl {
+    font-size: 16px;
+    color: #333;
+    background-color: #fff;
+    margin: 10px 0 0 !important;
+    padding: 16px 15px 8px !important;
+}
+
+dl dt {
+    line-height: 1em;
+    padding: 0 0 0 10px;
+    border-left: 3px solid #fe6249;
+}
+
+.how {
+    color: #999;
+    font-size: 13px;
+    background-color: #fff;
+    padding: 0 15px 20px;
+}
+
+.how li {
+    padding: 2px 0;
+}
+
+.layui-flow-more {
+    margin: 56px 0 !important;
+}

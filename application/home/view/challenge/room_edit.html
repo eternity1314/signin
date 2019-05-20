@@ -1,0 +1,124 @@
+{extend name="public/base" /}
+{block name="header"}
+<title>编辑族群</title>
+__BASE_CSS__
+<link rel="stylesheet" href="__PUBLIC__/static/challenge/room.css?v=2.31"/>
+__JQUERY__
+__BASE_JS__
+__LAYER_JS__
+<script src="__PUBLIC__/static/challenge/room_edit.js?v=2.31"></script>
+{/block}
+{block name="body"}
+<section>
+    <article class="room-upgrade">续期
+        <right class="point">{$room['expire_time']}</right>
+    </article>
+    <article class="room-upgrade-auto ajax-form" method="PATCH">到期后自动续费
+        <right>
+            <label class="label-switch">
+                <input type="checkbox" {if $room['auto']}checked{/if}><i class="checkbox"></i>
+            </label>
+            <input type="hidden" name="auto" value="{$room['auto']}">
+        </right>
+    </article>
+</section>
+
+<section>
+    <article class="leader-rate">族员缴纳族费比例
+        <right class="point">目前<span>{$room['leader_rate']}</span>%，￥10/修改</right>
+    </article>
+    <article class="recommend ajax-form" method="PATCH">推荐本族群
+        <right class="point">￥10元/天<input type="checkbox" name="recommend" checked></right>
+    </article>
+</section>
+
+<!--section class="room_fee renew">
+    <article>早起族群类别
+        <right class="point">{$room['expire_time']}</right>
+        <ul class="flex ajax-form">
+            <label class="flex1">
+                <input type="radio" name="room_fee" value="month">
+                <i>包月族群</i>
+                <button>续费</button>
+            </label>
+            <label class="flex1">
+                <input type="radio" name="room_fee" value="year">
+                <i>包年族群</i>
+                <button>续费</button>
+            </label>
+            <label class="flex1 company">
+                <i>企业族群</i>
+                <button>待开放</button>
+            </label>
+        </ul>
+    </article>
+</section-->
+
+<!--section class="room_fee invite">
+    <article>成员交流
+        <right class="point">成员越多，赚得越多</right>
+        <ul class="flex">
+            <a class="flex1" href="{$link_poster}">
+                <i>邀请成员</i>
+            </a>
+            <a class="flex1 pic">
+                <i>微信群</i>
+            </a>
+            <a class="flex1" href="{:url('dynamic')}&room_id={$room_id}">
+                <i>红包吸引</i>
+            </a>
+        </ul>
+    </article>
+</section-->
+
+<section class="edif-info">
+    <article class="avator flex">族群头像
+        <right class="point flex1">
+            <i style="background-image: url({$room['avator']})" class="ajax-form">
+                <input type="hidden" name="avator">
+            </i>
+        </right>
+    </article>
+    <article class="title ajax-form">族群名字
+        <right class="point flex">
+            <span>{$room['title']}</span>
+            <input type="text" name="title" class="hide" value="{$room['title']}">
+        </right>
+    </article>
+    <article class="pic ajax-form">微信群二维码
+        <right class="point flex"></right>
+    </article>
+    <article>挑战天数
+        <right>{$room['day']}天</right>
+    </article>
+    <article>打卡时间
+        <right>{$room['stime']}</right>
+    </article>
+</section>
+
+<div class="layer-pic layui-m-layermain hide">
+    <div class="main">
+        <div class="uploader none"></div>
+        <p>
+            先建好微信群，再上传群二维码<br>
+            {empty name="$room['pic']"}
+            目前只有1次免费上传的机会
+            {else/}
+            <span class="again" bg="{$room['pic']}">再次上传￥5/次</span>
+            {/empty}
+        </p>
+        <div class="ajax-form">
+            <button>确认上传</button>
+            <input type="hidden" name="pic">
+        </div>
+    </div>
+</div>
+<script>
+    room_id = {$room_id};
+    var option = {
+        recommend_fee: {$option['recommend_fee']},
+        leader_rate: {$option['info'][$room['day']]['leader_rate'] | raw | json_encode},
+        room_fee: {$option['info'][$room['day']]['room_fee'] | raw | json_encode}
+    };
+</script>
+{/block}

@@ -1,0 +1,201 @@
+{extend name="public/base" /}
+{block name="header"}
+<title>发红包</title>
+__BASE_CSS__
+<link rel="stylesheet" href="__PUBLIC__/static/redpack/css/auto.css"/>
+__JQUERY__
+__BASE_JS__
+__LAYER_JS__
+{/block}
+{block name="body"}
+<ul class="ctn">
+    <li>
+        <article>
+            自动开启
+            <right>
+                <label class="label-switch">
+                    <input type="checkbox" name="auto" {notempty name="data['auto']" }checked{/notempty}>
+                    <i class="checkbox"></i>
+                </label>
+            </right>
+        </article>
+    </li>
+    <li>
+        <article>每天发放
+            <right>{$data['mb']}M币/{$data['num']}包</right>
+        </article>
+        <article class="choose flex">
+            {foreach $grant as $v}
+            <label>
+                <input type="radio" name="grant" value="{$v[0]}_{$v[1]}"
+                       {if condition="$v[0] == $data['mb'] && $v[1] == $data['num']" }checked{/if}>
+                <em>{$v[0]}M币/{$v[1]}包</em>
+            </label>
+            {/foreach}
+        </article>
+    </li>
+    <p>备注：每天0:01自动发，当数量少于设置的数量，按少的发</p>
+    <li class="receive">
+        <article>
+            谁可领取
+            <right class="point">
+                {if condition="$data['receive'] == 'pinduoduo'"}拼多多用户
+                {elseif condition="$data['receive'] == 'all'"/}看到的人就能领
+                {else/}本族成员
+                {/if}
+            </right>
+        </article>
+        <input type="hidden" name="receive" value="{$data['receive']}">
+    </li>
+    <li class="share">
+        <article>
+            怎么领取
+            <right class="point">{eq name="data['share']" value="0"}无需分享就能领{else/}分享后才能领取{/eq}</right>
+        </article>
+        <input type="hidden" name="share" value="0">
+    </li>
+    <li class="pic">
+        <article>
+            拆完显示
+            <right class="point"><i style="background-image: url({$data['pic']})"></i></right>
+        </article>
+        <input type="hidden" name="pic" value="{$data['pic']}">
+    </li>
+    <li class="msg">
+        <input type="text" name="msg" placeholder="恭喜发财，大吉大利" maxlength="20" value="{$data['msg']}">
+    </li>
+    <button>保存</button>
+</ul>
+
+<script>
+    $(function () {
+        $('.pic').click(function () {
+            init_uploader();
+        })
+
+        $('li.receive').click(function () {
+            layer.open({
+                type: 1,
+                content: '<ul class="receive">' +
+                '<dd>谁可以领我的红包</dd>' +
+                '<li value="room">本族成员领取</li>' +
+                // '<li value="pinduoduo">拼多多用户领取</li>' +
+                '<li value="all">看到的人就能领</li>' +
+                '</ul>'
+                , anim: false
+                , className: 'select'
+            });
+        })
+
+        $('li.share').click(function () {
+            layer.open({
+                type: 1,
+                content: '<ul class="share">' +
+                '<dd>怎么才能领取到红包</dd>' +
+                '<li value="1">分享后才能领取</li>' +
+                '<li value="0">无需分享就能领</li>' +
+                '</ul>'
+                , anim: false
+                , className: 'select'
+            });
+        })
+
+        $('[name=grant]').change(function () {
+            $(this).closest('li').find('article:eq(0) right').text($(this).next().text());
+        })
+
+        $('button').click(function () {
+            if (!$('[name=grant]:checked').val()) {
+                layer.open({content: '请选择发放M币', skin: 'msg', time: 3});
+                return false;
+            }
+
+            submit(this);
+        })
+
+        $('body').on('click', '.layui-m-layer .select li', function () {
+            var p = $(this).closest('ul').attr('class');
+            $('[name=' + p + ']').val($(this).attr('value'));
+            var t = $(this).attr('text') || $(this).text();
+            $('li.' + p + ' right').text(t);
+            layer.closeAll();
+        })
+    })
+
+    function init_uploader() {
+        var name = 'pic';
+        if (!window['WebUploader']) {
+            $.ajax({
+                url: "/static/webuploader/webuploader.min.js",
+                async: false,
+                success: function () {
+                    window['uploader_' + name]();
+                }
+            });
+        }
+    }
+
+    function uploader_pic() {
+        var up_pic = WebUploader.create({
+            auto: true,
+            server: '/home/file/picture?_ajax=1',
+            pick: '.pic right',
+            multiple: false,
+            accept: {
+                title: 'Images',
+                extensions: 'gif,jpg,jpeg,bmp,png',
+                mimeTypes: 'image/*'
+            }
+        });
+
+        up_pic.on("fileQueued", function (file) {
+            if (file.getStatus() === 'invalid') {
+                showError(file.statusText);
+            } else {
+                var obj = $(".pic right i");
+                var thumb_size = obj.width();
+                up_pic.makeThumb(file, function (error, src) {
+                    if (error) {
+                        layer.open({content: '不能预览', skin: 'msg', time: 3});
+                        return;
+                    }
+
+                    obj.css("background-image", "url(" + src + ")").removeClass("none");
+                }, thumb_size, thumb_size);
+            }
+        })
+
+        up_pic.on("uploadSuccess", function (file, res) {
+            if (res.code) {
+                $('[name=pic]').val(res.data.path);
+            }
+        })
+    }
+
+    function showError(code) {
+        switch (code) {
+            case 'exceed_size':
+                var text = '文件大小超出';
+                break;
+
+            case 'interrupt':
+                var text = '上传暂停';
+                break;
+
+            default:
+                var text = '上传失败，请重试';
+                break;
+        }
+
+        layer.open({content: text, skin: 'msg', time: 3});
+    }
+
+    function submit_callback(data) {
+        if (data.msg) layer.open({
+            content: data.msg, skin: 'msg', time: 3, end: function () {
+                location.href = data.data.url;
+            }
+        });
+    }
+</script>
+{/block}

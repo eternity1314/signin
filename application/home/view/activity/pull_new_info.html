@@ -1,0 +1,128 @@
+{extend name="public/base" /}
+{block name="header"}
+<title>补贴详情</title>
+__BASE_CSS__
+<script src="/static/jquery/jquery.min.js"></script>
+<style>
+    body {
+        background-color: #fff;
+    }
+
+    dl dt {
+        padding: 20px 0;
+        text-align: center;
+        font-size: 15px;
+    }
+
+    dl dt.on {
+        color: #fe6249;
+        position: relative;
+    }
+
+    dl dt.on:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 1px;
+        width: 30%;
+        margin: 0 auto;
+        background-color: #fe6249;
+    }
+
+    .tips {
+        padding: 10px;
+        color: #666;
+        background-color: #fde6e2;
+        font-size: 12px;
+    }
+
+    .tips:after {
+        content: '>>';
+        text-align: right;
+        flex: 1;
+    }
+
+    .income li {
+        padding: 14px 2% 14px 0;
+        margin: 0 20px;
+        border-bottom: 1px solid #f4f4f4;
+    }
+
+    .income li div {
+        font-size: 15px;
+    }
+
+    .income li em {
+        width: 50px;
+        height: 50px;
+        margin: 0 10px 0 0;
+        border-radius: 50%;
+        background: #ddd 50% no-repeat;
+        background-size: cover;
+    }
+
+    .income li i {
+        color: #7c7c7c;
+        font-size: 16px;
+    }
+
+    .empty {
+        text-align: center;
+        color: #999;
+        line-height: 80px;
+        margin: 24px 0 0;
+    }
+</style>
+{/block}
+{block name="body"}
+<dl class="flex">
+    <dt class="flex1 on">待领取({$result.not_get_award}元)</dt>
+    <dt class="flex1">已领取({$result.get_award}元)</dt>
+</dl>
+<div class="tips flex">好友确认收货你领取补贴，计入【我的】->【待结算金额】</div>
+<ul class="income">
+    {empty name="result['not_get_award_data']"}
+    <div class="empty">邀请更多好友领取补贴吧~</div>
+    {else/}
+    {volist name="result['not_get_award_data']" id="vo"}
+    <li class="flex">
+        <em style="background-image: url({$vo.avator})"></em>
+        <div class="flex1">{$vo.nickname}</div>
+        <i>{$vo.status_desc}</i>
+    </li>
+    {/volist}
+    {/empty}
+</ul>
+<ul class="income hide">
+    {empty name="result['get_award_data']"}
+    <div class="empty">邀请的用户首次消费，即可领取现金补贴~</div>
+    {else/}
+    {volist name="result['get_award_data']" id="vo"}
+    <li class="flex">
+        <em style="background-image: url({$vo.avator})"></em>
+        <div class="flex1">{$vo.nickname}</div>
+        <i>10元</i>
+    </li>
+    {/volist}
+    {/empty}
+</ul>
+<script>
+    $(function () {
+        $.ajax({
+            url: "/static/js/interactive.js",
+            success: function () {
+                $('.tips').click(interactive.jumpMine)
+            }
+        });
+
+        $('dl dt').click(function () {
+            if ($(this).hasClass('on')) return false;
+            var i = $(this).index();
+            $('.income').addClass('hide').eq(i).removeClass('hide');
+            $('dl dt').removeClass('on').eq(i).addClass('on');
+        })
+    })
+</script>
+{/block}

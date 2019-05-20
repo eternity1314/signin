@@ -1,0 +1,215 @@
+body {
+    padding-bottom: 10px;
+}
+
+.ctn li {
+    margin: 10px;
+    padding: 0 10px;
+    background-color: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.ctn li article {
+    height: 50px;
+    line-height: 50px;
+}
+
+.ctn li article + article {
+    border-top: 1px solid #f4f4f4;
+}
+
+ul p {
+    padding: 0 20px;
+    color: #aaa;
+    font-size: 12px;
+}
+
+.msg {
+    height: 6em;
+    padding: 10px !important;
+}
+
+right {
+    float: right;
+    color: #aaa;
+}
+
+right i {
+    display: inline-block;
+    width: 3em;
+    height: 3em;
+    background: 50% no-repeat;
+    background-size: cover;
+    vertical-align: middle;
+}
+
+.pic .webuploader-pick {
+    display: inline-block;
+}
+
+button {
+    /*position: fixed;*/
+    /*bottom: 0;*/
+    /*left: 0;*/
+    /*right: 0;*/
+    width: calc(100% - 20px);
+    height: 50px;
+    color: #fff;
+    background: #fe6249;
+    display: block;
+    margin: 20px auto 0;
+    border-radius: 6px;
+    box-sizing: content-box;
+}
+
+.label-switch {
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 16px;
+    box-sizing: border-box;
+    position: relative;
+    cursor: pointer;
+    -ms-flex-item-align: center;
+    -webkit-align-self: center;
+    align-self: center;
+    margin: 0 0 0 8px;
+}
+
+.label-switch .checkbox {
+    position: relative;
+    display: block;
+    height: 24px;
+    line-height: 24px;
+    width: 46px;
+    padding: 0 5px;
+    /*border: 1px solid #d2d2d2;*/
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: #e3e3e3;
+    -webkit-transition: .1s linear;
+    transition: .1s linear;
+}
+
+.label-switch .checkbox:before {
+    content: ' ';
+    position: absolute;
+    right: 5px;
+    top: 0;
+    width: 25px;
+    padding: 0 !important;
+    text-align: center !important;
+    color: #999 !important;
+    font-style: normal !important;
+    font-size: 12px;
+}
+
+.label-switch .checkbox:after {
+    content: ' ';
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    width: 26px;
+    height: 20px;
+    border-radius: 20px;
+    background-color: #fff;
+    -webkit-transition: .1s linear;
+    transition: .1s linear;
+}
+
+.label-switch input[type=checkbox]:checked + .checkbox {
+    border-color: #fe6249;
+    background-color: #fe6249;
+}
+
+.label-switch input[type=checkbox]:checked + .checkbox:before {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+
+.label-switch input[type=checkbox]:checked + .checkbox:after {
+    -webkit-transform: translateX(16px);
+    transform: translateX(16px);
+}
+
+.choose label {
+    flex: 1;
+    text-align: center;
+    display: inline-block;
+    width: 16%;
+    align-self: center;
+    font-size: 0;
+}
+
+.choose label + label {
+    margin: 0 0 0 2%;
+}
+
+.choose label em {
+    display: block;
+    border: 1px solid #E1E1E1;
+    border-radius: 2px;
+    height: 8vw;
+    line-height: 8vw;
+    font-size: 13px;
+    color: #7c7c7c;
+}
+
+.choose label input[type=radio]:checked + * {
+    border-color: #fe6249;
+    color: #fe6249;
+    /*background-color: #fff;*/
+    position: relative;
+    /*background: url(../../promotion/dui_img.png) no-repeat right bottom;*/
+    /*background-size: 10px;*/
+}
+
+.choose label input[type=radio]:checked + *:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 12px;
+    height: 12px;
+    background: #fe6249 url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20x%3D'0px'%20y%3D'0px'%20viewBox%3D'0%200%2012%209'%20xml%3Aspace%3D'preserve'%3E%3Cpolygon%20fill%3D'%23fff'%20points%3D'12%2C0.7%2011.3%2C0%203.9%2C7.4%200.7%2C4.2%200%2C4.9%203.9%2C8.8%203.9%2C8.8%203.9%2C8.8%20'%2F%3E%3C%2Fsvg%3E") 50% no-repeat;
+    background-size: 8px;
+}
+
+.layui-m-layer .select {
+    width: 100%;
+    margin: -62px 0 0 0;
+    background-color: transparent;
+    -webkit-animation-fill-mode: none;
+    animation-fill-mode: none;
+    font-size: 16px;
+}
+
+.layui-m-layer .select ul {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    text-align: center;
+}
+
+.layui-m-layer .select ul dd {
+    background-color: #f4f4f4;
+    color: #fe6249;
+    padding: 12px 0;
+}
+
+.layui-m-layer .select ul li {
+    padding: 20px 0;
+    cursor: pointer;
+}
+
+.layui-m-layer .select ul li + li {
+    border-top: 1px solid #f4f4f4;
+}
+
+.layui-m-layer .select ul li i {
+    display: block;
+    color: #aaa;
+    font-size: 12px;
+}

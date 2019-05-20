@@ -1,0 +1,147 @@
+{extend name="public/base" /}
+{block name="header"}
+<title>{$info.title}</title>
+__BASE_CSS__
+__LAYER_CSS__
+__LAYUI_CSS__
+<link rel="stylesheet" href="__PUBLIC__/static/article/css/article.css"/>
+
+__JQUERY__
+__BASE_JS__
+__LAYER_JS__
+<script src="__PUBLIC__/static/js/swiper.min.js"></script>
+<script src="__PUBLIC__/static/article/js/article.js"></script>
+<script src="__PUBLIC__/static/js/interactive.js"></script>
+{/block}
+{block name="body"}
+    <!-- <section class="index-swiper">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="app-download swiper-slide" data-swiper-slide-index="0">
+                    <div class="media"><img src="__PUBLIC__/static/article/img/icon-app-logo-new.png" alt=""></div>
+                    <span class="appdown-btn">打开</span>
+                    <div class="inner">
+                        <div class="app-name">蚂蚁习惯</div>
+                        <div class="app-desc">
+                            <p>好习惯也值钱，用你的好习惯来赚钱</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="xgt-pagination">
+            <span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>
+            <span class="swiper-pagination-bullet"></span>
+        </div>
+    </section> -->
+    <div class="article-detail">
+        <h3 class="ad-title">{$info.title}</h3>
+        <p class="ad-info">
+            <span class="ad-time">{$info.add_time}</span>&nbsp;&nbsp;
+            <span class="ad-author">{$info.user.nickname}</span>
+        </p>
+        <div class="ad-content">
+            {$info['content']|raw}
+        </div>
+        <p class="ad-warning">本文及配图均来自微选生活自媒体用户，不代表平台观点<br>如有侵犯请联系管理员下架</p>
+    </div>
+
+    {if $orther_article}
+        <div class="orther-article-container">
+            <div class="more-article-title">
+                <h4 class="mat-name">相关推荐</h4>
+                <p class="mat-msg">阅读更多  <span class="arrows-r">&gt;&gt;</span></p>
+            </div>
+            <div class="article-list">
+                <ul>
+                    <div class="page-container article-page-container">
+                        {volist name="orther_article" id="vo"}
+                            <li>
+                                <a class="list-item list-item1" href="{:url('detail')}?id={$vo.id}">
+                                    <h3 class="a_t">{$vo.title}</h3>
+                                    {if isset($vo['info']['img_list'][0])}
+                                        <div class="a_p"><img src="{$vo['info']['img_list'][0]}"></div>
+                                    {/if}
+                                    <div class="a_m">{:isset($user_data[$vo['author']]) ? $user_data[$vo['author']]['nickname'] : ''}&nbsp;&nbsp;&nbsp;&nbsp;阅读 {$vo.read_num}</div>
+                                </a>
+                            </li>
+                        {/volist}
+                    </div>
+                </ul>
+                <div class="read-more">阅读更多 <span class="arrows-r">&gt;&gt;</span></div>
+            </div>
+        </div>
+    {/if}
+
+    <div class="article-detail-footer">
+        <div class="remark-input"><i class="icon icon-remark-pancel"></i><p>写评论</p></div>
+        <i class="icon {:$article_collect ? 'icon-stat-full' : 'icon-stat-empty'}" data-url="{:url('collect')}" data-article_id="{$info.id}"></i>
+        <span onclick="btn_click()">分享再赚</span>
+    </div>
+
+    <!-- 阅读奖励 -->
+    <div class="read-award">
+        <i class="icon icon-gold icon-gold-margin-bottom"></i><br>
+        阅读奖励<br>
+        +<span class="integral-award"></span>
+    </div>
+{empty name="level_promote"}
+<script>
+$(function(){
+    //轮播图
+    var mySwiper = new Swiper('.swiper-container',{
+        pagination: '.xgt-pagination',    //导航小圆点
+        paginationClickable: true,        //导航小圆点（可点击）
+        nextButton: '.swiper-button-next',//下一张按钮
+        prevButton: '.swiper-button-prev',//上一张按钮
+        //direction: 'vertical',//Slides的滑动方向:垂直
+        autoplay : 3000,//自动切换的时间间隔（单位ms），不设定该参数slide不会自动切换
+        speed:300,//滑动速度，即slider自动滑动开始到结束的时间（单位ms）
+
+        loop: true,        //可循环
+        grabCursor: true,//设置为true时，鼠标覆盖Swiper时指针会变成手掌形状，拖动时指针会变成抓手形状。（根据浏览器形状有所不同）
+        mousewheelControl:true,//鼠标滚轮
+        lazyLoading:true,//图片懒加载    http://www.swiper.com.cn/api/Images/2015/0308/213.html
+        onLazyImageLoad: function(swiper, slide, image){
+            //alert('延迟加载图片');
+            //console.log(swiper);//Swiper实例
+            //console.log(slide);//哪个slide里面的图片在加载
+            //console.log(image);//哪个图片在加载
+        }
+    });
+
+    // n秒后增加积分
+    if ("{$info['in_station_read_status']}" === '0') {console.log("{$info.read_time}");
+        setTimeout(function(){
+            $.get('{:url(\'article/in_station_read\')}', {id: "{$info.id}"}, function(json){
+                if (json.code === 0) {
+                    $('.read-award').fadeIn().children('.integral-award').text(json.data.integral_award);
+                    setTimeout(function(){
+                        $('.read-award').fadeOut();
+                    }, 3000);
+                } else {
+                    layer.open({
+                        content: json.msg,
+                        skin: 'msg',
+                        time: 3
+                    });
+                }
+            }, 'json')
+        }, "{$info.read_time}" * 1000)
+    }
+});
+
+function btn_click(){
+    var user_id = "{$user_id}";
+    var invite_code = "{$info['user']['invite_code']}";
+    var para = '{"title":"{$info.title}", "desc":"{$info.describe}", "imgUrl":"{:config(\'site.url\')}/static/img/wx_share.png", "link":"{:config(\'site.url\')}{:url(\'article/share_detail\')}?id={$info.id}&article_pid='+ user_id +'&invite_code='+ invite_code +'"}';
+
+    interactive.btn_click(para);
+}
+</script>
+{else/}
+<script>
+    level_promote = {$level_promote};
+</script>
+{/empty}
+{/block}

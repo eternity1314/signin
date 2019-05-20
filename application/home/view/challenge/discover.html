@@ -1,0 +1,58 @@
+{extend name="public/base" /}
+{block name="header"}
+<title val="{$room['title']}">发现</title>
+__BASE_CSS__
+<link rel="stylesheet" href="__PUBLIC__/static/challenge/discover.css">
+__JQUERY__
+__LAYER_JS__
+__BASE_JS__
+__LAYUI_JS__
+<script src="__PUBLIC__/static/challenge/discover.js?v=2.50"></script>
+{/block}
+{block name="body"}
+<div class="ctn-page normal">
+    <ul class="ctn-header flex">
+        <button class="btn-pic flex1" val="{$room['pic']}">本族微信群</button>
+        <button class="btn-wechat flex1" val="{$leader['wechat']}">族长微信号</button>
+        <button class="btn-invite flex1" val="{$leader['invite_code']}">族长邀请码</button>
+    </ul>
+
+    <div class="redpack">
+        <a href="{:url('redpack')}&room_id={$room_id}">
+            {$redpack_count>0?'有人在发红包哦，点我现在去抢':'发红包扩成员，族群赚更多哦~'}
+        </a>
+    </div>
+
+    <div class="orther-article-container">
+        <div class="more-article-title">
+            <h4 class="mat-name">阅读赚M币</h4>
+            <p class="mat-msg">M币是可以兑换现金的哦</p>
+        </div>
+        <div class="article-list">
+            <ul></ul>
+            <div class="read-more"></div>
+        </div>
+    </div>
+</div>
+{if $room['pic']}
+<div class="ctn-page pic hide">
+    <p>长按保存图片或扫码进群</p>
+</div>
+{/if}
+<script>
+    is_me = {$is_me};
+    link_load = "{:url('api/article/index')}";
+    link_article = "{$link_article}";
+</script>
+{notempty name="wx_share"}
+<script>
+    wx_share = JSON.parse('{$wx_share | raw | json_encode}');
+</script>
+{/notempty}
+{notempty name="wx_config"}
+<script>
+    wx_config = '{$wx_config | raw | json_encode}';
+</script>
+{/notempty}
+{include file="public/footer_challenge"/}
+{/block}

@@ -1,0 +1,85 @@
+{extend name="public/base" /}
+{block name="header"}
+<title>亿元免单补贴大型活动</title>
+__BASE_CSS__
+__LAYUI_CSS__
+<link rel="stylesheet" href="__PUBLIC__/static/goods/free_order_use.css">
+__JQUERY__
+<script src="__PUBLIC__/static/js/interactive.js?v=2.03"></script>
+{/block}
+{block name="body"}
+<header></header>
+<p class="title">免单使用教程</p>
+<div class="item">
+    <dd>1，选好免单商品，吸引有兴趣的目标人群来领</dd>
+    <ul>
+        <li><img src="__PUBLIC__/static/goods/images/step/1.jpg"></li>
+        <li><img src="__PUBLIC__/static/goods/images/step/2.jpg"></li>
+    </ul>
+</div>
+<div class="item">
+    <dd>2，让对方下载APP并在APP内搜索对应商品（记住：别忘了让对方填写您的邀请码）</dd>
+    <ul>
+        <li><img src="__PUBLIC__/static/goods/images/step/3.jpg"></li>
+        <li><img src="__PUBLIC__/static/goods/images/step/4.jpg"></li>
+    </ul>
+</div>
+<div class="item">
+    <dd>3，对方找到商品后，点击领券自购，跳转到对应的平台上，填写好收货地址</dd>
+</div>
+<div class="item">
+    <dd>选择微信代付，把代付链接发给您付款</dd>
+    <ul>
+        <li><img src="__PUBLIC__/static/goods/images/step/5.jpg"></li>
+        <li><img src="__PUBLIC__/static/goods/images/step/6.jpg"></li>
+    </ul>
+</div>
+<div class="item">
+    <dd>4，代付成功后，别忘了让对方把订单截图发到群里，同时让其帮忙发到朋友圈告诉其他人也来领</dd>
+    <ul>
+        <li><img src="__PUBLIC__/static/goods/images/step/7.jpg"></li>
+        <li><img src="__PUBLIC__/static/goods/images/step/8.jpg"></li>
+    </ul>
+</div>
+<div class="item">
+    <dd>5，对方确认收货无取消订单，次月返回该笔订单金额到您的账户余额。（备注：如对方取消订单，订单款项会原路退回给您，所以请务必采取代付的方式，不要采取支付转账的方式进行）</dd>
+</div>
+<div class="consult">
+    <dd>详情请咨询</dd>
+    <div class="wx-copy">
+        <span>你的专属导师: {$mobile}</span>
+        <p class="button" onclick="copy_click()">复制</p>
+    </div>
+</div>
+<div class="bak">
+    <dd>免单规则</dd>
+    <ul>
+        <li>免单商品适用全站所有商品，所有新老会员；</li>
+        <li>每个注册会员享受5个免单名额（如是包年合伙人，则是10个免单名额），如在次月结算前未发展1个合伙人(含自己)但消费过（别人给自己的免单也算是自己的消费），仅返回1个免单补贴；</li>
+        <li>从发展第二个合伙人（含自己）开始，无论什么时候，包月合伙人奖励5个免单名额，包年合伙人奖励10个免单名额，如年合伙人达到10个，非直属升级再奖励8个；</li>
+        <li>
+            免单仅限直属首单金额在5元(含5元)内的商品，超过直接返5元，免单数量实时统计抵扣，免单金额在次月结算前审核是否生效，包括是否有取消订单退款、退换货等售后情况发生，如没有，结算时会一起补贴返回到您的账户余额，账单明细叫“免单补贴”，如有，免单数量退回；
+        </li>
+        <li>
+            温馨提示：由于拼多多退货退款是原路退回到支付订单金额的人账户上，因此当你送给别人免单时，一定要自己代付，代付的钱我们会在次月结算前统一返回给你，千万不要让对方自己支付，然后自己使用微信或支付宝发红包转账给对方，避免对方付款后直接退货导致该订单不生效，退款无法直接退给你导致损失，如发生该种情况所带来的损失，一律由自己承担
+        </li>
+    </ul>
+</div>
+<script>
+    function copy_click() {
+        interactive.copy("{$mobile}");
+    }
+
+    $('img').click(function () {
+        interactive.zoom_image(location.origin + $(this).attr('src'));
+    })
+</script>
+{notempty name="wx_share"}
+<script>
+    wx_share = JSON.parse('{$wx_share | raw | json_encode}');
+    if (!is_weixn()) {
+        $.ajax({"url": "/static/js/interactive.js"});
+    }
+</script>
+{/notempty}
+{/block}

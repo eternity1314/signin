@@ -1,0 +1,167 @@
+{extend name="public/base" /}
+{block name="header"}
+<title>天天领现金</title>
+__BASE_CSS__
+__JQUERY__
+__BASE_JS__
+__LAYER_JS__
+__LAYUI_CSS__
+__LAYUI_JS__
+<link rel="stylesheet" href="__PUBLIC__/activity/pick_new/index.css?v=1.1"/>
+{/block}
+{block name="body"}
+{notempty name="open"}
+<section class="ctn-open">
+    <ul class="ctn-pick">
+        <li class="header">
+            <em style="background-image: url({$open['avator']})"></em>
+            <h3>{$open['nickname']}</h3>
+            <h5>我发现一个红包，一起来拆红包领现金吧~</h5>
+        </li>
+        <li class="main">
+            <div class="title">
+                已拆<span class="on">{:sprintf('%.2f', $open['open_price']/100)}</span>元，
+                仅差<span class="on">{:sprintf('%.2f', $open['surplus_price']/100)}</span>元可提现
+            </div>
+            <div class="progress-bar flex">
+                <p class="progress flex1"><i style="width: {$open['open_percent']}%"></i></p>
+            </div>
+        </li>
+    </ul>
+    <div class="btns">
+        <button class="btn-open">帮他拆一下</button>
+    </div>
+    <p class="award-tips">新APP用户可帮拆10倍以上金额</p>
+</section>
+<section class="ctn-bag hide">
+    <ul class="ctn-pick">
+        <li class="header">
+            <em style="background-image: url({$open['avator']})"></em>
+            <h3>谢谢你，帮拆成功</h3>
+            <h5>好人做到底，你也去提个红包吧</h5>
+        </li>
+        <li class="flow flex">
+            <div class="bag">
+                <em>{:sprintf('%.2f', $open['open_price']/100)}</em>
+                <span>我已提<b>{:sprintf('%.2f', $open['open_price']/100)}</b>元</span>
+            </div>
+            <i></i>
+            <div class="open">
+                <em>
+                    <p>
+                        <time>01:59:59</time>
+                        后到期
+                    </p>
+                </em>
+                <span>你已拆<b>{$open['open_range_rand']}</b>元</span>
+            </div>
+            {lt name="receive['level']" value="3"}
+            <i class="close"></i>
+            <div class="receive">
+                <em>
+                    <p>
+                        <time>01:59:59</time>
+                        后到期
+                    </p>
+                </em>
+                <span>领取<b>{$open['receive_range_rand']}</b>元现金</span>
+            </div>
+            {/lt}
+        </li>
+        <li class="tips">到时别忘了发我帮你拆哦</li>
+    </ul>
+    <div class="btns">
+        <button class="btn-link-app">一键领取并提现</button>
+    </div>
+</section>
+<section class="ctn-flush hide">
+    {php}$rand = mt_rand(1,4);{/php}
+    {if condition="$rand == 1"}
+    <h1>恭喜你领到10元现金</h1>
+    <h2>
+        <time>01:59:59</time>
+        后失效
+    </h2>
+    <button class="btn-link-app">免费下载APP提现</button>
+    <p>现金直接到账微信或支付宝</p>
+    {elseif condition="$rand == 2"}
+    <h1>恭喜你领到60元现金</h1>
+    <h2>
+        <time>01:59:59</time>
+        后失效
+    </h2>
+    <button class="btn-link-app">免费下载APP提现</button>
+    <p>现金直接到账微信或支付宝</p>
+    {elseif condition="$rand == 3"}
+    <h1>恭喜你获得</h1>
+    <h2>京东/拼多多内购资格</h2>
+    <button class="btn-link-app">免费下载APP提现</button>
+    {elseif condition="$rand == 4"}
+    <h1>明天准时早起一起瓜分</h1>
+    <h2>458631元</h2>
+    <button class="btn-link-app">免费下载APP提现</button>
+    {/if}
+</section>
+<script>
+    from_uid = {$open['user_id']};
+    user_level = {$receive['level']};
+</script>
+{/notempty}
+<section class="ctn-receive hide">
+    <ul class="ctn-pick">
+        <li class="header">
+            <em style="background-image: url({$receive['avator']})"></em>
+            <h3>{$receive['nickname']}</h3>
+            <h5>一起来拆红包领现金吧</h5>
+        </li>
+        <li class="main">
+            <div class="title">
+                已拆<span class="on">{:sprintf('%.2f', $receive['open_price']/100)}</span>元，
+                仅差<span class="on">{:sprintf('%.2f', $receive['surplus_price']/100)}</span>元可提现
+            </div>
+            <div class="progress-bar flex">
+                <p class="progress flex1"><i style="width: {$receive['open_percent']}%"></i></p>
+                <button>提现</button>
+            </div>
+        </li>
+        <li class="redpack flex">
+            <div class="flex1"><span class="on">23:59:59.9</span>后红包将失效</div>
+            <button>红包记录>></button>
+        </li>
+    </ul>
+    <div class="btns">
+        {if $is_end}
+        <button class="btn-link-app">我已提现到账，你也去领吧</button>
+        {else/}
+        <button class="btn-share">发给好友帮我拆</button>
+        {/if}
+    </div>
+    <p class="award-tips">新APP用户可帮拆10倍以上金额</p>
+</section>
+<div class="ctn-goods">
+    <div class="title"></div>
+    <dl class="flex">
+        <dt class="flex1" event="jd">京东</dt>
+        <dt class="flex1" event="pdd">拼多多</dt>
+    </dl>
+    <ul class="flex" event="jd"></ul>
+    <ul class="flex hide" event="pdd"></ul>
+    <div class="more"></div>
+</div>
+<script>
+    open_record = JSON.parse('{:json_encode($open_record)}');
+    wx_share = '{:json_encode($wx_share)}';
+    link_load_jd = "{:url('api/goods/search_local_jd')}?sort_type=15";
+    link_load_pdd = "{:url('api/goods/channel_goods')}?channel_type=3";
+    account = 0;
+    is_new = {$is_new ? 1 : 0};
+    wx_info = {$wx_info ? json_encode($wx_info) : '""'};
+</script>
+{notempty name="wx_config"}
+<script>
+    wx_config = '{$wx_config | raw | json_encode}';
+</script>
+{/notempty}
+<script src="__PUBLIC__/static/js/interactive.js"></script>
+<script src="__PUBLIC__/activity/pick_new/bag.js?v=1.1"></script>
+{/block}

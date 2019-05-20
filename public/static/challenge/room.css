@@ -1,0 +1,561 @@
+body {
+    background-color: #f6f6f6;
+    padding-bottom: 100px;
+}
+
+.top_tips {
+    padding: 16px;
+    background-color: #f4f4f4;
+    color: #7c7c7c;
+    font-size: 14px;
+}
+
+.top_tips:before {
+    content: '';
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin: 0 8px 0 0;
+    background: url(img/icon-remind.png) 50% no-repeat;
+    background-size: contain;
+    vertical-align: middle;
+}
+
+.top_tips div div {
+    display: inline-block;
+}
+
+.top_tips div div + div {
+    margin-left: 100px;
+}
+
+section {
+    padding: 0 2%;
+    background-color: #fff;
+}
+
+section + section {
+    margin: 10px 0 0;
+}
+
+section article {
+    padding: 20px 0;
+    overflow: hidden;
+}
+
+section article.room-upgrade-auto {
+    line-height: 24px;
+}
+
+section article right {
+    text-align: right;
+    float: right;
+    color: #999;
+}
+
+section article + article {
+    border-top: 1px solid #f4f4f4;
+}
+
+.room_fee {
+    padding-bottom: 20px;
+}
+
+.room_fee ul > * {
+    text-align: center;
+}
+
+.room_fee ul > * i:before {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 4px;
+    background: url(img/diamond-off.png) 50% no-repeat;
+    background-size: contain;
+}
+
+.room_fee label i {
+    color: #333;
+}
+
+.room_fee label :checked + i {
+    color: #333;
+}
+
+.room_fee button {
+    display: block;
+    width: 58px;
+    margin: 10px auto 8px;
+    /*padding: 4px 12px;*/
+    border: 1px solid #fe6249;
+    color: #fe6249;
+    border-radius: 2px;
+    pointer-events: none;
+}
+
+.room_fee .company button {
+    border-color: #aaa;
+    color: #aaa;
+}
+
+.room_fee [value=month] + i:before {
+    background-image: url(img/diamond-green.png);
+}
+
+.room_fee [value=year] + i:before {
+    background-image: url(img/diamond-yellow.png);
+}
+
+/*.renew [value=month] + i:before {*/
+/*background-image: url(img/diamond-green.png);*/
+/*}*/
+
+/*.renew [value=year] + i:before {*/
+/*background-image: url(img/diamond-yellow.png);*/
+/*}*/
+
+/*.room_fee label.company i:before {*/
+/*background-image: url(img/diamond-blue.png);*/
+/*}*/
+
+.invite ul a:first-child i:before {
+    background-image: url(img/icon-ren-xin.png);
+}
+
+.invite ul a:nth-child(2) i:before {
+    background-image: url(img/icon-wechat.png);
+}
+
+.invite ul a:last-child i:before {
+    background-image: url(img/icon-redpack.png);
+}
+
+.equities {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 56px;
+    padding: 0 10px;
+    line-height: 40px;
+    color: #eb8b8b;
+    background-color: #fde6e2;
+}
+
+.equities:after {
+    content: '>>';
+}
+
+.pay-bar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 56px;
+    background-color: #fff;
+    /*border-top: 1px solid #f7f7f7;*/
+    padding: 0 0 0 .5em;
+}
+
+.pay-bar .submit {
+    width: 38%;
+    height: 100%;
+    border: 0;
+    background-color: #fe6249;
+    color: #fff;
+}
+
+.pay-bar em {
+    display: block;
+}
+
+.pay-bar .paid {
+    color: #aaa;
+    font-size: .8em;
+    margin: .6em auto .6em;
+}
+
+.pay-bar .profit {
+    color: #fe6249;
+    margin: .2em 0 0 0;
+}
+
+.pay-bar .tips {
+    flex: 1;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.pay-bar .tips:after {
+    content: "!";
+    display: block;
+    width: 16px;
+    height: 16px;
+    /*background: url(../img/problem-light.png) no-repeat;*/
+    /*background-size: cover;*/
+    background-color: #dddddd;
+    border-radius: 50%;
+    text-align: center;
+    color: #fff;
+    /*margin: 18px 0 0 80%;*/
+    align-self: center;
+    margin: 0 1em 0 0;
+}
+
+.edit-header {
+    padding: 42px 2% 30px;
+}
+
+.edit-header em div {
+    color: #7c7c7c;
+    margin: 0 0 20px;
+}
+
+.edit-header em i {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.edit-header a {
+    display: inline-block;
+    /*width: 60px;*/
+    height: 50px;
+    line-height: 120px;
+    background: url(img/icon-invite.png) 50% no-repeat;
+    background-size: contain;
+}
+
+.edif-info .avator i {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    border-radius: 4px;
+    background: 50% no-repeat;
+    background-size: cover;
+    vertical-align: middle;
+}
+
+.edif-info .avator .webuploader-pick {
+    display: inline-block;
+}
+
+.edif-info .title input {
+    text-align: right;
+}
+
+.layer-pic {
+    background-color: #f3f3f3;
+    pointer-events: auto !important;
+    z-index: 9;
+    padding: 10px 2% 0;
+    text-align: center;
+}
+
+.layer-pic .webuploader-pick {
+    width: 150px;
+    height: 150px;
+}
+
+.layer-pic .main {
+    background-color: #fff;
+    position: relative;
+    padding: 50px 20px 20px;
+}
+
+.layer-pic .main p {
+    margin: 10px 0 0;
+    line-height: 20px;
+    color: #aaa;
+}
+
+.layer-pic .main button {
+    background-color: #FD482C;
+    display: block;
+    width: 100%;
+    height: 50px;
+    margin: 50px auto 0;
+    border-radius: 50px;
+    color: #fff;
+    font-size: 16px;
+}
+
+.layer-pic .uploader {
+    position: relative;
+    /*padding-top: 48%;*/
+    margin: 2em auto 0;
+    width: 150px;
+    height: 150px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-size: cover;
+}
+
+.uploader.none:before {
+    content: "";
+    display: block;
+    width: 5%;
+    height: 50%;
+    border-radius: 5em;
+    background-color: #E1E1E1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.uploader.none:after {
+    content: "";
+    display: block;
+    width: 50%;
+    height: 5%;
+    border-radius: 5em;
+    background-color: #E1E1E1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.layui-m-layer .select-time {
+    width: 100%;
+    border-radius: 0;
+    text-align: center;
+    font-size: 16px;
+}
+
+.select-time h3 {
+    background-color: #f4f4f4;
+    color: #7c7c7c;
+}
+
+.select-time .layui-m-layercont {
+    padding: 10px 0 8px;
+}
+
+.select-time article {
+    padding: 30px 0 0;
+}
+
+.select-time input {
+    width: 54px;
+    height: 26px;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    color: #169aff;
+    text-align: center;
+    margin: 0 .2em 0 .8em;
+    vertical-align: middle;
+}
+
+.select-time button {
+    width: 286px;
+    background-color: #fe6249;
+    height: 50px;
+    color: #fff;
+    margin: 42px auto 0;
+}
+
+.select-time i {
+    display: block;
+    width: 286px;
+    margin: 6px auto;
+    padding: 0 0 0 1em;
+    font-size: .8em;
+    text-align: left;
+    color: #aaa;
+}
+
+.layui-m-layer .list {
+    width: 100%;
+    margin: -62px 0 0 0;
+    background-color: transparent;
+    -webkit-animation-fill-mode: none;
+    animation-fill-mode: none;
+    font-size: 16px;
+}
+
+.layui-m-layer .list .tips {
+    border-radius: 5px;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 10px 20px;
+    margin: 0 5%;
+}
+
+.layui-m-layer .list ul {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    text-align: center;
+}
+
+.layui-m-layer .list ul li {
+    padding: 20px 0;
+    cursor: pointer;
+}
+
+.layui-m-layer .list ul li + li {
+    border-top: 1px solid #f4f4f4;
+}
+
+.layui-m-layer .list ul li:first-child {
+    background-color: #f4f4f4;
+    color: #7c7c7c;
+}
+
+.layui-m-layer .list ul li label {
+    display: block;
+}
+
+.choose label {
+    flex: 1;
+    text-align: center;
+    display: inline-block;
+    width: 16%;
+    align-self: center;
+    font-size: 0;
+}
+
+.choose label + label {
+    margin: 0 0 0 2%;
+}
+
+.choose label em {
+    display: block;
+    border: 1px solid #E1E1E1;
+    border-radius: 2px;
+    height: 8vw;
+    line-height: 8vw;
+    font-size: 13px;
+    color: #7c7c7c;
+}
+
+.choose label input[type=radio]:checked + * {
+    border-color: #FD482C;
+    color: #FD482C;
+    /*background-color: #fff;*/
+    position: relative;
+    /*background: url(../../promotion/dui_img.png) no-repeat right bottom;*/
+    /*background-size: 10px;*/
+}
+
+.choose label input[type=radio]:checked + *:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 12px;
+    height: 12px;
+    background: #FD482C url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20x%3D'0px'%20y%3D'0px'%20viewBox%3D'0%200%2012%209'%20xml%3Aspace%3D'preserve'%3E%3Cpolygon%20fill%3D'%23fff'%20points%3D'12%2C0.7%2011.3%2C0%203.9%2C7.4%200.7%2C4.2%200%2C4.9%203.9%2C8.8%203.9%2C8.8%203.9%2C8.8%20'%2F%3E%3C%2Fsvg%3E") 50% no-repeat;
+    background-size: 8px;
+}
+
+.label-checkbox .checkbox {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    border-radius: 2px;
+    box-sizing: border-box;
+    border: 1px solid #b7b7b7;
+    z-index: 0;
+    margin: 0;
+    padding: 0;
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    position: relative;
+    vertical-align: middle;
+}
+
+.label-checkbox input[type=checkbox]:checked + .checkbox {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20x%3D'0px'%20y%3D'0px'%20viewBox%3D'0%200%2012%209'%20xml%3Aspace%3D'preserve'%3E%3Cpolygon%20fill%3D'%23fff'%20points%3D'12%2C0.7%2011.3%2C0%203.9%2C7.4%200.7%2C4.2%200%2C4.9%203.9%2C8.8%203.9%2C8.8%203.9%2C8.8%20'%2F%3E%3C%2Fsvg%3E");
+    background-size: 9px 9px;
+    background-color: #169aff;
+    border: 0;
+}
+
+.label-switch {
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 16px;
+    box-sizing: border-box;
+    position: relative;
+    cursor: pointer;
+    -ms-flex-item-align: center;
+    -webkit-align-self: center;
+    align-self: center;
+    margin: 0 0 0 8px;
+}
+
+.label-switch .checkbox {
+    position: relative;
+    display: block;
+    height: 24px;
+    line-height: 24px;
+    width: 46px;
+    padding: 0 5px;
+    /*border: 1px solid #d2d2d2;*/
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: #f4f4f4;
+    -webkit-transition: .1s linear;
+    transition: .1s linear;
+}
+
+.label-switch .checkbox:before {
+    content: ' ';
+    position: absolute;
+    right: 5px;
+    top: 0;
+    width: 25px;
+    padding: 0 !important;
+    text-align: center !important;
+    color: #999 !important;
+    font-style: normal !important;
+    font-size: 12px;
+}
+
+.label-switch .checkbox:after {
+    content: ' ';
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    width: 26px;
+    height: 20px;
+    border-radius: 20px;
+    background-color: #fff;
+    -webkit-transition: .1s linear;
+    transition: .1s linear;
+}
+
+.label-switch input[type=checkbox]:checked + .checkbox {
+    border-color: #fe6249;
+    background-color: #fe6249;
+}
+
+.label-switch input[type=checkbox]:checked + .checkbox:before {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+
+.label-switch input[type=checkbox]:checked + .checkbox:after {
+    -webkit-transform: translateX(16px);
+    transform: translateX(16px);
+}
+
+.layer-room-fee .layui-m-layercont {
+    padding: 0;
+}
+
+@media screen and (max-height: 400px) {
+    body {
+        padding: 0;
+    }
+
+    .pay-bar, .equities {
+        position: static;
+    }
+}

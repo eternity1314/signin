@@ -1,0 +1,375 @@
+body {
+    background-color: #feb475;
+    padding-bottom: 110px;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+.btn-desc {
+    position: absolute;
+    top: 3%;
+    right: 0;
+    color: #fff;
+    border: 1px solid #fff;
+    border-right-width: 0;
+    padding: 6px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.ctn.income, .ctn-rank {
+    margin: 0 4%;
+    background-color: #fef9e6;
+    border-radius: 16px;
+    position: relative;
+    box-shadow: 0px 4px 13px 4px rgba(254, 77, 0, 0.2)
+}
+
+.ctn.income {
+    margin-top: -13%;
+    padding-top: 42%;
+}
+
+.ctn.income:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -7.6vw;
+    display: block;
+    padding-top: 54%;
+    /*margin-top: -8vw;*/
+    background: url(img/title_pull.png) 50% 0 no-repeat;
+    background-size: contain;
+}
+
+.ctn.income .empty {
+    text-align: center;
+    color: #999;
+    line-height: 80px;
+    margin: 24px 0 0;
+}
+
+.income .title dt {
+    text-align: center;
+    color: #fff;
+    background-color: #fdcfb0;
+    font-size: 16px;
+    padding: 16px 0;
+}
+
+.income .title dt.on {
+    background-color: #fc9837;
+}
+
+.income section {
+    text-align: center;
+    align-items: flex-end;
+    height: 166px;
+    margin: 0 0 6px;
+}
+
+.income section div:nth-child(2) {
+    order: -1;
+}
+
+.income section div em {
+    display: block;
+    margin: 0 auto 10px;
+    width: 60px;
+    height: 60px;
+    border: 2px solid #ffc901;
+    border-radius: 50%;
+    background: 50% no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.income section div em:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -20px;
+    margin: 0 auto;
+    width: 30px;
+    height: 30px;
+    background: url(img/crown1.png) 50% 0 no-repeat;
+    background-size: contain;
+}
+
+.income section div:nth-child(1) em {
+    width: 74px;
+    height: 74px;
+}
+
+.income section div:nth-child(1) em:before {
+    width: 36px;
+    height: 36px;
+    top: -23px;
+}
+
+.income section div:nth-child(2) em {
+    border-color: #c2d2e3;
+}
+
+.income section div:nth-child(2) em:before {
+    background-image: url(img/crown2.png)
+}
+
+.income section div:nth-child(3) em {
+    border-color: #f9a771;
+}
+
+.income section div:nth-child(3) em:before {
+    background-image: url(img/crown3.png)
+}
+
+.income section div p {
+    color: #fe6249;
+    font-size: 18px;
+    margin: 10px 0 0;
+}
+
+.income li {
+    padding: 14px 2% 14px 0;
+    margin: 0 14px;
+    border-bottom: 1px solid #f3eac9;
+}
+
+.income li:before {
+    content: attr(no);
+    width: 30px;
+    height: 30px;
+    margin: 0 2px 0 0;
+    line-height: 30px;
+    font-size: 15px;
+    text-align: center;
+}
+
+.income li em {
+    width: 50px;
+    height: 50px;
+    margin: 0 10px 0 0;
+    border-radius: 50%;
+    background: #ddd 50% no-repeat;
+    background-size: cover;
+}
+
+.income li div {
+    max-width: 6em;
+}
+
+.income li i {
+    color: #fe6249;
+    font-size: 18px;
+    text-align: right;
+}
+
+.income button {
+    text-align: center;
+    color: #feb475;
+    width: 100%;
+    padding: 16px 0;
+}
+
+.ctn-rank {
+    margin-top: 60px;
+    text-align: center;
+    padding: 30px 20px 0;
+    color: #fe6249;
+}
+
+.ctn-rank:before {
+    content: '';
+    display: block;
+    padding-top: 18%;
+    background: url(img/title_rank.png) 50% no-repeat;
+    background-size: contain;
+    position: absolute;
+    top: -8vw;
+    left: 0;
+    right: 0;
+}
+
+.ctn-rank ol {
+    font-size: 18px;
+}
+
+.ctn-rank ul {
+    background-color: #fec99b;
+    color: #fff;
+    padding: 14px 0;
+    font-size: 16px;
+    margin: 14px 0;
+    border-radius: 6px;
+}
+
+.ctn-rank ul li + li {
+    border-left: 1px solid #ed9b55;
+}
+
+.ctn-rank [class^=txt] {
+    color: inherit;
+}
+
+.ctn-rank button, .ctn-rank [class^=btn] {
+    display: inline-block;
+    background-color: #FD482C;
+    padding: 6px 14px;
+    color: #fff;
+    border-radius: 6px;
+    margin: 20px 0 0;
+}
+
+.ctn-rank .link {
+    display: block;
+    padding: 16px 0;
+    margin: 14px 0 0;
+    color: #feb475;
+    border-top: 1px solid #f3eac9;
+}
+
+.bottom-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fff;
+    padding: 10px 20px 0;
+}
+
+.btns * {
+    flex: 1;
+    padding: 14px 0;
+    background-color: #fe6249;
+    border-radius: 50px;
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0px 1px 3px 2px rgba(254, 133, 73, 0.2);
+}
+
+.btns * + * {
+    margin: 0 0 0 16px;
+    background-color: #fe8549;
+}
+
+.bottom-bar p {
+    text-align: center;
+    color: #7c7c7c;
+    margin: 6px 0;
+    font-size: 12px;
+}
+
+.link-equities {
+    position: fixed;
+    top: 107vw;
+    right: 0;
+    width: 28%;
+    padding-top: 23%;
+    background: url(img/icon-equities.png) 50% no-repeat;
+    background-size: contain;
+    z-index: 9;
+}
+
+.marquee {
+    position: absolute;
+    top: 3%;
+    left: -10px;
+    overflow: hidden;
+    height: 156px;
+    /*background-color: #FD482C;*/
+    margin-top: -52px;
+    padding-top: 52px;
+    font-size: 13px;
+}
+
+.marquee ul {
+    position: relative;
+}
+
+.marquee li {
+    margin: 0 0 10px;
+    color: #fff;
+    /*transition: all 3s;*/
+    opacity: 0;
+}
+
+.marquee li span {
+    display: inline-block;
+    padding: 6px 10px;
+    background-color: rgba(0, 0, 0, .5);
+    border-radius: 6px;
+}
+
+.marquee li em {
+    display: inline-block;
+    margin: 0 10px 0 10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: 50% no-repeat;
+    background-size: cover;
+    vertical-align: middle;
+}
+
+.layui-m-layer .layui-m-layermain .layer-rank {
+    width: 76%;
+    background: transparent;
+}
+
+.layer-rank:before {
+    content: '';
+    display: block;
+    padding-top: 46%;
+    margin: 0 0 0 -15.5%;
+    background: url(img/title_income.png) right 0 bottom 0 no-repeat;
+    background-size: contain;
+}
+
+.layer-rank .layui-m-layercont {
+    padding: 0;
+    max-height: 70vh;
+    overflow: auto;
+    background-color: #fef9e6;
+    text-align: left;
+}
+
+.layer-rank .income li em {
+    width: 40px;
+    height: 40px;
+}
+
+.layer-rank .shut {
+    width: 8%;
+    padding-top: 8%;
+    position: absolute;
+    top: 8vw;
+    right: 0;
+}
+
+.layer-poster {
+    background-color: transparent !important;
+}
+
+.layer-poster img {
+    width: 72%;
+    margin: 0 auto;
+}
+
+.layer-poster .close {
+    width: 1.6em;
+    height: 1.6em;
+    top: 2%;
+    right: 16%;
+}
+
+.layer-poster .close::before, .layer-poster .close::after {
+    background: #fff;
+    height: 2px;
+}

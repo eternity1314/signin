@@ -1,0 +1,72 @@
+{extend name="public/base" /}
+{block name="header"}
+<title>邀请有奖</title>
+__BASE_CSS__
+<link rel="stylesheet" href="__PUBLIC__/static/article/css/wx_article.css"/>
+
+__JQUERY__
+{/block}
+{block name="body"}
+    <div class="scroll_top_container">
+        网页由 mp.weixin.qq.com 提供
+    </div>
+
+    <div class="article-detail">
+        <h3 class="ad-title">{$info.title}</h3>
+        <p class="ad-info">
+            <span class="ad-time">{$info.add_time}</span>&nbsp;&nbsp;
+            <span class="ad-author">{$info.user.nickname}</span>
+        </p>
+        {if $article_config['pic']}
+            <p class="top-pic" onclick="window.location.href = {$article_config['header_pic_url']}"><img src="{$article_config['pic']}"></p>
+        {/if}
+        <div class="ad-content">
+            {$info['content']|raw}
+        </div>
+        <p class="ad-warning">本文及配图均来自蚂蚁头条自媒体用户，不代表平台观点<br>如有侵犯请联系管理员下架</p>
+        <div class="bottom-bar">
+            <p class="bar-read">
+                <span onclick="window.location.href = '{$article_config[\'original_url\']}'">阅读原文</span>&nbsp;
+                <span>阅读{$info.read_num}</span>&nbsp;
+                <span><i class="icon icon-like"></i>118</span>
+            </p>
+            <p>投诉</p>
+        </div>
+    </div>
+    
+    {if $ad}
+        <div class="advertising-container">
+            <div class="advertising-title"></div>
+            <div class="advertising-contint" onclick="window.location.href = '{$ad[\'link\']}'"><img src="{$ad['pic']}"></div>
+        </div>
+    {/if}
+
+    <div class="overlay"></div>
+    <div class="panel alert_panel">
+        <div class="title">网速不好</div>
+        <div class="content">djasjdjksadklsal</div>
+        <div class="bar">
+            <button class="cancel">确定</button>
+        </div>
+    </div>
+{empty name="level_promote"}
+<script>
+$(function(){
+    $('.cancel').click(function(){
+        $('.panel, .overlay').removeClass('visible');
+    })
+
+    var w_H = $('body').height();
+    $(window).scroll(function () {
+        if ($(window).scrollTop() > w_H / 2) {
+            $('.overlay, .alert_panel').addClass('visible');
+        }
+    })
+})
+</script>
+{else/}
+<script>
+    level_promote = {$level_promote};
+</script>
+{/empty}
+{/block}

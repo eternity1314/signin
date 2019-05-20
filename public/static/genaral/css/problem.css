@@ -1,0 +1,121 @@
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: #f4f4f4;
+    color: #444444;
+}
+
+header {
+    background: url("../img/problem-banner.png") #fff no-repeat;
+    background-size: 100%;
+    padding-top: 50%;
+}
+
+.icon-step-point {
+    width: 5vw;
+    height: 3vw;
+    position: relative;
+    overflow: hidden;
+}
+.icon-step-point:before {
+    content: "";
+    display: inline-block;
+    border: 5vw solid transparent;
+    border-top-width: 1.5vw;
+    border-bottom-width: 1.5vw;
+    border-left-color: #ddd;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.icon-step-point:after {
+    content: "";
+    display: inline-block;
+    border: 1.5vw solid transparent;
+    border-left: 1.5vw solid white;
+    border-right-width: 1.5vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.icon{display: inline-block; background-size: 100%; background-repeat: no-repeat; vertical-align: middle;}
+.icon-problem-appoint{width: 15px; height: 15px; margin-right: 5px;}
+.icon-problem-challenge{width: 15px; height: 15px; margin-right: 5px;}
+.icon-problem-freetake{width: 15px; height: 15px; margin-right: 5px;}
+.icon-problem-glass{width: 15px; height: 15px; margin-right: 5px;}
+.icon-problem-orther{width: 15px; height: 15px; margin-right: 5px;}
+.icon-problem-pay{width: 15px; height: 15px; margin-right: 5px;}
+.icon-problem-said{width: 15px; height: 15px; margin-right: 5px;}
+.icon-problem-signin{width: 15px; height: 15px; margin-right: 8px;}
+.icon-problem-step-cash-pledge{background-image: url('../img/icon-problem-step-cash-pledge.png'); width: 44px; height: 35px; margin-bottom: 5px;}
+.icon-problem-step-share{background-image: url('../img/icon-problem-step-share.png'); width: 54px; height: 35px; margin-bottom: 5px;}
+.icon-problem-step-signin{background-image: url('../img/icon-problem-step-signin.png'); width: 35px; height: 35px; margin-bottom: 5px;}
+
+table {width: 100%; font-size: 13px; background-color: white; color: #454545; margin-bottom: 10px;}
+table td {border-right: 1px solid #F7F7F7; border-bottom: 1px solid #F7F7F7; padding: 20px 0 20px 12%;}
+table tr:last-child td { border-bottom: 0;}
+table tr td:last-child { border-right: 0;}
+.step{
+	display: -webkit-box; 
+    display: -ms-flexbox; 
+    display: -webkit-flex; 
+    display: flex; 
+    -webkit-justify-content: space-between; 
+    justify-content: space-between; 
+    -webkit-box-align: center; 
+    -ms-flex-align: center; 
+    -webkit-align-items: center; 
+    align-items: center;
+    text-align: center;
+    background-color: white;
+    padding: 30px 20px;
+}
+.step p{font-size: 13px; margin-bottom: 1px;}
+.step span{color: #C0C0C0; font-size: 12px; margin-top: 6px;}
+
+.prob_list {background-color: white;}
+.prob_title {
+    font-size: 15px;
+    color: #333;
+    padding: 10px;
+}
+
+.prob_desc {
+    font-size: 13px;
+    color: #858585;
+    padding: 15px 10px 15px 26px;
+    border-top: 1px solid #F5F5F5;
+    margin-left: 10px;
+    display: none;
+}
+
+.b-line{border-bottom: 1px solid #F5F5F5;}
+.arrows-r{float: right; font-size: 16px; color: #D2D2D2;}
+
+.qrcode-modal {
+    background: none !important;
+    color: white;
+}
+.qrcode-modal span {
+    display: block;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.qrcode-modal .qrcode {
+    width: 70%;
+    margin: 20px auto 20px;
+}
+.qrcode-modal .icon-close {
+    display: block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 20px;
+    border: 1px solid #FFFFFF;
+    border-radius: 50%;
+    margin: 30px auto 0;
+}

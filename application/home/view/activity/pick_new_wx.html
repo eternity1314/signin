@@ -1,0 +1,89 @@
+{extend name="public/base" /}
+{block name="header"}
+<title>天天领现金</title>
+__BASE_CSS__
+<link rel="stylesheet" href="__PUBLIC__/activity/pick_new/index.css"/>
+__JQUERY__
+__BASE_JS__
+__LAYER_JS__
+{/block}
+{block name="body"}
+{notempty name="open"}
+<section class="ctn-open">
+    <ul class="ctn-pick">
+        <li class="header">
+            <em style="background-image: url({$open['avator']})"></em>
+            <h3>{$open['nickname']}</h3>
+            <h5>我发现一个红包，一起来拆红包领现金吧~</h5>
+        </li>
+        <li class="main">
+            <div class="title">
+                已拆<span class="on">{:sprintf('%.2f', $open['open_price']/100)}</span>元，
+                仅差<span class="on">{:sprintf('%.2f', $open['surplus_price']/100)}</span>元可提现
+            </div>
+            <div class="progress-bar flex">
+                <p class="progress flex1"><i style="width: {$open['open_price']%1000/10}%"></i></p>
+            </div>
+        </li>
+    </ul>
+    <div class="btns">
+        <button class="btn-open">去APP帮他拆(领取现金100元)</button>
+        <button class="btn-receive">不，留在微信(领取现金10元)</button>
+    </div>
+</section>
+{/notempty}
+<section class="ctn-receive hide">
+    <ul class="ctn-pick">
+        <li class="header">
+            <em style="background-image: url({$receive['avator']})"></em>
+            <h3>{$receive['nickname']}</h3>
+            <h5>一起来拆红包领现金吧</h5>
+        </li>
+        <li class="main">
+            <div class="title">
+                已拆<span class="on">{:sprintf('%.2f', $receive['open_price']/100)}</span>元，
+                仅差<span class="on">{:sprintf('%.2f', $receive['surplus_price']/100)}</span>元可提现
+            </div>
+            <div class="progress-bar flex">
+                <p class="progress flex1"><i style="width: {$receive['open_price']%1000/10}%"></i></p>
+                <button>提现</button>
+            </div>
+        </li>
+        <li class="redpack flex">
+            <div class="flex1"><span class="on">23:59:59.9</span>后红包将失效</div>
+            <button>红包记录>></button>
+        </li>
+    </ul>
+    <div class="btns">
+        <button class="btn-share">发给好友帮我拆</button>
+    </div>
+</section>
+<div class="income">
+    <p class="title">已有80000+人提现红包</p>
+    <div class="marquee">
+        <ul>
+            {foreach $withdraw as $v}
+            <li class="flex">
+                <em style="background-image: url({$v['avator']})"></em>
+                <div class="flex1">
+                    <section class="nickname txt-ellipsis">{$v['nickname']}</section>
+                    提现<span class="on">{$v['price']}元</span>现金到微信
+                </div>
+                <time>12分钟前</time>
+            </li>
+            {/foreach}
+        </ul>
+    </div>
+</div>
+<script>
+    open_record = JSON.parse('{:json_encode($open_record)}');
+    wx_share = '{:json_encode($wx_share)}';
+    marquee_step = 0;
+</script>
+{notempty name="wx_config"}
+<script>
+    wx_config = '{$wx_config | raw | json_encode}';
+</script>
+{/notempty}
+<script src="__PUBLIC__/activity/pick_new/index.js"></script>
+{/block}

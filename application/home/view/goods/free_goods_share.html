@@ -1,0 +1,135 @@
+{extend name="public/base" /}
+{block name="header"}
+<title>用生活好习惯省赚</title>
+__BASE_CSS__
+__LAYER_CSS__
+<link rel="stylesheet" href="__PUBLIC__/static/goods/free_goods_share.css">
+__JQUERY__
+__LAYER_JS__
+__BASE_JS__
+{/block}
+{block name="body"}
+<div class="share-container">
+    <button class="down-app-btn">在APP打开</button>
+    <i class="headico"><img src="{$user_info.avator}"></i>
+    <p class="header-t">你好，我是{$user_info.nickname}，免费送你1件</p>
+
+    <div class="timedown">免单在<span>02:00:00.00</span>后过期</div>
+    <div class="goods-container orther-goods-content">
+        <ul class="flex ctn-list">
+            {foreach $goods_data as $v}
+                <label>
+                    <input type="radio" name="goods_id"><em></em>
+                    <i style="background-image: url({$v['img']})"></i>
+                    <p class="txt-ellipsis">{$v['name']}</p>
+                    <h5 class="txt-cny">0.00</h5>
+                </label>
+            {/foreach}
+        </ul>
+        <div class="more-btn get-one-goods">还是刚才那件好</div>
+    </div>
+    <div class="goods-container one-goods-content">
+        <div class="p">
+            <p class="goods-type">拼多多</p>
+            <img src="{$goods_info.img}">
+        </div>
+        <div class="t">{$goods_info.name}</div>
+        <div class="desc">
+            <p class="left"><span class="sell-price">￥0.00</span><span class="market-price">￥{$goods_info.org_price}</span></p>
+            <p class="right">销量 {$goods_info.sales_num}</p>
+        </div>
+        <div class="more-btn get-more-orther-goods">查看其它免费商品</div>
+    </div>
+</div>
+<div class="button-container">
+    {if $goods_info['good_quan_link']}
+    <div class="button left detail-btn" onclick="window.location.href='{$goods_info.good_quan_link}'">商品详情</div>
+    <div class="button right payroll-btn">找TA代付</div>
+    {else/}
+    <div class="button right payroll-btn" style="width: 100%;">找TA代付</div>
+    {/if}
+</div>
+<div class="copy">
+    <div id="biaoios">{$goods_info.name}</div>
+    <textarea id="biao1">{$goods_info.name}</textarea>
+</div>
+<script>
+    var timeobj = $('.timedown span');
+    var maxtime = timeobj.text().split(':');
+    maxtime = (maxtime[0] * 60 * 60 + maxtime[1] * 60) * 1000 + maxtime[2] * 1000;
+    var inittime = maxtime;
+    var limit = 100;
+    timer = setInterval("CountDown()", limit);
+
+    function CountDown() {
+        if (maxtime >= 0) {
+            var hours = Math.floor(maxtime / 3600 / 1000 % 24);
+            var minutes = Math.floor(maxtime / 60 / 1000 % 60);
+            var seconds = Math.floor(maxtime / 1000 % 60);
+            var ms = Math.floor(maxtime % 1000 / 10);
+            timeobj.text(("0" + hours).slice(-2) + ":" + ("0" + minutes).slice(-2) + ":" + ("0" + seconds).slice(-2) + "." + ("0" + ms).slice(-2));
+            maxtime -= limit;
+        } else {
+            clearInterval(timer);
+            maxtime = inittime;
+            timer = setInterval("CountDown()", limit);
+        }
+    }
+
+    $('.down-app-btn').click(function(){
+        copyUrl2();
+        window.location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.mayixiguan';
+    })
+    //多选删除
+    $('.payroll-btn').click(function(){
+        layer.open({
+            title: '商品标题复制成功',
+            content: '商品标题已复制，下载微选生活APP后将自动找到该商品，填写好收货地址后，把代付链接发给【{$user_info.nickname}】支付即可',
+            btn: '下载免费领取',
+            className: 'alert',
+            yes: function () {
+                $('.down-app-btn')[0].click();
+            }
+        });
+
+        $('.layui-m-layerbtn').after('<p style="padding-left: 20px;padding-bottom: 8px;font-size: 12px;color: #AAAAAA;">真实有效，如不放心，可提前咨询分享给您的人，有任何疑问可添加官方微信客服号：kangnaixin1989</p>');
+
+		copyUrl2();
+    })
+    $('.get-one-goods').click(function(){
+        $('.one-goods-content').show();
+        $('.orther-goods-content').hide();
+    })
+    $('.get-more-orther-goods').click(function(){
+        $('.orther-goods-content').show();
+        $('.one-goods-content').hide();
+    })
+    $('.ctn-list label').click(function(){
+        document.getElementById("biao1").value = document.getElementById("biaoios").innerHTML = $(this).children('.txt-ellipsis').text();
+    })
+
+    function copyUrl2() {
+        if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
+            window.getSelection().removeAllRanges();//这段代码必须放在前面否则无效
+            var Url2=document.getElementById("biaoios");//要复制文字的节点
+            var range = document.createRange();
+            // 选中需要复制的节点
+            range.selectNode(Url2);
+            // 执行选中元素
+            window.getSelection().addRange(range);
+            // 执行 copy 操作
+            var successful = document.execCommand('copy');
+
+            // 移除选中的元素
+            window.getSelection().removeAllRanges();
+        } else {
+            var Url2=document.getElementById("biao1");//要复制文字的节点
+            Url2.select(); // 选择对象
+            var successful = document.execCommand("Copy"); // 执行浏览器复制命令
+
+            // 移除选中的元素
+            window.getSelection().removeAllRanges();
+        }
+    }
+</script>
+{/block}

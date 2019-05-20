@@ -1,0 +1,125 @@
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-appearance: none;
+}
+
+body {
+    background-color: #f4f4f4;
+    color: #444444;
+    font-size: .88em;
+}
+
+header {
+    padding-top: 22%;
+    background: url(../img/page_top.png) 50% 0 no-repeat;
+    background-size: contain;
+    text-align: center;
+}
+
+header em {
+    display: block;
+    margin: 0 auto;
+    width: 60px;
+    height: 60px;
+    border-radius: 4px;
+    background-size: cover;
+}
+
+header .nickname {
+    font-size: 16px;
+    margin: 10px 0 0;
+}
+
+header .nickname:after {
+    content: "";
+    display: inline-block;
+    margin: 0 0 0 .4em;
+    width: 1em;
+    height: 1em;
+    background: url(../img/pin.png) no-repeat;
+    background-size: contain;
+    vertical-align: middle;
+}
+
+header .msg {
+    margin: 10px 0 30px;
+    color: #999;
+}
+
+header .info {
+    margin: 20px 0;
+}
+
+header .info i {
+    font-size: 38px;
+    font-weight: bold;
+}
+
+header .info i:after {
+    font-size: 12px;
+    margin: 0 0 0 6px;
+}
+
+header .info p {
+    color: #999;
+    margin: 10px 0 0;
+}
+
+.draw-info {
+    padding: 14px 10px;
+    color: #aaa;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+ul {
+    background-color: #fff;
+    /*padding: 0 10px;*/
+    font-size: 16px;
+}
+
+ul li {
+    display: flex;
+    margin: 0 0 0 10px;
+    padding: 17px 10px;
+}
+
+ul li + li {
+    border-top: 1px solid #f1f1f1;
+}
+
+ul li em {
+    width: 50px;
+    height: 50px;
+    margin: 0 8px 0 0;
+    border-radius: 4px;
+    background-size: cover;
+}
+
+ul li div {
+    flex: 1;
+    line-height: 18px;
+}
+
+ul li div dl {
+    display: flex;
+}
+
+ul li div dl p {
+    flex: 1;
+}
+
+ul li div time {
+    display: block;
+    margin: 10px 0 0;
+    color: #aaa;
+    font-size: 12px;
+}
+
+.txt-rmb:after {
+    content: "元";
+}
+
+.txt-integral:after {
+    content: "积分";
+}

@@ -1,0 +1,68 @@
+{extend name="public/base" /}
+{block name="header"}
+    <title>常见问题</title>
+    __BASE_CSS__
+    __LAYER_CSS__
+    <link rel="stylesheet" href="__PUBLIC__/static/genaral/css/problem.css"/>
+
+    __JQUERY__
+    __LAYER_JS__
+{/block}
+{block name="body"}
+    <header>
+        <a href="{:url('Mpwx/Friend/mine')}"></a>
+        <a class="send-poster"></a>
+    </header>
+    <table>
+        {volist name="cate" id="vo"}
+            {if $key % 2 == 0}
+                <tr>
+            {/if}
+            <td class="{:$vo['id'] == 0 ? 'give-advice' : 'problem-link'}" data-cate_id="{$vo.id}"><i class="icon icon-problem-signin" style="background-image: url({$vo.img})"></i>{$vo.name}</td>
+            {if $vo['id'] == 0}
+                </tr>
+            {/if}
+        {/volist}
+    </table>
+
+    <div class="step">
+        <div class="step-box">
+            <i class="icon icon-problem-step-cash-pledge"></i><br>
+            <p>押金</p>
+            <span>支付契约金</span>
+        </div>
+        <i class="icon-step-point"></i>
+        <div class="step-box">
+            <i class="icon icon-problem-step-signin"></i><br>
+            <p>打卡</p>
+            <span>完成早起目标</span>
+        </div>
+        <i class="icon-step-point"></i>
+        <div class="step-box">
+            <i class="icon icon-problem-step-share"></i><br>
+            <p>分钱</p>
+            <span>平分契约金</span>
+        </div>
+    </div>
+
+    <script>
+        $(function(){
+            $('.give-advice').click(function(){
+                layer.open({
+                    type: 1,
+                    content: '<span>点击二维码保存到手机</span><span>微信扫一扫关注官方公众号</span><span>把您的建议留言发送给公众号即可</span><span>每条留言必有美女客服回复跟你详聊</span><span>建议一旦被采纳，现金红包¥50秒到账</span><div class="qrcode"><img style="width:100%;" src="__PUBLIC__/static/genaral/img/qrcode_jiangnanhaoli.jpg"></div><span class="icon-close">×</span>'
+                    , anim: false
+                    , className: 'qrcode-modal'
+                    , shadeClose: false
+                });
+            })
+            $(document).on('click', '.icon-close', function () {
+                layer.closeAll();
+            })
+            
+            $('.problem-link').click(function(){
+                window.location.href = "{:url('problem_info')}?cate_id=" + $(this).data('cate_id');
+            })
+        })
+    </script>
+{/block}

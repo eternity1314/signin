@@ -1,0 +1,86 @@
+{extend name="public/base" /}
+{block name="header"}
+<title>0.1元抢购</title>
+__BASE_CSS__
+__LAYUI_CSS__
+<link rel="stylesheet" href="__PUBLIC__/activity/point_one_buy/index.css"/>
+__JQUERY__
+__BASE_JS__
+__LAYER_JS__
+__LAYUI_JS__
+{/block}
+{block name="body"}
+<div class="wrap help-bg">
+    <div class="help-top-bar flex">
+        <section class="marquee flex1">
+            <ul>
+                {foreach $withdraw as $v}
+                <li><img src="{$v['avator']}">恭喜{$v['nickname']}抢购成功</li>
+                {/foreach}
+            </ul>
+        </section>
+        <i class="btn-rule">规则</i>
+    </div>
+    <div class="help-container help-mt">
+        <div class="hp-goods flex">
+            <p class="hp-p"><img src="{$po_join_data.goods_img}" alt=""></p>
+            <p class="hp-t flex1">{$po_join_data.goods_name}</p>
+        </div>
+        <ul class="success-bar flex">
+            <li class="flex1">成功率<span class="on txt-percent">{$po_join_data.success_rate}</span></li>
+            <li>{$po_join_data.snap_up_count}人抢购成功</li>
+        </ul>
+        <div class="success-tips">成功率越高，越容易抢到</div>
+        <div class="progress-bar"><i style="width: {$po_join_data.success_rate}%"></i></div>
+        <ul class="progress-tips flex">
+            <li>0%</li>
+            <li class="help-status hide">已帮好友提升<span class="percent-num txt-percent"></span></li>
+            <li>100%</li>
+        </ul>
+        <div class="buy-status">{$rule_txt}</div>
+        {php}$class_name = $rule_txt == '' ? 'can_help' : 'no_can_help';{/php}
+        <div class="btns can_help {$class_name == 'can_help' ? '' : 'hide'}">
+            <button class="help-btn" action="{:url('home/activity/po_buy_help')}">帮TA助攻抢购</button>
+            <button class="top_goods">我也要0.1元购物</button>
+        </div>
+        <div class="btns no_can_help {$class_name == 'no_can_help' ? '' : 'hide'}">
+            <button class="top_goods">我也要0.1元购物</button>
+            <button class="btn-share">召集好友帮TA助攻</button>
+        </div>
+    </div>
+
+    <div class="help-container layer-download tcenter hide">
+        <p>超感谢你的助攻，赠送你助攻礼包！</p>
+        <ul class="flex">
+            <li><span>10元现金</span>
+                <p>
+                    <time>01:59:59</time>
+                    后到期
+                </p>
+            </li>
+            <li><span>60元现金</span>
+                <p>
+                    <time>01:59:59</time>
+                    后到期
+                </p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="ctn-goods">
+        <fieldset>
+            <legend>推荐商品</legend>
+        </fieldset>
+        <ul class="flex" event="pdd"></ul>
+        <div class="more"></div>
+    </div>
+</div>
+<script src="__PUBLIC__/activity/point_one_buy/index.js"></script>
+<script>
+    window['join_id'] = "{$po_join_data.id}";
+    window['success_rate'] = "{$po_join_data.success_rate}";
+    link_load_pdd = 'http://' + location.host + '/home/activity/po_buy_goods_data/';
+    wx_info = {$wx_info ? json_encode($wx_info) : '""'};
+    is_app_user = {$is_app_user};
+</script>
+{/block}

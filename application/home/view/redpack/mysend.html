@@ -1,0 +1,102 @@
+{extend name="public/base" /}
+{block name="header"}
+<title>我发过的红包</title>
+__BASE_CSS__
+__JQUERY__
+<style>
+    ul li {
+        margin: 10px 0 0;
+        padding: 10px;
+        background-color: #fff;
+    }
+
+    ul li div + div {
+        margin: 14px 0 0;
+    }
+
+    ul li a + a:before {
+        content: '|';
+        padding: 0 2px;
+    }
+
+    ul li div:first-child p {
+        font-size: 16px;
+    }
+
+    ul li div:nth-child(2) {
+        color: #666;
+    }
+
+    ul li div:last-child {
+        color: #999;
+        font-size: 12px;
+    }
+
+    ul li div:last-child:before {
+        content: '';
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        background: url(/static/redpack/img/icon-set.png) 50% no-repeat;
+        background-size: contain;
+        vertical-align: bottom;
+    }
+
+    copy {
+        color: #30a9fc;
+        cursor: pointer;
+    }
+
+    .empty {
+        margin: 100px 0 0;
+        text-align: center;
+        color: #7c7c7c;
+    }
+</style>
+{/block}
+{block name="body"}
+<ul>
+    {empty name="data"}
+    <div class="empty">没有数据</div>
+    {/empty}
+    {foreach $data as $item}
+    <li>
+        <div class="flex">
+            <p class="flex1">
+                发了{eq name="item['event']" value="rmb"}
+                {$item['price']/100}元
+                {else/}{$item['price']}M币
+                {/eq}
+            </p>
+            <copy text="{$item['short_url']}">复制红包链接</copy>
+        </div>
+        <div class="flex">
+            <p class="flex1">共{$item['num']}个，已被领{$item['num'] - $item['surplus']}个</p>
+            <p>{:date('Y-m-d H:i', $item['add_time'])}</p>
+        </div>
+        <div>
+            <a>{eq name="item['show']" value="1"}显示在族群{else/}不显示在族群{/eq}</a>
+            <a>
+                {if condition="$item['receive'] == 'room'"}本族成员领取
+                {elseif condition="$item['receive'] == 'pinduoduo'"}拼多多用户领取
+                {elseif condition="$item['receive'] == 'all'"}看到的人就能领
+                {/if}
+            </a>
+            <a>{eq name="item['share']" value="1"}分享后才能领取{else/}无需分享就能领{/eq}</a>
+            <a>{eq name="item['transfer']" value="account"}微选钱包{else/}微信钱包{/eq}</a>
+        </div>
+    </li>
+    {/foreach}
+</ul>
+<script>
+    $(function () {
+        $.ajax({
+            url: "/static/js/interactive.js"
+        });
+
+        $('ul').on('click', 'copy', function () {
+            interactive.copy($(this).attr('text'));
+        })
+    })
+</script>
+{/block}

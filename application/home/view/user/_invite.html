@@ -1,0 +1,302 @@
+{extend name="public/base" /}
+{block name="header"}
+    <title>邀请海报</title>
+    __BASE_CSS__
+    <script src="__PUBLIC__/static/js/interactive.js"></script>
+    <style>
+        .bottom-label {position: fixed; width: 100%; height: 54px; line-height: 54px; font-size: 18px; font-weight: bold; bottom: 0; left: 0; background-color: #F67A00; color: #FFFFFF; text-align: center; box-shadow: 0 -2px 5px #BF6409;}
+        .box-parent {position: relative; padding-bottom: 54px; font-size: 0}
+        .box-child {position: absolute;  width: 30%; padding-top: 10%;}
+        .box1 {top: 0;left: 0;margin-top: 119%;margin-left: 11%;}
+        .box2 {top: 0;left: 0;margin-top: 119%;margin-left: 59%;}
+        .box3 {top: 0;left: 0;margin-top: 168%;margin-left: 11%;}
+        .box4 {top: 0;left: 0;margin-top: 168%;margin-left: 59%;}
+    </style>
+    
+{/block}
+{block name="body"}
+    <div class="box-parent">
+        <img src="__PUBLIC__/static/user/img/invite-bg.jpg">
+        {volist name="file_poster" id="vo"}
+            <div class="box-child box{$i}" onclick="interactive.poster_share_click('{$vo.path}')"></div>
+        {/volist}
+        <div class="bottom-label" onclick="btn_click()">点我分享邀请链接</div>
+    </div>
+    <script>
+    function btn_click(){
+        var invite_code = "{$invite_code}";
+        var para = '{"title":"有好习惯就能分钱，还送免单和现金", "desc":"精致微选生活，赚赚赚！早起、阅读，免费领券还能再赚，让你拥有独立的拼多多社群商城，自用省，分享赚...", "imgUrl":"{:config(\'site.url\')}/static/img/wx_share.png", "link":"{:config(\'site.url\')}{:url(\'user/invite_page\')}?invite_code='+ invite_code +'"}';
+
+        interactive.btn_click(para);
+    }
+    </script>
+{/block}
+
+<!-- 分享页面 h5 -->
+
+{extend name="public/base" /}
+{block name="header"}
+    <title>邀请海报</title>
+    __BASE_CSS__
+    <link rel="stylesheet" href="__PUBLIC__/static/user/invite.css"/>
+    <script src="__PUBLIC__/static/js/interactive.js"></script>
+
+<style>
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: #FFFFFF;
+    color: #444444;
+    width: 100%;
+}
+.color-name {
+    color: #FB3950;
+}
+.color-price {
+    color: #FF711D;
+}
+
+.box {
+    width: 100%;
+    height: 100%;
+    background: url("img/invite_page_bg.jpg") no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+}
+
+.up {
+    height: 59.8%;
+    text-align: center;
+    width: 100%;
+    padding-top: 6vw;
+}
+
+.up .name {
+    color: white;
+    font-size: 4vw;
+}
+
+.up .logo-container {
+    width: 16vw;
+    margin: 7vw auto 0;
+}
+
+.up .button {
+    width: 66%;
+    height: 12vw;
+    line-height: 12vw;
+    font-size: 5vw;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    border-radius: 12vw;
+    background: #FEBB48;
+    color: #FE5749;
+    margin: 7.5vw auto 0;
+}
+
+.up .button-label {
+    font-size: 3.5vw;
+    margin-top: 6vw;
+    color: white;
+}
+
+.jackpot {
+    position: absolute;
+    left: 0;
+    bottom: 3%;
+    width: 100%;
+    text-align: center;
+    color: #FB3950;
+    font-size: 12px;
+    margin-top: 12px;
+}
+
+.down {
+    /*height: 45%;*/
+    /*background-color: skyblue;*/
+}
+.content{
+    margin-top: 0px;
+}
+.down .content p {
+    padding-left: 24px;
+    padding-right: 24px;
+    font-size: 4vw;
+    line-height: 5.6vw;
+}
+.down .tab{
+    color: #FF6600;
+    font-size: 26px;
+    font-weight: bold;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+.down .qr_code{
+    background: url("../img/kuang.png") no-repeat;
+    justify-content: center;
+    background-position: center;
+    background-size: 100% 100%;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+}
+.down .qr_code img{
+    background-color: orange;
+    width: 86%;
+    height: 86%;
+    margin: 6%;
+}
+.down .download{
+    position: absolute;
+    left: 10%;
+    bottom: 10%;
+    width: 80%;
+    line-height: 16vw;
+    height: 16vw;
+    font-size: 6vw;
+    text-align: center;
+    color: #fff;
+    border-radius: 45px;
+    background: #FE2C0B;
+    font-weight: bold;
+    margin: 0 auto;
+}
+
+/* 邀请海报页面 */
+body{
+    height: 100%;
+}
+.invite-wramper{
+    background-color: #F57B00;
+}
+.invite-header{
+    /*background-image: url("img/invite-page-header.jpg");*/
+    padding: ;
+}
+
+.poster-container{
+    overflow: hidden;
+    padding-bottom: 30px;
+    margin-top: -5px;
+}
+.poster-item{
+    width: 40%;
+    padding-top: 40%;
+    position: relative;
+    border-radius: 50%;
+    box-shadow: inset 0px 20px 5px #C75F00;
+    float: left;
+}
+.poster-inner{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 9px solid #FC9B24;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.poster-item .p{
+    width: 53%;
+    margin: 9% auto 0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+.poster-item .t{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 34%;
+    background-color: #f57b00;
+    border-top: 2px solid #E56301;
+    color: #F8EAD5;
+    font-size: 12px;
+    text-align: center;
+    padding-top: 4%;
+}
+.poster-item .btn{
+    position: absolute;
+    bottom: -4%;
+    left: 15%;
+    width: 70%;
+    font-size: 18px;
+    color: #561400;
+    background-color: #FECC09;
+    border-radius: 20px;
+    height: 33px;
+    line-height: 33px;
+    text-align: center;
+}
+.header-text{
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    width: 100%;
+    line-height: 20px;
+    letter-spacing: 1px;
+    color: #511D09;
+    padding-top: 60.8%;
+    font-size: 1em;
+}
+.bottom-label {position: fixed; width: 100%; height: 54px; line-height: 54px; font-size: 18px; font-weight: bold; bottom: 0; left: 0; background-color: #F67A00; color: #FFFFFF; text-align: center; box-shadow: 0 -2px 5px #BF6409;}
+.box-parent {position: relative; padding-bottom: 54px; font-size: 0}
+</style>
+{/block}
+{block name="body"}
+    <div class="invite-wramper">
+        <div class="invite-header">
+            <img src="__PUBLIC__/static/user/img/invite-page-header.jpg" alt="">
+            <p class="header-text">晒晒您的早起习惯为您赚了多少钱<br>让赖床的小伙们眼馋，来为你赚钱</p>
+        </div>
+        <div class="poster-container">
+            <div class="poster-item" style="margin-left: 6%;">
+                <div class="poster-inner">
+                    <div class="p"><img src="{$file_poster[0]['path']}" alt=""></div>
+                    <p class="t">起床啦，赚钱啦</p>
+                </div>
+                <div class="btn" onclick="interactive.poster_share_click('{$file_poster[0]['path']}')">立即分享</div>
+            </div>
+            <div class="poster-item" style="margin-left: 8%;">
+                <div class="poster-inner">
+                    <div class="p"><img src="{$file_poster[1]['path']}" alt=""></div>
+                    <p class="t">全民早睡早起</p>
+                </div>
+                <div class="btn" onclick="interactive.poster_share_click('{$file_poster[1]['path']}')">立即分享</div>
+            </div>
+            <div class="poster-item" style="margin-left: 6%;margin-top: 30px;">
+                <div class="poster-inner">
+                    <div class="p"><img src="{$file_poster[2]['path']}" alt=""></div>
+                    <p class="t">早起的鸟儿有虫吃</p>
+                </div>
+                <div class="btn" onclick="interactive.poster_share_click('{$file_poster[2]['path']}')">立即分享</div>
+            </div>
+            <div class="poster-item" style="margin-left: 8%;margin-top: 30px;">
+                <div class="poster-inner">
+                    <div class="p"><img src="{$file_poster[3]['path']}" alt=""></div>
+                    <p class="t">再睡，就打屁股了</p>
+                </div>
+                <div class="btn" onclick="interactive.poster_share_click('{$file_poster[3]['path']}')">立即分享</div>
+            </div>
+        </div>
+    </div>
+    <div class="box-parent">
+        
+        <div class="bottom-label" onclick="btn_click()">点我分享邀请链接</div>
+    </div>
+    <script>
+    function btn_click(){
+
+        var invite_code = "{$invite_code}";
+        var para = '{"title":"有好习惯就能分钱，还送免单和现金", "desc":"精致微选生活，赚赚赚！早起、阅读，免费领券还能再赚，让你拥有独立的拼多多社群商城，自用省，分享赚...", "imgUrl":"{:config(\'site.url\')}/static/img/wx_share.png", "link":"{:config(\'site.url\')}{:url(\'user/invite_page\')}?invite_code='+ invite_code +'"}';
+
+        interactive.btn_click(para);
+    }
+    </script>
+{/block}

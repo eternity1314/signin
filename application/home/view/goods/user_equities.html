@@ -1,0 +1,308 @@
+{extend name="public/base" /}
+{block name="header"}
+<title>高佣合伙人</title>
+__BASE_CSS__
+__LAYUI_CSS__
+<link rel="stylesheet" href="__PUBLIC__/static/goods/user_equities.css?v=2.3.0">
+__JQUERY__
+__BASE_JS__
+__LAYER_JS__
+__LAYUI_JS__
+{/block}
+{block name="body"}
+<header>
+    <div class="ctn">
+        <div class="main">
+            <em class="{$partner_type?'svip':'vip'}" style="background-image: url({$user['avator']})"></em>
+            <div class="line"></div>
+            <p>{$expire_time}</p>
+            <input type="hidden" name="pay-method" value="ali">
+            <button class="submit">我要{$partner_type ? '续期' : '升级'}</button>
+        </div>
+    </div>
+</header>
+<ul class="ctn-income flex">
+    <li class="flex1">
+        <i>160%</i>
+        自购返佣
+    </li>
+    <li class="flex1">
+        <i>60%</i>
+        分享返佣
+    </li>
+    <li class="flex1">
+        <i>30%</i>
+        族费提成
+    </li>
+</ul>
+<div class="ctn-more-text"></div>
+<ul class="nav flex">
+    <li class="flex1 on">无门槛现金券</li>
+    <li class="flex1">自购分享返佣</li>
+    <li class="flex1">送{$room_fee}元族群</li>
+</ul>
+<div class="ctn-item goods on">
+    <section>
+        <p>知名品牌大额无门槛现金券</p>
+        <p>无限量供应，每年至少帮您省1000元</p>
+    </section>
+    <ul class="flex"></ul>
+    <div class="more"></div>
+</div>
+<div class="ctn-item promotion">
+    <section>
+        <p>升级就送{$free_order_count}个免单名额</p>
+        <p>传播3轮，每轮2个合伙人，{$time_limit}赚{$free_order_income}元</p>
+    </section>
+    <ul class="list">
+        <li class="flex">
+            <div class="flex1">
+                <h5>自购返佣 160%，额外补贴60%</h5>
+                <p>比如佣金10元，合伙人则能拿16元</p>
+            </div>
+            <button onclick="interactive.goods_link_click()">挑选商品</button>
+        </li>
+        <li class="flex">
+            <div class="flex1">
+                <h5>分享好友购买，最高拿60%的提成</h5>
+                <p>直属购买60%佣金提成，非直属40%</p>
+            </div>
+            <button onclick="interactive.goods_link_click()">送券给好友</button>
+        </li>
+        <li class="flex">
+            <div class="flex1">
+                <h5>享培训津贴收入 260元/人，无上限</h5>
+                <p>直属升级最高奖200元/人，非直属60元/人</p>
+            </div>
+            <button href="{$link_invite}">去邀请好友</button>
+        </li>
+        <li class="flex">
+            <div class="flex1">
+                <h5>升级送免单名额 {$free_order_quota}个/人，无上限</h5>
+                <p>{$free_order_content}</p>
+            </div>
+            <button onclick="interactive.jumpFreeOrderPage()">去送免单</button>
+        </li>
+        <li class="flex">
+            <div class="flex1">
+                <h5>免单商品同样享受佣金</h5>
+                <p>所有免单名额，送出后同等享受高额商品佣金提成，只要你会送，就能赚钱</p>
+            </div>
+            <button onclick="interactive.jumpFreeOrderPage()">去送免单</button>
+        </li>
+    </ul>
+</div>
+<div class="ctn-item room">
+    <section>
+        <p>合伙人免费创建生活族群，价值{$room_fee}元</p>
+        <p>同时将拥有拼多多/京东店铺各1个</p>
+    </section>
+    <ul class="list">
+        <li class="flex">
+            <div class="flex1">
+                <h5>免费送价值{$room_fee}元的生活族群</h5>
+                <p>生活族权价值{$room_fee}元，免费送1个，预计能为你{$time_limit}创收{$room_income}元{if
+                    !$partner_type}（根据所开通合伙人时长赠送）{/if}</p>
+            </div>
+            <button href="{:url('home/challenge/room')}">去创建族群</button>
+        </li>
+        <li class="flex">
+            <div class="flex1">
+                <h5>好友创建族群费用30%提成</h5>
+                <p>直属创建享30%提成，非直属10%</p>
+            </div>
+            <button href="{$link_invite}">去邀请好友</button>
+        </li>
+        <li class="flex">
+            <div class="flex1">
+                <h5>享受精英合伙人分享培训交流</h5>
+                <p>1对1的培训指导，每周经营交流，优先享受其他惊喜福利</p>
+            </div>
+            <button href="{:url('home/user/contack_customer')}">查看上级</button>
+        </li>
+        <li class="flex">
+            <div class="flex1">
+                <h5>免费赠送拼多多/京东店铺各1个</h5>
+                <p>可单独添加拼多多/京东商品到自己的店铺中，拥有自己的店</p>
+            </div>
+            <button disabled>开发中...</button>
+        </li>
+    </ul>
+    <p class="tips">备注：包年合伙人免费赠送的生活族群可选年或月，均免费；包月合伙人免费赠送的生活族群只能选择月是免费的，选择年同样收费</p>
+</div>
+
+<script>
+    partner_type = '{$partner_type}';
+
+    if (!partner_type) {
+        $('.ctn-item button:not(:disabled)').text('领取').removeAttr('onclick').click(open_choose);
+        $('.ctn-item.goods ul').on('click', 'li', open_choose);
+    } else {
+        $('.ctn-item button[href]').click(function () {
+            location.href = $(this).attr('href');
+        })
+
+        if (!is_weixn()) {
+            $.ajax({"url": "/static/js/interactive.js"});
+            $('.ctn-item.goods ul').on('click', 'li', function () {
+                var v = $(this).attr('v').split('-');
+                interactive.jumpProductDetail(JSON.stringify({"id": v[0], "goods_id": v[1]}));
+            })
+        } else {
+            $('.ctn-item.goods li,.ctn-item button[onclick]').removeAttr('onclick').click(open_download);
+        }
+    }
+
+    $('.nav li').click(function () {
+        if ($(this).hasClass('on')) return false;
+        var i = $(this).index();
+        $('.nav li').removeClass('on').eq(i).addClass('on');
+        $('.ctn-item').removeClass('on').eq(i).addClass('on');
+    })
+
+    $('.submit').click(open_choose);
+
+    function open_choose() {
+        $('[name=pay-method]').val('ali');
+        layer.open({
+            type: 1,
+            content: '<ul>' +
+            '<li class="pay-method flex"><em class="flex1 on" value="ali">支付宝</em><em class="flex1" value="wx">微信</em></li>' +
+            '<li mode="month"><dd>99元/月</dd><p>预计至少赚到￥412.50元</p><i></i></li>' +
+            '<li mode="year"><dd>399元/年</dd><p>预计至少赚到￥12875.00元</p><i></i></li>' +
+            '<li class="cancel">取消</li>' +
+            '</ul>'
+            , anim: false
+            , className: 'choose'
+        });
+        return false;
+    }
+
+    function open_download() {
+        layer.open({
+            title: '温馨提醒',
+            content: '亲，为了您的账户安全和利于体验，微信H5版本暂时不支持该功能，请下载APP进行操作，将会给您带来更多额外的体验和收益',
+            btn: '好的',
+            className: 'alert',
+            shadeClose: false,
+            yes: function () {
+                location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.mayixiguan'
+            }
+        });
+    }
+
+    $('body').on('click', '.pay-method em', function () {
+        var $this = $(this);
+        var v = $this.attr('value');
+        var o = $('[name=pay-method]');
+        var v2 = o.val();
+        if (v == v2) return false;
+        var p = $this.closest('.pay-method');
+        p.find('em').removeClass('on');
+        $this.addClass('on');
+        o.val(v);
+    }).on('click', '.layui-m-layer .choose [mode]', function () {
+        data.pay_method = $('[name=pay-method]').val();
+        data.type = $(this).attr('mode') == 'year' ? 2 : 1;
+        layer.closeAll();
+        pay_submit(action, data, 'POST')
+    }).on('click', '.layui-m-layer .choose [mode] i', function () {
+        if ($(this).parent().attr('mode') == 'year') {
+            layer.open({
+                type: 'calc',
+                content: '<div class="ct-top">' +
+                '<dd>预计至少赚<span>12875.00元</span></dd>' +
+                '<h5>年高佣合伙人赚钱明细</h5>' +
+                '<p>根据平台用户平均值测算，送出10个免单名额，连续裂变传播3轮，每轮2个合伙人</p>' +
+                '</div>' +
+                '<ul>' +
+                '<li><dd class="flex"><span>免单返现</span><i class="flex1">￥350.00</i></dd><p>年合伙人和推荐人各获得10个免单名额</p></li>' +
+                '<li><dd class="flex"><span>消费佣金</span><i class="flex1">￥10605.00</i></dd><p>每人年消费500元+免单商品佣金</p></li>' +
+                '<li><dd class="flex"><span>培训津贴</span><i class="flex1">￥1920.00</i></dd><p>团队成员升级合伙人最高补贴260元/位</p></li>' +
+                '<li><dd class="flex"><span>管道收入</span><i class="flex1">￥--:--</i></dd><p>裂变3轮后团队更容易壮大，免单名额更多，往后则可坐享持续的管道收入，无上限</p></li>' +
+                '</ul>'
+                , anim: false
+                , className: 'calc'
+            });
+        } else {
+            layer.open({
+                type: 'calc',
+                content: '<div class="ct-top">' +
+                '<dd>预计至少赚<span>412.5元</span></dd>' +
+                '<h5>月高佣合伙人赚钱明细</h5>' +
+                '<p>根据平台用户平均值测算，送出5个免单名额，连续裂变传播3轮，每轮1个合伙人</p>' +
+                '</div>' +
+                '<ul>' +
+                '<li><dd class="flex"><span>免单返现</span><i class="flex1">￥75.00</i></dd><p>包月合伙人和推荐人各获得5个免单名额</p></li>' +
+                '<li><dd class="flex"><span>消费佣金</span><i class="flex1">￥247.50</i></dd><p>每人月消费50元+免单商品佣金</p></li>' +
+                '<li><dd class="flex"><span>培训津贴</span><i class="flex1">￥90.00</i></dd><p>团队成员升级合伙人补贴30元/位</p></li>' +
+                '<li><dd class="flex"><span>管道收入</span><i class="flex1">￥--:--</i></dd><p>裂变3轮后团队更容易壮大，免单名额更多，往后则可坐享持续的管道收入，无上限</p></li>' +
+                '</ul>'
+                , anim: false
+                , className: 'calc'
+            });
+        }
+        return false;
+    }).on('click', '.layui-m-layer .choose .cancel', function () {
+        layer.closeAll();
+    })
+
+    var action = "{:url('goods/dredge_eduities')}";
+    var data = {'use_balance': 1}
+
+    function pay_ok(res) {
+        layer.open({
+            content: (partner_type ? '续期' : '升级') + '成功',
+            skin: 'msg',
+            time: 2,
+            end: function () {
+                // interactive.goods_link_click();
+                location.href = location.href;
+            }
+        });
+    }
+
+    function submit_callback(res) {
+        if (res.data && res.data.dredge_id) pay_ok(res);
+    }
+
+    next_id = 0;
+    link_load = "{:url('user_equities_goods')}";
+    layui.use('flow', function () {
+        layui.flow.load({
+            elem: '.more',
+            done: function (page, next) {
+                if (!$('.ctn-item.goods').is(':visible')) {
+                    next('', true);
+                    return false;
+                }
+
+                $.get(link_load, {next_id: next_id}, function (res) {
+                    html = [];
+                    next_id = res.next_id;
+                    var html = [];
+                    layui.each(res.result, function (index, v) {
+                        html.push('<li v="' + v.id + '-' + v.goods_id + '">' +
+                            '            <em style="background-image: url(' + v.img + ')"></em>' +
+                            '            <p class="txt-ellipsis">' + v.name + '</p>' +
+                            '            <div class="flex">' +
+                            '                <span class="quan">' + v.coupon_price / 100 + '元</span>' +
+                            '                <span class="sales flex1">销量' + v.sales_num + '</span>' +
+                            '            </div>' +
+                            '            <div class="flex">' +
+                            '                <span class="txt-cny flex1">' + v.price + '</span>' +
+                            '                <span class="txt-rmb txt-ellipsis">赚' + v.commission + '</span>' +
+                            '            </div>' +
+                            '        </li>'
+                        )
+                    })
+
+                    next('', next_id > 0);
+                    if (html.length > 0) $('.ctn-item.goods ul').append(html);
+                })
+            }
+        });
+    });
+</script>
+
+{/block}

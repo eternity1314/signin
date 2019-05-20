@@ -1,0 +1,141 @@
+.block30{
+	height: 30px;
+}
+.pd-s{
+	padding: 0 10px;
+}
+.container{
+	padding: 0 15px 15px;
+	background-color: #FFB400;
+}
+.text-container{
+	background-color: white;
+	border-radius: 8px;
+}
+.text-container .t{
+	background-image: url(images/text-tbg-s.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	font-size: 14px;
+	color: white;
+	display: inline-block;
+    padding: 0 28px 0 18px;
+    margin-left: -1%;
+    margin-top: 20px;
+    height: 30px;
+    line-height: 26px;
+}
+.text-container .content{
+	padding: 10px 15px 18px 15px;
+	font-size: 14px;
+}
+.text-container .content p{
+	margin-top: 8px;
+}
+
+/* 开通特权 */
+.privilege-container{
+	padding: 30px 8px 0;
+	display: -webkit-flex;
+    display: flex;
+	-webkit-justify-content: space-between;
+    justify-content: space-between;
+}
+.privilege-item{
+	width: 45%;
+	background-image: url(images/super-drege-bg.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	text-align: center;
+	padding: 14px 0 10px;
+}
+.no-dredge{
+	background-image: url(images/super-drege-bg-grey.png);
+}
+.privilege-item .p img{
+	width: 50%;
+}
+.privilege-item .color-no-derdge{
+	color: #C2C1C0;
+}
+.privilege-item .color-derdge{
+	color: #894314;
+}
+.privilege-item .price{
+	font-size: 15px;
+	font-weight: 600;
+	margin-top: 5px;
+}
+.privilege-item .dredge{
+	font-size: 12px;
+}
+.privilege-item .btn{
+	width: 78%;
+	background-color: #FB7921;
+	color: #894314;
+	margin-top: 10px;
+}
+
+/* 问答模块 */
+.qa-container{
+	color: white;
+	margin-top: 30px;
+}
+.qa-container .q{
+	font-size: 15px;
+	font-weight: 600;
+}
+.qa-container .a{
+	font-size: 13px;
+	margin-top: 10px;
+}
+
+.equities-table{
+	width: 100%;
+	color: #333333;
+	font-size: 13px;
+	border-radius: 10px;
+	overflow: hidden;
+	margin-top: 15px;
+}
+.equities-table th{
+	background-color: #FCD67C;
+	font-size: 15px;
+	font-weight: 600;
+}
+.equities-table tr{
+	height: 56px;
+	background-color: #FCEECC;
+}
+.equities-table tbody tr:nth-child(even){
+	background-color: #FEEABA;
+}
+.equities-table .tips{
+	color: #AAAAAA;
+	font-size: 12px;
+}
+.equities-table td, .equities-table th{
+	vertical-align: middle;
+	text-align: center;
+	width: 50%;
+}
+.equities-table .middle-line{
+	font-size: 12px;
+	padding: 0 10px;
+	text-align: left;
+	background-color: #FCD67C;
+}
+.remark{
+	font-size: 12px;
+	color: white;
+	margin-top: 3px;
+}
+.remark.color-red{
+	color: #FF4102;
+}
+.remark.md-s{
+	margin-top: 6px;
+}
+.remark.md-l{
+	margin-top: 30px;
+}

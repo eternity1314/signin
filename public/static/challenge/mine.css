@@ -1,0 +1,255 @@
+body {
+    background-color: #f6f6f6;
+}
+
+ul {
+    /*padding: 0 2%;*/
+    background-color: #fff;
+}
+
+ul + ul {
+    margin: 10px 0 0;
+}
+
+ul li {
+    flex: 1;
+}
+
+.income {
+    padding: 42px 2% 24px;
+}
+
+.income span {
+    color: #aaa;
+}
+
+.income i {
+    display: block;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.income a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border: 4px solid #ddd;
+    border-radius: 50%;
+    color: #3ca61e;
+    margin: 0 0 0 80px;
+}
+
+.income li div:first-child {
+    height: 100px;
+}
+
+.user .balance {
+    justify-content: center;
+}
+
+.user .balance:before {
+    content: "";
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    margin: 0 10px 0 0;
+    background: url(../user/img/icon-money.png) 50% no-repeat;
+    background-size: contain;
+}
+
+.user .balance i {
+    display: block;
+    color: #aaa;
+    margin: 6px 0;
+}
+
+.user .balance em {
+    color: #169aff;
+}
+
+.user li:last-child {
+    border-left: 1px solid #f4f4f4;
+}
+
+.user li:last-child a {
+    display: block;
+    padding: 14px 0;
+    text-align: center;
+}
+
+.user li:last-child a:before {
+    content: "";
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin: 0 10px 0 0;
+    background: url(../user/img/icon-mb.png) 50% no-repeat;
+    background-size: contain;
+    vertical-align: middle;
+}
+
+.user li:last-child a:last-child:before {
+    background-image: url(../user/img/icon-promotion.png)
+}
+
+.user li:last-child a + a {
+    border-top: 1px solid #f4f4f4;
+}
+
+.tab {
+    border-bottom: 1px solid #f4f4f4;
+}
+
+.tab li {
+    flex: 1;
+    text-align: center;
+    padding: 16px 0;
+    color: #aaa;
+}
+
+.tab li.on {
+    color: #FD482C;
+}
+
+.list {
+    display: none;
+    font-size: 12px;
+}
+
+.list li {
+    background-color: #fff;
+    padding: 0 2%;
+    overflow: hidden;
+    color: #aaa;
+}
+
+.list li + li {
+    margin-top: 10px;
+}
+
+.list .info {
+    padding: 14px 0;
+}
+
+.list .info em {
+    display: inline-block;
+    width: 76px;
+    height: 76px;
+    margin: 0 10px 0 0;
+    background: #ddd 50% no-repeat;
+    background-size: cover;
+    border-radius: 2px;
+}
+
+.list .info .detail p {
+    padding: 4px 0;
+}
+
+.list .info .detail .title span {
+    font-size: 16px;
+    color: #000;
+}
+
+.list .info .detail .title right {
+    font-size: 16px;
+    color: #3ca61e;
+}
+
+.list .info .detail .status.s:before {
+    content: "";
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background: url(img/yes-on.png) 50% no-repeat;
+    background-size: contain;
+    vertical-align: middle;
+}
+
+.list .remark {
+    height: 46px;
+    line-height: 46px;
+    border-top: 1px solid #f4f4f4;
+}
+
+#create .info .status right:after {
+    content: '编辑族群>>';
+}
+
+right {
+    float: right;
+}
+
+.label-switch {
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 16px;
+    box-sizing: border-box;
+    position: relative;
+    cursor: pointer;
+    -ms-flex-item-align: center;
+    -webkit-align-self: center;
+    align-self: center;
+    margin: 0 0 0 8px;
+}
+
+.label-switch .checkbox {
+    position: relative;
+    display: block;
+    height: 24px;
+    line-height: 24px;
+    width: 46px;
+    padding: 0 5px;
+    /*border: 1px solid #d2d2d2;*/
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: #f4f4f4;
+    -webkit-transition: .1s linear;
+    transition: .1s linear;
+}
+
+.label-switch .checkbox:before {
+    content: ' ';
+    position: absolute;
+    right: 5px;
+    top: 0;
+    width: 25px;
+    padding: 0 !important;
+    text-align: center !important;
+    color: #999 !important;
+    font-style: normal !important;
+    font-size: 12px;
+}
+
+.label-switch .checkbox:after {
+    content: ' ';
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    width: 26px;
+    height: 20px;
+    border-radius: 20px;
+    background-color: #fff;
+    -webkit-transition: .1s linear;
+    transition: .1s linear;
+}
+
+.label-switch input[type=checkbox]:checked + .checkbox {
+    border-color: #fe6249;
+    background-color: #fe6249;
+}
+
+.label-switch input[type=checkbox]:checked + .checkbox:before {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+
+.label-switch input[type=checkbox]:checked + .checkbox:after {
+    -webkit-transform: translateX(16px);
+    transform: translateX(16px);
+}
+
+.layui-flow-more + .layui-flow-more {
+    display: none;
+}

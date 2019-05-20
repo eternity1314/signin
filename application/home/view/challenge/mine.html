@@ -1,0 +1,56 @@
+{extend name="public/base" /}
+{block name="header"}
+<title>我的早起族群</title>
+__BASE_CSS__
+<link rel="stylesheet" href="__PUBLIC__/static/challenge/mine.css"/>
+__JQUERY__
+__BASE_JS__
+__LAYER_JS__
+__LAYUI_JS__
+__LAYUI_CSS__
+<script src="__PUBLIC__/static/challenge/mine.js?v=2.051"></script>
+{/block}
+{block name="body"}
+<ul class="income flex">
+    <li>
+        <div><span>我在族群共赚到的（￥）</span><i>{$income_all}</i></div>
+        <div><span>创建的族群收入（￥）</span><i>{$income_room}</i></div>
+    </li>
+    <li>
+        <div><a href="{:url('room')}">创建<br>族群</a></div>
+        <div><span>加入的族群收入（￥）</span><i>{$income_join}</i></div>
+    </li>
+</ul>
+
+<ul class="user flex">
+    <li class="balance flex">
+        <a>我的钱包<i>￥{$balance/100}</i><em>提现</em></a>
+    </li>
+    <li>
+        <a class="mb" href="{:url('home/user/mb')}">我的M币</a>
+        <a class="promotion">高佣福利</a>
+    </li>
+</ul>
+
+<ul class="tab flex">
+    <li class="on">进行中</li>
+    <li>我创建</li>
+    <li>已结束</li>
+</ul>
+
+<ol id="ing" class="list show"></ol>
+<ol id="create" class="list"></ol>
+<ol id="over" class="list"></ol>
+<div class="more"></div>
+{notempty name="wx_config"}
+<script>
+    wx_config = '{$wx_config | raw | json_encode}';
+</script>
+{/notempty}
+{notempty name="wx_share"}
+<script>
+    wx_share = JSON.parse('{$wx_share | raw | json_encode}');
+</script>
+{/notempty}
+{if isset($room_id)}{include file="public/footer_challenge"/}{/if}
+{/block}

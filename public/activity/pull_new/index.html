@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>拉新补贴</title>
+    <link rel="stylesheet" href="/static/css/base.css"/>
+    <link rel="stylesheet" href="index.css"/>
+    <script src="/static/jquery/jquery.min.js"></script>
+    <script src="/static/js/base.js"></script>
+    <script src="/static/layui/layer/mobile/layer.js"></script>
+    <script src="index.js"></script>
+</head>
+<body>
+<button class="btn-desc">补贴说明</button>
+<div class="marquee">
+    <ul></ul>
+</div>
+<img src="img/bg_1.png">
+<img src="img/bg_2.png">
+<img src="img/bg_3.png">
+<img src="img/bg_4.png">
+<img src="img/bg_5.png">
+<div class="ctn income">
+    <dl class="flex title">
+        <dt class="flex1 on">本周邀请排行榜</dt>
+        <dt class="flex1">上周邀请排行榜</dt>
+    </dl>
+    <ul class="list" event="this">
+        <button>查看完整排行榜>></button>
+    </ul>
+    <ul class="list hide" event="last">
+        <button>查看完整排行榜>></button>
+    </ul>
+</div>
+
+<div class="ctn-rank">
+    <ul class="flex">
+        <li class="flex1">本周排名</li>
+        <li class="flex1">本周已领取</li>
+    </ul>
+    <ol class="flex">
+        <li class="flex1 this_week_rank">未上榜</li>
+        <li class="flex1 txt-rmb week_invite_award">0</li>
+    </ol>
+    <ul class="flex">
+        <li class="flex1">已邀请</li>
+        <li class="flex1">共领取补贴</li>
+    </ul>
+    <ol class="flex">
+        <li class="flex1">
+            <div class="txt-people invite_count">0</div>
+            <!--<a class="btn" href="/home/activity/pull_new_info">详情</a>-->
+        </li>
+        <li class="flex1">
+            <div class="txt-rmb all_invite_award">0</div>
+            <!--<button class="btn-withdraw">提现</button>-->
+        </li>
+    </ol>
+    <a class="link" href="/home/activity/pull_new_info">查看补贴详情>></a>
+</div>
+<!--<img src="img/bg_6.png">-->
+<!--<img src="img/bg_7.png">-->
+<!--<img src="img/bg_8.png">-->
+<!--<img src="img/bg_9.png">-->
+<!--<img src="img/bg_10.png">-->
+<!--<img src="img/bg_11.png">-->
+<br><br>
+<img src="img/bg_12.png">
+<img src="img/bg_13.png">
+
+<div class="bottom-bar">
+    <section class="btns flex">
+        <button class="btn-share flex1">分享邀请链接</button>
+        <button class="btn-poster flex1">分享邀请海报</button>
+    </section>
+    <p>
+        好友可领取<span class="color-primary">100M币</span>福利，M币可提现
+    </p>
+</div>
+</body>
+</html>

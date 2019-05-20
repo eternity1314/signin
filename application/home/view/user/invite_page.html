@@ -1,0 +1,36 @@
+{extend name="public/base" /}
+{block name="header"}
+    <title>用生活好习惯省赚</title>
+    __BASE_CSS__
+    <link rel="stylesheet" href="__PUBLIC__/static/user/invite.css"/>
+    
+    __JQUERY__
+{/block}
+{block name="body"}
+<div class="box">
+    <div class="up">
+        <p class="name">微选生活</p>
+        <p class="logo-container"><img src="__PUBLIC__/static/img/logo.png" alt="微选生活" /></p>
+        <p class="button">自用省钱 · 分享赚钱</p>
+        <p class="button-label">该省的钱绝不多花，该赚的钱一定要赚</p>
+    </div>
+    <div class="down">
+        <div class="content">
+            <p>汇聚百万拼多多京东优惠券，利用生活好习惯就能赚钱，给好友分享优惠券也能赚，成人达己，何乐而不为....现在下载还能免费领100M币，可无条件兑换为现金哦</p>
+        </div>
+        <!-- <div class="tab">50元现金红包</div>
+        <div class="qr_code">
+            <img src="/static/interest/img/erweima.jpg">
+        </div> -->
+        <div class="download">下载领取100M币提现</div>
+        <p class="jackpot">推荐人：{$Think.get.invite_code}</p>
+    </div>
+</div>
+<script>
+$(function(){
+    $('.download').click(function(){
+        window.location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.mayixiguan';
+    })
+})
+</script>
+{/block}

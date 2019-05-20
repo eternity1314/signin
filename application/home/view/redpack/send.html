@@ -1,0 +1,68 @@
+{extend name="public/base" /}
+{block name="header"}
+<title>发红包</title>
+__BASE_CSS__
+<link rel="stylesheet" href="__PUBLIC__/static/redpack/css/redpack.css"/>
+__JQUERY__
+__BASE_JS__
+__LAYER_JS__
+<script src="__PUBLIC__/static/redpack/send.js"></script>
+{/block}
+{block name="body"}
+<section class="send-box rmb">
+    <div class="input luck">
+        总<span></span>
+        <input type="text" placeholder="最低0.1" rmb-placeholder="最低0.1" mb-placeholder="最低100" name="price"
+               autocomplete="off">
+        <span></span>
+    </div>
+    <div class="input">
+        红包个数<input type="text" id="num" name="num" placeholder="填写个数" maxlength="3" autocomplete="off">个
+    </div>
+    <div class="input msg">
+        <input type="text" name="msg" placeholder="恭喜发财，大吉大利" maxlength="20" autocomplete="off">
+    </div>
+    <div class="pay">
+        <label class="label-checkbox balance">
+            <input type="checkbox" name="use_balance" checked>
+            <i class="checkbox"></i>我的余额:￥<span class="user-balance">{$user['balance']/100}</span>
+        </label>
+        <label class="label-set">
+            设置红包
+        </label>
+    </div>
+    <div class="paid">0.00</div>
+    <button class="submit" disabled>确认发放</button>
+    <a class="mysend" href="{:url('home/redpack/mysend')}">发过的红包</a>
+    <input type="hidden" name="event" value="rmb">
+    <div class="btips">发放的红包将长期存在直到领完为止</div>
+</section>
+<section class="ctn-set hide">
+    <!--<header><i class="point"></i>红包设置</header>-->
+    <ul>
+        <li class="show">显示在哪<i class="point">{$data['show_text']}</i></li>
+        <li class="receive">谁可以领<i class="point">{$data['receive_text']}</i></li>
+        <li class="share">怎么领取<i class="point">{$data['share_text']}</i></li>
+        <li class="transfer">红包到账<i class="point">{$data['transfer_text']}</i></li>
+        <li class="pic">拆完显示<i class="point"></i></li>
+    </ul>
+    <input type="hidden" name="show" value="{$data['show']}">
+    <input type="hidden" name="receive" value="{$data['receive']}">
+    <input type="hidden" name="share" value="{$data['share']}">
+    <input type="hidden" name="transfer" value="{$data['transfer']}">
+</section>
+<section class="ctn-pic hide">
+    <!--<header><i class="point"></i>拆完红包后显示的图片</header>-->
+    <div class="layer-pic">
+        <div class="main">
+            <div class="uploader none"></div>
+            <p>请上传您想展示给大家看的图</p>
+            <button>保存</button>
+            <input type="hidden" name="pic">
+        </div>
+    </div>
+</section>
+<script>
+    link_pay_ok = "{:url('home/challenge/redpack')}?room_id={:input('room_id')}";
+</script>
+{/block}

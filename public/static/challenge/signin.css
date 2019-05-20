@@ -1,0 +1,161 @@
+body {
+    text-align: center;
+}
+
+header {
+    background-color: #fff;
+    padding: 30px 0 20px;
+}
+
+header i {
+    display: block;
+    width: 55px;
+    height: 55px;
+    margin: 0 auto;
+    border: 3px solid #fe6249;
+    border-radius: 50%;
+}
+
+header i:after {
+    content: '';
+    display: block;
+    width: 35%;
+    height: 70%;
+    margin: 8% auto 0;
+    border-right: 3px solid #fe6249;
+    border-bottom: 3px solid #fe6249;
+    transform: rotate(45deg);
+}
+
+header h5 {
+    font-weight: bold;
+    font-size: 16px;
+    margin: 14px 0;
+}
+
+header p {
+    color: #aaaaaa;
+}
+
+.ctn-goods, .ctn-room {
+    background-color: #fff;
+}
+
+.ctn-room {
+    padding-top: 14px;
+}
+
+.ctn-goods {
+    text-align: left;
+    padding-bottom: 10px;
+}
+
+.ctn-goods .txt-cny{
+    color: #fe6249;
+    font-size: 16px;
+    margin: 10px 0 0;
+}
+
+.ctn-room .create {
+    display: block;
+    width: 80%;
+    margin: 0 auto 16px;
+    border: 1px solid #fe6249;
+    border-radius: 50px;
+    color: #fe6249;
+    padding: 14px 0;
+}
+
+.ctn-list {
+    flex-wrap: wrap;
+    padding: 0 1%;
+}
+
+.ctn-list > * {
+    width: 31.333333%;
+    margin: 0 1% 16px;
+    position: relative;
+}
+
+.ctn-list > * i {
+    display: block;
+    width: 100%;
+    padding-top: 100%;
+    background-size: cover;
+    border-radius: 4px;
+    margin: 0 0 10px;
+}
+
+.ctn-list > * :checked + em {
+    display: block;
+    width: 6vw;
+    height: 6vw;
+    border-radius: 50%;
+    background-color: #fe6249;
+    position: absolute;
+    top: 6px;
+    right: 6px;
+}
+
+.ctn-list > * :checked + em:after {
+    content: '';
+    display: block;
+    width: 35%;
+    height: 70%;
+    margin: 8% auto 0;
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    transform: rotate(45deg);
+}
+
+.free-contaier{
+    text-align: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #F9F9F9;
+}
+.free-contaier p:first-child{
+    color: #FF7144;
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.free-contaier .timedown{
+    color: #AAAAAA;
+    font-size: 13px;
+}
+.free-contaier .timedown span{
+    color: #FF7144;
+    font-size: 16px;
+    font-weight: bold;
+}
+.goods-top{
+    text-align: center;
+    padding: 10px 0 16px;
+}
+.goods-top p:first-child{
+    color: #3D3D3D;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 9px;
+}
+.goods-top .goods-top-desc{
+    display: inline-block;
+    color: #FF7144;
+    font-size: 13px;
+    background: #FFEFEC;
+    padding: 1px 2px;
+}
+.ctn-goods .send-btn {
+    width: 80%;
+    margin: 0 auto 10px;
+    background-color: #FF6838;
+    border-radius: 50px;
+    color: white;
+    padding: 14px 0;
+    text-align: center;
+}
+.s-info{
+    font-size: 12px;
+    color: #000;
+    padding-bottom: 12px;
+}

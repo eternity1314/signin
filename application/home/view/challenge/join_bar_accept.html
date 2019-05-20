@@ -1,0 +1,36 @@
+<!--<script id="join-bar_challenge_accept" type="text/html">-->
+<section class="join-bar challenge_accept ajax-form" action="{:url('home/challenge/accept')}?room_id={$room_id}">
+    <div class=" title bgc-primary">接受<span class="nickname"></span>发起的连续坚持<span class="day"></span>天早起挑战</div>
+    <div class="up-lay">
+        <div class="mcenter">约定打卡时间：<span class="signin_time">5:00~8:00</span></div>
+    </div>
+    <article class="price">
+        <dl>挑战契约金</dl>
+        <div class="choose flex read">
+            {foreach $both_option['price'] as $v}
+            <label>
+                <input type="radio" name="price" value="{$v}" disabled>
+                <em>￥{$v}</em>
+            </label>
+            {/foreach}
+        </div>
+    </article>
+    <article>
+        连续坚持<span class="day"></span>天早起后预计总回报
+        <p class="profit color-primary txt-cny">0.00</p>
+        <ul class="pay-lay flex">
+            <li class="flex1">
+                <label class="label-checkbox">
+                    <input type="checkbox" name="use_balance" checked="checked">
+                    <i class="checkbox"></i> 余额抵扣￥<span class="user-balance">{$user['balance']}</span>
+                </label>
+            </li>
+        </ul>
+    </article>
+    <input type="hidden" name="challenge_id">
+    <button class="submit">支付￥<span class="paid">0.00</span>明天开始打卡</button>
+</section>
+<!--</script>-->
+<script>
+    link_pay_ok_challenge_accept = "{:url('home/Challenge/index')}";
+</script>

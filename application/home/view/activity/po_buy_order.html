@@ -1,0 +1,39 @@
+{extend name="public/base" /}
+{block name="header"}
+<title>我的抢购</title>
+__BASE_CSS__
+__LAYUI_CSS__
+<link rel="stylesheet" href="__PUBLIC__/activity/point_one_buy/index.css"/>
+__JQUERY__
+__BASE_JS__
+__LAYER_JS__
+__LAYUI_JS__
+<script src="__PUBLIC__/activity/point_one_buy/index.js"></script>
+{/block}
+{block name="body"}
+<div class="wrap">
+    <div class="order-container">
+        {empty name="order_data"}
+            <div class="default-data-container">
+                <p class="ddc-pic"><img src="__PUBLIC__/static/img/default_img/sousuojilu.png" alt=""></p>
+                <p class="ddc-text">暂无抢购成功记录</p>
+            </div>
+        {/empty}
+        {volist name="order_data" id="vo"}
+            <div class="order-item">
+                <div class="order-inner flex">
+                    <p class="p"><img src="{$vo.goods_img}" alt=""></p>
+                    <p class="t flex1">{$vo.goods_name}</p>
+                </div>
+                <div class="result-container flex flex-between">
+                    <p class="{$vo['status'] == 3 ? 'color-red' : ''}">{$vo.status_desc}</p>
+                    <p>{$vo.status_info}</p>
+                </div>
+            </div>
+        {/volist}
+    </div>
+</div>
+<script>
+    
+</script>
+{/block}

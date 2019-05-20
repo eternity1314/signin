@@ -1,0 +1,85 @@
+{extend name="public/base" /}
+{block name="header"}
+<title>0.1元抢购</title>
+__BASE_CSS__
+__LAYUI_CSS__
+<link rel="stylesheet" href="__PUBLIC__/activity/point_one_buy/index.css"/>
+__JQUERY__
+__BASE_JS__
+__LAYER_JS__
+__LAYUI_JS__
+<script src="__PUBLIC__/activity/point_one_buy/index.js"></script>
+{/block}
+{block name="body"}
+<div class="wrap help-bg">
+    <div class="help-top-bar flex">
+        <section class="marquee flex1">
+            <ul>
+                <li>恭喜111抢购成功</li>
+                <li>恭喜222抢购成功</li>
+                <li>恭喜333抢购成功</li>
+            </ul>
+        </section>
+        <i class="btn-rule">规则</i>
+    </div>
+    <div class="help-container help-mt">
+        <div class="hp-goods flex">
+            <p class="hp-p"><img src="{$join['goods_img']}" alt=""></p>
+            <p class="hp-t flex1">{$join['goods_name']}</p>
+        </div>
+        <div class="buy-status big">抢购成功</div>
+        <ul class="success-bar flex">
+            <li class="flex1">成功率<span class="on">{$join['success_rate']}%</span></li>
+            <li>342人抢购成功</li>
+        </ul>
+        <div class="success-tips">成功率越高，越容易抢到</div>
+        <div class="progress-bar"><i style="width: {$join['success_rate']}%"></i></div>
+        <ul class="progress-tips flex">
+            <li class="flex1">0%</li>
+            <li>100%</li>
+        </ul>
+        <div class="btns">
+            <button class="btn-share">求助好友，提升成功率</button>
+            <button class="btn-share">等不及了，马上抢购</button>
+        </div>
+    </div>
+    <div class="help-container">
+        <ul class="avatar">
+            <li style="background-image: url(/static/img/head.png)"></li>
+            <li style="background-image: url(/static/img/head.png)"></li>
+        </ul>
+        <ul class="hp-tips flex">
+            <li class="flex1">好友助力，成功率提升<span class="on">12.23%</span></li>
+            <li>（新用户助力提升更多）</li>
+        </ul>
+        <ul class="hp-status flex">
+            <li class="flex1">44人与您成功率相同</li>
+            <li>优先抢到></li>
+        </ul>
+    </div>
+    <div class="help-container layer-download tcenter">
+        <p>超感谢你的助攻，赠送你助攻礼包！</p>
+        <ul class="flex">
+            <li><span>10元现金</span>
+                <p>
+                    <time>01:59:59</time>
+                    后到期
+                </p>
+            </li>
+            <li><span>10元现金</span>
+                <p>
+                    <time>01:59:59</time>
+                    后到期
+                </p>
+            </li>
+        </ul>
+    </div>
+    <fieldset>
+        <legend>推荐商品</legend>
+    </fieldset>
+</div>
+<script>
+    link_load_pdd = "{:url('api/activity/po_buy_goods')}";
+    wx_share = {$wx_share ? json_encode($wx_share) : '[]'};
+</script>
+{/block}

@@ -1,0 +1,45 @@
+{extend name="public/base" /}
+{block name="header"}
+    <title>联系客服</title>
+    __BASE_CSS__
+    __LAYER_CSS__
+    <link rel="stylesheet" href="__PUBLIC__/static/genaral/css/contack_customer.css"/>
+
+    __JQUERY__
+    __LAYER_JS__
+{/block}
+{block name="body"}
+    <div class="constom-qrcode">
+        <img src="__PUBLIC__/static/genaral/img/qrcode_wxshapp.jpg" alt="">
+        <p>微信公众号</p>
+    </div>
+
+    <div class="custom-button">长按上图保存到手机</div>
+
+    <div class="wx-copy">
+        <span>你的专属导师: {$mobile}</span>
+        <p class="button" onclick="copy_click()">复制</p>
+    </div>
+
+    <p class="server-time">服务时间 : 周一至周五 9:00-18:00</p>
+
+    <script>
+        function copy_click(){
+            try {
+                window.qushenghuo.copy("{$mobile}")
+            } catch(error) {
+                console.log(error)
+            }
+
+            try {
+                window.webkit.messageHandlers.copy.postMessage("{$mobile}")
+            } catch(error) {
+                console.log(error)
+            }
+        }
+
+        function copy(){
+
+        }
+    </script>
+{/block}

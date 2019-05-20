@@ -1,0 +1,35 @@
+{extend name="public/base" /}
+{block name="header"}
+    <title>邀请海报</title>
+    __BASE_CSS__
+    <link rel="stylesheet" href="__PUBLIC__/static/user/invite.css"/>
+    <script src="__PUBLIC__/static/js/interactive.js"></script>
+    
+{/block}
+{block name="body"}
+    <div class="invite-wramper">
+        <div class="poster-container">
+            <div class="swiper-container">
+                <div class="swiper-item" style="left: 0;"><img src="{$file_poster[0]['path']}" alt=""></div>
+                <div class="swiper-item" style="left: 90%;"><img src="{$file_poster[1]['path']}" alt=""></div>
+                <div class="swiper-item" style="left: 180%;"><img src="{$file_poster[2]['path']}" alt=""></div>
+                <div class="swiper-item" style="left: 270%;"><img src="{$file_poster[3]['path']}" alt=""></div>
+            </div>
+        </div>
+        <div class="bottom-container">
+            <p class="bottom-msg">好友通过二维码海报下载登录APP后，将永久成为您的会员<br>您可获得订单佣金和升级奖励</p>
+            <div class="invite-btns">
+                <div class="btn btn-bg-org">复制链接</div>
+                <div class="btn btn-bg-red">分享海报</div>
+            </div>
+        </div>
+    </div>
+    <script>
+    function btn_click(){
+        var invite_code = "{$invite_code}";
+        var para = '{"title":"有好习惯就能分钱，还送免单和现金", "desc":"精致微选生活，赚赚赚！早起、阅读，免费领券还能再赚，让你拥有独立的拼多多社群商城，自用省，分享赚...", "imgUrl":"{:config(\'site.url\')}/static/img/wx_share.png", "link":"{:config(\'site.url\')}{:url(\'user/invite_page\')}?invite_code='+ invite_code +'"}';
+
+        interactive.btn_click(para);
+    }
+    </script>
+{/block}

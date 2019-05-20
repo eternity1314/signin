@@ -1,0 +1,171 @@
+{extend name="public/base" /}
+{block name="header"}
+<title>{$room.title}</title>
+__BASE_CSS__
+<link rel="stylesheet" href="__PUBLIC__/static/challenge/join.css?v=2.32">
+__JQUERY__
+__LAYER_JS__
+__BASE_JS__
+<script src="__PUBLIC__/static/challenge/join.js?v=2.05"></script>
+{/block}
+{block name="body"}
+<div class="ctn-header">
+    <div class="top_tips flex">
+        <div class="flex1 txt-ellipsis">{$room_option['remark']['content']}</div>
+    </div>
+    <div class="info flex">
+        <em style="background-image: url({$room['avator']})"></em>
+        <section class="flex1">
+            <p class="flex">
+                <span class="flex1 txt-ellipsis">{$room['nickname']}</span>
+                <!--<a class="btn-change">切换族群</a>-->
+                <right>创建的早起族群</right>
+            </p>
+            <p>亲，一起来培养早起的好习惯吧</p>
+            <p>约定早起时间：{$room['stime']}</p>
+            <a class="btn-poster" href="{$link_poster}">分享</a>
+        </section>
+    </div>
+    <ul class="head">
+        {foreach $join_head as $v}
+        <li style="background-image: url({$v})"></li>
+        {/foreach}
+        {if count($join_head) >= 19}
+        <li></li>
+        {else/}
+        {for start="$join_count" end="20"}
+        <li></li>
+        {/for}
+        {/if}
+        <div class="flex">
+            <p class="flex1">{$join_count}人已报名</p>
+            <p>按投入瓜分未打卡者契约金</p>
+        </div>
+    </ul>
+</div>
+<div class="ctn-main">
+    <div class="ctn-info flex">
+        <section class="flex1">
+            <h3>明日早起奖励金</h3>
+            <p>￥{$room['price_ing']/100}</p>
+        </section>
+        <a class="btn-poster flex1" href="{$link_poster}"></a>
+    </div>
+    <div class="btns flex">
+        <button class="btn-join">加入族群</button>
+        {$btn_signin|raw}
+    </div>
+</div>
+<!--ul class="info">
+    <li class="leader flex">
+        <em style="background-image: url({$room['avator']})"></em>
+        <section class="flex1">
+            <p class="flex">
+                <span class="flex1 txt-ellipsis">族长：{$room['nickname']}</span>
+                <a class="btn-change">切换族群</a>
+            </p>
+            <p>当前实时挑战金：￥{$room['price_ing']/100}</p>
+        </section>
+    </li>
+    <li class="detail">
+        <div class="count flex">
+            <p class="flex1">{$join_count}人已报名</p>按投入瓜分未打卡者契约金
+        </div>
+        <ul class="head">
+            {foreach $join_head as $v}
+            <li style="background-image: url({$v})"></li>
+            {/foreach}
+            {if count($join_head) >= 19}
+            <li></li>
+            {else/}
+            {for start="$join_count" end="20"}
+            <li></li>
+            {/for}
+            {/if}
+        </ul>
+        <div class="btns flex">
+            <a class="btn-join">加入族群</a>
+            {$btn_signin|raw}
+        </div>
+    </li>
+</ul-->
+
+{gt name="redpack_count" value="0"}
+<div class="redpack"><a href="{:url('redpack')}&room_id={$room_id}">有人在发红包哦，点我现在去抢</a></div>
+{/gt}
+
+<div class="stat">
+    <h3></h3>
+    <ul class="count flex">
+        <li class="flex1"><span>{notempty name="stat"}{$stat['win_num']}{else/}0{/notempty}</span>人已打卡</li>
+        <li class="flex1"><span>{notempty name="stat"}{$stat['lose_num']}{else/}0{/notempty}</span>人未打卡</li>
+    </ul>
+    <ul class="best flex">
+        <li class="earlier flex1">
+            {empty name="stat['earlier_uid']"}
+            <em style="background-image: url(/static/img/head.png)"></em>
+            <span>...</span>
+            <p>--:--打卡</p>
+            {else/}
+            <em style="background-image: url({$stat['earlier_avator']}"></em>
+            <span>{$stat['earlier_nickname']}</span>
+            <p>{:date('H:i:s',$stat['earlier_time'])}打卡</p>
+            {/empty}
+        </li>
+        <li class="insist flex1">
+            {empty name="stat['insist_uid']"}
+            <em style="background-image: url(/static/img/head.png)"></em>
+            <span>...</span>
+            <p>连续0次</p>
+            {else/}
+            <em style="background-image: url({$stat['insist_avator']})"></em>
+            <span>{$stat['insist_nickname']}</span>
+            <p>连续{$stat['insist_day']}次</p>
+            {/empty}
+        </li>
+    </ul>
+</div>
+
+<div class="income">
+    <div class="title">
+        <em>收益排行</em>
+        <a class="point" href="{:url('room')}">成为族长收益更高</a>
+    </div>
+    {notempty name="income"}
+    <ul class="list">
+        {foreach $income as $key => $item}
+        <li class="flex" no="{$key+1}">
+            <em style="background-image: url({$item['avator']})"></em>
+            <div class="flex1">
+                <span class="txt-ellipsis">{$item['nickname']}</span>
+                <p>早起天数：{$item['day']}天</p>
+            </div>
+            <i>￥{$item['income']}</i>
+        </li>
+        {/foreach}
+    </ul>
+    {else/}
+    <div class="empty">还没有人参与您的族群哦<br>快去邀请人来参与吧</div>
+    {/notempty}
+</div>
+
+<div class="layer-change layui-m-layermain hide">
+    <div class="more">查看更多加入>></div>
+</div>
+<script>
+    income_rate = {$room['income_rate']};
+</script>
+{notempty name="wx_share"}
+<script>
+    wx_share = JSON.parse('{$wx_share | raw | json_encode}');
+</script>
+{/notempty}
+{notempty name="wx_config"}
+<script>
+    wx_config = '{$wx_config | raw | json_encode}';
+</script>
+{/notempty}
+
+{include file="challenge/join_bar_join"/}
+{include file="public/footer_challenge"/}
+{/block}

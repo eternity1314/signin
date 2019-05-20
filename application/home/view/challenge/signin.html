@@ -1,0 +1,95 @@
+{extend name="public/base" /}
+{block name="header"}
+<title>{$title}</title>
+__BASE_CSS__
+__LAYER_CSS__
+<link rel="stylesheet" href="__PUBLIC__/static/challenge/signin.css">
+__JQUERY__
+__LAYER_JS__
+__BASE_JS__
+<script src="__PUBLIC__/static/js/interactive.js"></script>
+{/block}
+{block name="body"}
+<header>
+    <i></i>
+    <h5>打卡成功</h5>
+    <p>该群11:00前结算发放奖励，请留意查收</p>
+</header>
+<div class="ctn-goods mt-main">
+    <div class="free-contaier">
+        <p>送好友100M币你得200M币</p>
+        <p class="s-info">M币可兑换现金提现</p>
+        <p class="timedown">权益在<span>02:00:00.00</span>后过期</p>
+    </div>
+
+    <h5 class="send-btn" onclick="down_btn_click()">好的，现在送</h5>
+    <script>
+        function share_success() {
+            layer.open({
+                title: '分享成功',
+                content: '分享越多，赚得越多，可以直接分享群聊或朋友圈，这样广撒网，成功的概率更高哦',
+                btn: '好的',
+                className: 'alert',
+            });
+        }
+    </script>
+</div>
+
+{notempty name="rooms"}
+<div class="ctn-room mt-main">
+    <a class="create" href="{:url('room')}">创建族群，收益预计高3倍以上</a>
+    <ul class="flex ctn-list">
+        {foreach $rooms as $v}
+        <a href="{$link_join}?room_id={$v['room_id']}">
+            <i style="background-image: url({$v['avator']})"></i>
+            <p class="txt-ellipsis">{$v['title']}</p>
+        </a>
+        {/foreach}
+    </ul>
+</div>
+{/notempty}
+
+<script>
+    var timeobj = $('.timedown span');
+    var maxtime = timeobj.text().split(':');
+    maxtime = (maxtime[0] * 60 * 60 + maxtime[1] * 60) * 1000 + maxtime[2] * 1000;
+    var inittime = maxtime;
+    var limit = 100;
+    timer = setInterval("CountDown()", limit);
+
+    function CountDown() {
+        if (maxtime >= 0) {
+            var hours = Math.floor(maxtime / 3600 / 1000 % 24);
+            var minutes = Math.floor(maxtime / 60 / 1000 % 60);
+            var seconds = Math.floor(maxtime / 1000 % 60);
+            var ms = Math.floor(maxtime % 1000 / 10);
+            timeobj.text(("0" + hours).slice(-2) + ":" + ("0" + minutes).slice(-2) + ":" + ("0" + seconds).slice(-2) + "." + ("0" + ms).slice(-2));
+            maxtime -= limit;
+        } else {
+            clearInterval(timer);
+            maxtime = inittime;
+            timer = setInterval("CountDown()", limit);
+        }
+    }
+
+    $('.ctn-list label').eq(0).click();
+
+    function btn_click() {
+        var checked_goods = $("input[name='goods']:checked");
+        var name = checked_goods.data('goods_name');
+        var img = checked_goods.data('goods_img');
+        var goods_id = checked_goods.data('goods_id');
+
+        var para = '{"title":"送你一个免单，你0元购买，我赚佣金", "desc":"' + name + '", "imgUrl":"' + img + '", "link":"{:config(\'site.url\')}{:url(\'goods/free_goods_share\')}?goods_id=' + goods_id + '&invite_code={$invite_code}&nickname={$user_info.nickname}&avator={$user_info.avator}", "success":"share_success()"}';
+
+        interactive.btn_click(para);
+    }
+
+    function down_btn_click() {
+        var invite_code = "{$invite_code}";
+        var para = '{"title":"有好习惯就能分钱，还送免单和现金", "desc":"精致微选生活，赚赚赚！早起、阅读，免费领券还能再赚，让你拥有独立的拼多多社群商城，自用省，分享赚...", "imgUrl":"{:config(\'site.url\')}/static/img/wx_share.png", "link":"{:config(\'site.url\')}{:url(\'user/invite_page\')}?invite_code=' + invite_code + '", "success":"share_success()"}';
+
+        interactive.btn_click(para);
+    }
+</script>
+{/block}

@@ -1,0 +1,41 @@
+{extend name="public/base" /}
+{block name="header"}
+<title>{$room.title}</title>
+__BASE_CSS__
+<link rel="stylesheet" href="__PUBLIC__/static/challenge/redpack.css">
+__JQUERY__
+__LAYER_JS__
+__BASE_JS__
+<script src="__PUBLIC__/static/challenge/redpack.js?v=2.2.5"></script>
+{/block}
+{block name="body"}
+<ul class="cycle">
+    {foreach $redpack as $item}
+    <li rid="{$item['redpack_id']}" msg="{$item['msg']}"
+        nickname="{$users[$item['user_id']]['nickname']}" share="{$item['share']}" receive="{$item['receive']}">
+        <i><em style="background-image: url({$users[$item['user_id']]['avator']})"></em></i>
+    </li>
+    {/foreach}
+</ul>
+
+<div class="ctn-btns flex">
+    <a href="{:url('home/redpack/send')}?room_id={$room_id}">发红包扩成员</a>
+    {$btn_right|raw}
+</div>
+
+<script>
+    link_redpack_draw = "{:url('home/Redpack/draw')}";
+    link_join = "{:url('join')}&room_id={$room_id}";
+    is_join = {$is_join};
+</script>
+{notempty name="wx_share"}
+<script>
+    wx_share = JSON.parse('{$wx_share | raw | json_encode}');
+</script>
+{/notempty}
+{notempty name="wx_config"}
+<script>
+    wx_config = '{$wx_config | raw | json_encode}';
+</script>
+{/notempty}
+{/block}

@@ -1,0 +1,54 @@
+{extend name="public/base" /}
+{block name="header"}
+<title>邀请有奖</title>
+__BASE_CSS__
+__JQUERY__
+__BASE_JS__
+<style>
+    img {
+        display: block;
+        position: absolute;
+    }
+
+    p {
+        color: #fff;
+        font-size: 15px;
+        text-align: center;
+        position: absolute;
+        top: 167vw;
+        left: 0;
+        right: 0;
+    }
+</style>
+{/block}
+{block name="body"}
+<img src="{$poster_path}">
+<p>长按保存图片或发送给好友</p>
+{notempty name="wx_config"}
+<script>
+    wx_config = '{$wx_config | raw | json_encode}';
+</script>
+{/notempty}
+{notempty name="wx_share"}
+<script>
+    wx_share = JSON.parse('{$wx_share | raw | json_encode}');
+</script>
+{/notempty}
+<script>
+    $(function () {
+        var rate = document.documentElement.clientWidth / document.documentElement.clientHeight;
+        if (rate > 0.56) {
+            $('img').css('bottom', 0);
+            $('p').css({'bottom': '6vw'});
+        }
+
+        if (!is_weixn()) {
+            setTimeout(function () {
+                if (window['interactive']) {
+                    interactive.share($('img').attr('src'))
+                }
+            }, rate > 0.56 ? 2500 : 1000);
+        }
+    })
+</script>
+{/block}

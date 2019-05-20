@@ -1,0 +1,45 @@
+{extend name="public/base" /}
+{block name="header"}
+<title>我的M币</title>
+__BASE_CSS__
+<link rel="stylesheet" href="__PUBLIC__/static/user/mb.css?v=2.31"/>
+__LAYUI_CSS__
+__JQUERY__
+__LAYER_JS__
+__LAYUI_JS__
+<script src="__PUBLIC__/static/user/mb.js"></script>
+__BASE_JS__
+{/block}
+{block name="body"}
+<header>
+    <ul class="income flex">
+        <li class="flex1"><span>昨日M币收入(￥)</span><i>{$income}</i></li>
+        <a class="make-more" href="{:url('home/user/invite')}">更多M币</a>
+    </ul>
+
+    <ul class="award flex">
+        <li class="flex1"><span>昨日M币</span><i>{$mb_yesterday}</i></li>
+        <li class="flex1"><span>今日M币</span><i>{$mb_today}</i></li>
+        <li class="flex1"><span>累计M币收入(￥)</span><i>{$income_all}</i></li>
+    </ul>
+
+    <ul class="remark">
+        <li>昨日最后M币结算：100M币 = {$mb_rate}元</li>
+        <li>M币结算汇率受每日捐助捐助公益金以及平台运营收益影响（上下会有浮动），每天自动兑换，进入你账户余额</li>
+    </ul>
+</header>
+
+<dl><dt>怎么获得M币</dt></dl>
+<ul class="how">
+    <li>首次下载微选生活APP送100M币</li>
+    <li>邀请好友下载微选生活APP送200M币/人</li>
+    <li>邀请的好友参与打卡计划，再奖励300M币/人</li>
+    <li>阅读文章越多，奖励的M币越多，10M币/篇</li>
+    <li>分享文章给好友阅读，自己获得20M币/人/篇</li>
+    <li>参与早起族群，全勤奖励20M币/次/群</li>
+    <li>参与好友对战，平局奖励20M币/次</li>
+</ul>
+
+<dl><dt>M币明细记录</dt></dl>
+<ul class="list"></ul>
+{/block}

@@ -1,0 +1,66 @@
+{extend name="public/base" /}
+{block name="header"}
+<title>0.1元抢购</title>
+__BASE_CSS__
+__JQUERY__
+__BASE_JS__
+__LAYER_JS__
+<script src="/static/jquery/jquery.min.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/activity/point_one_buy/index.css"/>
+{/block}
+{block name="body"}
+<form class="ajax-form">
+    <input type="hidden" name="ag_id" value="{$detail.id}">
+    <input type="hidden" name="use_balance" value="1">
+    <input type="hidden" name="pay_method" value="wx">
+</form>
+
+<div class="wrap">
+    <div class="help-top-bar index-top-bar">
+        <section class="marquee">
+            <ul>
+                {foreach $withdraw as $v}
+                <li><span><img src="{$v['avator']}">恭喜{$v['nickname']}抢购成功</span></li>
+                {/foreach}
+            </ul>
+        </section>
+    </div>
+    <div class="detail-p">
+        <img src="{$detail.goods_img}" alt="">
+        <span class="rule-btn">活动规则</span>
+    </div>
+    <div class="flex detail-info">
+        <div class="flex">
+            <p class="price">￥<span>0.1</span></p>
+            <p class="sell_price">￥{$detail.price}</p>
+            <p class="packet">包邮</p>
+        </div>
+        <div class="">
+            <span>{$detail.snap_up_count}人抢购成功</span>
+        </div>
+    </div>
+    <div class="detail-t">
+        <p>{$detail.goods_name}</p>
+    </div>
+    <div class="detai-goods-content">
+        <div class="gc-t flex ">
+            <hr><span>商品详情</span><hr>
+        </div>
+        <div class="gc-content">
+            {volist name="goods_content" id="vo"}
+                <img src="{$vo}" alt="">
+            {/volist}
+        </div>
+    </div>
+    <div class="detail-bottom">
+        <p class="left flex custom-btn" onclick="window.location.href='{:url(\'home/user/contack_customer\')}'"><i class="icon icon-custom"></i>联系客服</p>
+        <p class="right join-btn" onclick="event_key = 'join';submit();"><span class="">￥0.1</span>(如未成功，全额退款)</p>
+    </div>
+</div>
+<script>
+window['link_submit'] = "{:url('home/activity/point_one_buy_join')}";
+link_join = "{:url('home/activity/po_buy_goods_buying')}";
+</script>
+
+<script src="__PUBLIC__/activity/point_one_buy/index.js?v=1.2"></script>
+{/block}

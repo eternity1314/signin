@@ -1,0 +1,16 @@
+<link rel="stylesheet" href="__PUBLIC__/static/css/bottom_bar.css">
+<ul class="bottom_bar">
+    {php}$class = request()->action() == 'join' ? 'on' : 'off';{/php}
+    <a class="{$class}" href="{$link_join}">
+        <img src="/static/challenge/img/icon-pen-{$class}.png">打卡
+    </a>
+    {php}$class = request()->action() == 'discover' ? 'on' : 'off';{/php}
+    <a class="{$class}" href="{:url('challenge/discover')}?room_id={$room_id}">
+        <img src="/static/challenge/img/icon-msg-{$class}.png">发现
+    </a>
+    {php}$class = request()->action() == 'note' ? 'on' : 'off';{/php}
+    <a class="{$class}" href="{:url('challenge/note')}?room_id={$room_id}">
+        <img src="/static/challenge/img/icon-ren-{$class}.png">我的
+    </a>
+</ul>
+<script>room_id = {$room_id};</script>

@@ -1,0 +1,132 @@
+body {
+    background-color: #FE6249;
+    color: #fff;
+}
+
+header {
+    background: url(images/free-order-top.jpg) 50% 0 no-repeat;
+    background-size: contain;
+    padding-top: 78%;
+}
+
+.title {
+    text-align: center;
+    font-size: 26px;
+    font-weight: bold;
+    letter-spacing: 6px;
+}
+
+.item {
+    margin: 10px 5%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.item dd {
+    background-color: #ddd;
+    padding: 20px 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.item:nth-of-type(1) dd {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #9bda43), color-stop(100%, #09cab9));
+    background: -webkit-linear-gradient(top, #9bda43 0%, #09cab9 100%);
+    background: linear-gradient(to right, #9bda43 0%, #09cab9 100%);
+}
+
+.item:nth-of-type(2) dd {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #28c8fc), color-stop(100%, #327ef6));
+    background: -webkit-linear-gradient(top, #28c8fc 0%, #327ef6 100%);
+    background: linear-gradient(to right, #28c8fc 0%, #327ef6 100%);
+}
+
+.item:nth-of-type(3) dd {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e128fc), color-stop(100%, #f6325c));
+    background: -webkit-linear-gradient(top, #e128fc 0%, #f6325c 100%);
+    background: linear-gradient(to right, #e128fc 0%, #f6325c 100%);
+}
+
+.item:nth-of-type(4) dd {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f79a32), color-stop(100%, #fa491f));
+    background: -webkit-linear-gradient(top, #f79a32 0%, #fa491f 100%);
+    background: linear-gradient(to right, #f79a32 0%, #fa491f 100%);
+}
+
+.item:nth-of-type(5) dd {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f8af47), color-stop(100%, #f6325b));
+    background: -webkit-linear-gradient(top, #f8af47 0%, #f6325b 100%);
+    background: linear-gradient(to right, #f8af47 0%, #f6325b 100%);
+}
+
+.item:nth-of-type(6) dd {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #528afc), color-stop(100%, #f53ff8));
+    background: -webkit-linear-gradient(top, #528afc 0%, #f53ff8 100%);
+    background: linear-gradient(to right, #528afc 0%, #f53ff8 100%);
+}
+
+.item ul {
+    display: flex;
+    background-color: #fff;
+    padding: 5px;
+}
+
+.item ul li {
+    flex: 1;
+    margin: 5px;
+}
+
+.consult {
+    background: url(images/free-order-consult.png) 50% 0 no-repeat;
+    background-size: contain;
+    height: 52vw;
+    text-align: center;
+}
+
+.consult dd {
+    padding: 14% 0 0;
+    color: #FE6249;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.wx-copy {
+    width: 80%;
+    height: 48px;
+    line-height: 48px;
+    border-radius: 48px;
+    font-size: 15px;
+    margin: 6% auto 0;
+    border: 1px solid #FE6249;
+    color: #FE6249;
+    overflow: hidden;
+    text-align: center;
+}
+
+.wx-copy span {
+    font-weight: bold;
+}
+
+.wx-copy .button {
+    float: right;
+    padding: 0 24px;
+    background-color: #FE6249;
+    color: white;
+}
+
+.bak {
+    padding: 10px;
+    color: #fbb8ad;
+    font-size: 12px;
+}
+
+.bak dd {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 22px 0 0;
+}
+
+.bak ul li {
+    padding: 6px 0;
+}

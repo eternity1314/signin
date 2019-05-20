@@ -1,0 +1,44 @@
+<link rel="stylesheet" href="__PUBLIC__/static/css/join_bar.css"/>
+<template id="tpl-join-bar-challenge_join">
+    <section class="join-bar challenge_join ajax-form" method="post"
+             action="{:url('challenge/join')}&room_id={$room_id}">
+        <div class="title bgc-primary">加入连续坚持<span class="day">{$room['day']}</span>天早起族群</div>
+        <div class="up-lay">
+            <div class="mcenter">
+                约定打卡时间：<span class="signin_time">{$room['stime']}</span>
+            </div>
+        </div>
+        <div class="nav flex">
+            <em>加入<br>族群</em><i></i>
+            <em>坚持<br>打卡</em><i></i>
+            <em>每日<br>分钱</em><i></i>
+            <em>完成<br>天数</em><i></i>
+            <em>退回<br>契约金</em>
+        </div>
+        <article class="price">
+            <dl class="flex">挑战契约金<right class="flex1">按投入瓜分未打卡者契约金</right></dl>
+            <div class="choose flex">
+                {foreach $room_option['price'] as $v}
+                <label>
+                    <input type="radio" name="price" value="{$v}">
+                    <em>￥{$v}</em>
+                </label>
+                {/foreach}
+            </div>
+        </article>
+        <article>
+            连续坚持<span class="day">{$room['day']}</span>天早起后预计总回报
+            <p class="profit txt-cny">0.00</p>
+            <ul class="pay-lay flex">
+                <li class="flex1">
+                    <label class="label-checkbox">
+                        <input type="checkbox" name="use_balance" checked>
+                        <i class="checkbox"></i> 余额抵扣￥<span class="user-balance">{$user['balance']/100}</span>
+                    </label>
+                </li>
+                <li>如获奖将打赏{$room['leader_rate']}%的奖励给族长</li>
+            </ul>
+        </article>
+        <button class="submit flex">支付￥<span class="paid">0.00</span>明天开始打卡</button>
+    </section>
+</template>

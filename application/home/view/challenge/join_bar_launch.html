@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="__PUBLIC__/static/css/join_bar.css"/>
+<section class="join-bar challenge ajax-form show" method="post"
+         action="{:url('challenge/join') . '&room_id=' . $data['room_id']}">
+    <div class="title bgc-primary">加入连续坚持<span class="day">{$data['day']}</span>天早起族群</div>
+    <div class="up-lay">
+        <div class="mcenter">
+            约定打卡时间：<span class="signin_time">{$data['stime']}</span>
+        </div>
+    </div>
+    <article class="price">
+        <dl>挑战契约金</dl>
+        <div class="choose flex">
+            <label>
+                <input type="radio" name="price" value="10">
+                <em>￥10</em>
+            </label>
+            <label>
+                <input type="radio" name="price" value="30">
+                <em>￥30</em>
+            </label>
+            <label>
+                <input type="radio" name="price" value="50">
+                <em>￥50</em>
+            </label>
+            <label>
+                <input type="radio" name="price" value="100">
+                <em>￥100</em>
+            </label>
+            <label>
+                <input type="radio" name="price" value="200">
+                <em>￥200</em>
+            </label>
+        </div>
+    </article>
+    <button class="submit">支付￥<span class="paid">0.00</span>明天开始打卡</button>
+</section>

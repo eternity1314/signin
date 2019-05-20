@@ -1,0 +1,40 @@
+{extend name="public/base" /}
+{block name="header"}
+<title>{$title}</title>
+__BASE_CSS__
+<link rel="stylesheet" href="__PUBLIC__/static/user/dynamic.css?v=2.82"/>
+__LAYUI_CSS__
+__LAYUI_JS__
+__JQUERY__
+__LAYER_JS__
+<script src="__PUBLIC__/static/user/dynamic.js?v=2.03"></script>
+__BASE_JS__
+{/block}
+{block name="body"}
+<ul class="otem"></ul>
+{include file="public/footer_challenge"/}
+
+<div class="tool-bar">
+    <a class="redpack" href="{:url('home/redpack/send')}&room_id={$room_id}">发红包</a>
+    <a class="room-pic" {if !empty($room['pic'])}pic="{$room['pic']}"{/if}>族群</a>
+    <a class="close"></a>
+</div>
+
+<script>
+    is_join = {$is_join};
+    next_id = 0;
+    link_load = "{$link_load}";
+    link_redpack_info = "{:url('home/Redpack/info')}";
+    link_redpack_draw = "{:url('home/Redpack/draw')}";
+</script>
+{notempty name="wx_config"}
+<script>
+    wx_config = '{$wx_config | raw | json_encode}';
+</script>
+{/notempty}
+{notempty name="wx_share"}
+<script>
+    wx_share = JSON.parse('{$wx_share | raw | json_encode}');
+</script>
+{/notempty}
+{/block}

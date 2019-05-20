@@ -1,0 +1,51 @@
+{extend name="public/base" /}
+{block name="header"}
+<title>领红包啦</title>
+__BASE_CSS__
+<link rel="stylesheet" href="__PUBLIC__/static/redpack/css/info.css"/>
+{/block}
+{block name="body"}
+<header>
+    <em style="background-image: url({$redpack['avator']})"></em>
+    <p class="nickname">{$redpack['nickname']}</p>
+    <p class="msg">{$redpack['msg']}</p>
+    {notempty name="mine"}
+    <div class="info">
+        {if $redpack['event'] == 'rmb'}
+            <i class="txt-rmb">{$mine['price']}</i>
+            <p>已存入余额，可直接提现</p>
+            {else/}
+            <i class="txt-mb">{$mine['price']}</i>
+            <p>已存入你的积分，可直接兑换提现</p>
+        {/if}
+    </div>
+    {/notempty}
+</header>
+<ul>
+    <div class="draw-info">
+        {$redpack['num']}个红包共<span class="txt-{$redpack['event']}">{$redpack['price']}</span>
+        {notempty name="redpack['draw_time_format']"}，{$redpack['draw_time_format']}被抢光{/notempty}
+    </div>
+    {notempty name="assign"}
+    {foreach $assign as $item}
+    <li>
+        <em style="background-image: url({$user_assign[$item['user_id']]['avator']})"></em>
+        <div>
+            <dl>
+                <p>{$user_assign[$item['user_id']]['nickname']}</p>
+                <i class="txt-{$redpack['event']}">{$item['price']}</i>
+            </dl>
+            <time>{$item['draw_time']}</time>
+        </div>
+    </li>
+    {/foreach}
+    {/notempty}
+</ul>
+{notempty name="redpack['ad_id']"}
+    <script>
+        document.getElementsByTagName("header")[0].onclick = function () {
+            location.href = "{:url('home/Ad/read')}&ad_id={$redpack['ad_id']}&event=redpack_info";
+        }
+    </script>
+{/notempty}
+{/block}

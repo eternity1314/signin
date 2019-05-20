@@ -1,0 +1,110 @@
+body{
+    width: 100%;
+    height: 100%;
+}
+.bottom-container {
+    background-color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 0 20px;
+    
+}
+.bottom-msg {
+    font-size: .9em;
+    line-height: 1.75em;
+    text-align: center;
+    color: #333333;
+    padding: 1em 0;
+}
+.invite-btns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1em;
+}
+.invite-btns .btn {
+    width: 45%;
+    height: 2.5em;
+    line-height: 2.5em;
+    text-align: center;
+    border-radius: 4px;
+    color: white;
+}
+.btn-bg-org {
+    background-color: #FE8449;
+}
+.btn-bg-red {
+    background-color: #FF6249;
+}
+.margin_class{
+    height: 118px;
+}
+
+/* swiper */
+.invite-wramper{
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+.poster-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 339px;
+}
+
+.swiper-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /*overflow: hidden;*/
+    /*display: contents;*/
+}
+.swiper-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /*height: calc(100% - 118.19px);*/
+    padding: 20px 30px;
+}
+.swiper-item img {
+    height: 100%;
+    width: 100%;
+}
+
+
+/*.swiper-container {
+    position: relative;
+    width: 100%;
+    z-index: 1;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    -o-transition-property: -o-transform;
+    -ms-transition-property: -ms-transform;
+    transition-property: transform;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+.swiper-item {
+    -webkit-flex-shrink: 0;
+    -ms-flex: 0 0 auto;
+    flex-shrink: 0;
+    width: 100%;
+    position: relative;
+    font-size: 0;
+    cursor: pointer;
+
+}
+.swiper-item img {
+    height: 100%;
+}*/

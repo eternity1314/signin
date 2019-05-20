@@ -1,0 +1,55 @@
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+body {
+    background-color: #f4f4f4;
+    color: #444444;
+}
+.constom-qrcode {
+    text-align: center;
+    padding: 16% 28% 14%;
+}
+.constom-qrcode p {
+    margin-top: 15px;
+    font-size: 14px;
+}
+.custom-button {
+    width: 90%;
+    height: 48px;
+    line-height: 48px;
+    border-radius: 48px;
+    font-size: 15px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #FE6249;
+    color: white;
+}
+.wx-copy {
+    width: 90%;
+    height: 48px;
+    line-height: 48px;
+    border-radius: 48px;
+    font-size: 15px;
+    margin: 38px auto 0;
+    border: 1px solid #FE6249;
+    color: #FE6249;
+    overflow: hidden;
+    text-align: center;
+}
+.wx-copy .button {
+    float: right;
+    padding-left: 16px;
+    padding-right: 16px;
+    background-color: #FE6249;
+    color: white;
+}
+.server-time {
+    position: absolute;
+    left: 0;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    color: #AAAAAA;
+    font-size: 12px;
+}

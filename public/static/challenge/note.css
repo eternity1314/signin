@@ -1,0 +1,137 @@
+.ctn-header {
+    padding: 15px 10px;
+    background-color: #fff;
+}
+
+.ctn-header em {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    margin: 0 12px 0 0;
+    border-radius: 50%;
+    background: 50% no-repeat;
+    background-size: cover;
+}
+
+.ctn-header h3 {
+    font-size: 18px;
+}
+
+.ctn-header h5 {
+    font-size: 14px;
+    color: #666;
+    margin: 10px 0 0;
+}
+
+.ctn-header .btn-poster {
+    display: inline-block;
+    width: 90px;
+    height: 90px;
+    line-height: 122px;
+    border: 6px solid #faf1f2;
+    border-radius: 50%;
+    color: #fe6249;
+    font-size: 12px;
+    text-align: center;
+    background: url(img/icon-invite.png) 50% 22% no-repeat;
+    background-size: 50%;
+    transform: scale(.8);
+}
+
+.ctn-income {
+    padding: 15px 0;
+    background-color: #fff;
+    text-align: center;
+}
+
+.ctn-income li {
+    position: relative;
+}
+
+.ctn-income li + li:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 3em;
+    background-color: #f4f4f4;
+}
+
+.ctn-income li h3 {
+    /*margin: 0 0 10px;*/
+    font-size: 13px;
+}
+
+.ctn-income li h5 {
+    margin: 10px 0 20px;
+    font-size: 18px;
+    color: #fe6249;
+}
+
+.ctn-income li button {
+    height: 20px;
+    margin: 0 0 20px;
+    color: #666;
+}
+
+.ctn-income li button.point:after {
+
+    margin: 0 .1em;
+}
+
+.ctn-income p {
+    color: #999;
+    font-size: 12px;
+}
+
+.btn-withdraw {
+    border: 1px solid #fe6249;
+    color: #fe6249 !important;
+    border-radius: 4px;
+    padding: 0 6px;
+}
+
+.ctn-tool {
+    padding: 15px 0;
+    background-color: #fff;
+    text-align: center;
+}
+
+.ctn-tool ul > * {
+    color: #666;
+}
+
+.ctn-tool ul > *:before {
+    content: '';
+    display: block;
+    margin: 0 auto 10px;
+    width: 40px;
+    height: 40px;
+    background: 50% no-repeat;
+    background-size: contain;
+}
+
+.ctn-tool .btn-store:before {
+    background-image: url(img/icon-store.png);
+}
+
+.ctn-tool .btn-mb:before {
+    background-image: url(img/icon-mb.png);
+}
+
+.ctn-tool .btn-customer:before {
+    background-image: url(img/icon-customer.png);
+}
+
+.edit-room {
+    display: block;
+    margin: 20px auto 0;
+    width: 90%;
+    line-height: 40px;
+    background-color: #fe6249;
+    text-align: center;
+    color: #fff;
+    border-radius: 50px;
+    box-shadow: 0px 1px 3px 2px rgba(254, 133, 73, 0.2);
+}

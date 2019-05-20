@@ -1,0 +1,39 @@
+{extend name="public/base" /}
+{block name="header"}
+<title>0.1元抢购</title>
+__BASE_CSS__
+__JQUERY__
+__BASE_JS__
+__LAYER_JS__
+__LAYUI_CSS__
+__LAYUI_JS__
+<link rel="stylesheet" href="__PUBLIC__/activity/point_one_buy/index.css"/>
+{/block}
+{block name="body"}
+<div class="wrap index-wrap">
+	<div class="help-top-bar index-top-bar">
+		<section class="marquee">
+			<ul>
+                {foreach $withdraw as $v}
+                <li><span><img src="{$v['avator']}">恭喜{$v['nickname']}抢购成功</span></li>
+                {/foreach}
+			</ul>
+		</section>
+	</div>
+	<i class="rule-btn index-rule-btn">活动规则</i>
+	<i class="index-mine-order" onclick="window.location.href='{:url(\'home/activity/po_buy_order\')}'">我抢到的</i>
+
+    <div class="goods-header-banner">
+        <img src="__PUBLIC__/activity/point_one_buy/img/goods-header-banner.png" alt="">
+    </div>
+	<div class="ctn-goods">
+	    <ul class="flex" event="pdd"></ul>
+    	<div class="more"></div>
+	</div>
+</div>
+<script>
+    link_load_pdd = 'http://' + location.host + '/home/activity/po_buy_goods_data/';
+    is_new = {$is_new ? 1 : 0};
+</script>
+<script src="__PUBLIC__/activity/point_one_buy/index.js?v=1.2"></script>
+{/block}

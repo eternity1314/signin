@@ -1,0 +1,100 @@
+{extend name="public/base" /}
+{block name="header"}
+<title>创建属于自己的早起族</title>
+__BASE_CSS__
+<link rel="stylesheet" href="__PUBLIC__/static/challenge/room.css?v=2.31"/>
+__JQUERY__
+__BASE_JS__
+__LAYER_JS__
+<script src="__PUBLIC__/static/challenge/room_add.js?v=2.0.2"></script>
+{/block}
+{block name="body"}
+<div class="top_tips flex">
+    <div class="flex1 txt-ellipsis">{$option['remark']['content']}</div>
+</div>
+<section>
+    <article>请输入早起族名
+        <right>[{$city}]<input type="hidden" name="city" value="{$city}"></right>
+    </article>
+    <article><input type="text" name="title" placeholder="比如：广州早起族" maxlength="20"></article>
+</section>
+
+<section>
+    <article>选择早起挑战天数</article>
+    <article class="choose flex">
+        {foreach $option['day'] as $v}
+        <label>
+            <input type="radio" name="day" value="{$v}">
+            <em>{$v}天</em>
+        </label>
+        {/foreach}
+    </article>
+</section>
+
+<section class="stime">
+    <article>族员早起打卡时间</article>
+    <article>
+        <span></span>
+        <input type="hidden" name="btime"><input type="hidden" name="etime">
+        <right class="point">重新选择</right>
+    </article>
+</section>
+
+<section class="leader-rate">
+    <article>族员缴纳族费比例
+        <right>
+            <label class="label-checkbox">
+                <input type="checkbox" name="recommend" checked value="{$option['recommend_fee']}">
+                <i class="checkbox"></i>
+                推荐+{$option['recommend_fee']}元
+            </label>
+        </right>
+    </article>
+    <article>
+        <span class="txt-percent">0</span>
+        <input type="hidden" name="leader_rate">
+        <right class="point">该费用由您支配，可重新选择</right>
+    </article>
+</section>
+
+<section class="create_fee">
+    <article>族群有效时长</article>
+    <article>
+        <span></span>
+        <input type="hidden" name="room_fee" value="month">
+        <right class="point">重新选择</right>
+    </article>
+</section>
+
+<section class="hide">
+    <input type="checkbox" name="use_balance" checked>
+    <span class="user-balance">{$user['balance']/100}</span>
+</section>
+
+{empty name="free_type"}
+<a class="equities flex" onclick="interactive.jumpFreeOrderPage()"><h5 class="flex1">免费创建族群</h5></a>
+<script src="__PUBLIC__/static/js/interactive.js"></script>
+{else/}
+<script>
+    free_type = "{$free_type}";
+</script>
+{/empty}
+<div class="pay-bar flex">
+    <p>
+        <em class="paid">合计应付：￥<i>0.00</i></em>
+        <em class="profit">预计回报：￥<i>0.00</i></em>
+    </p>
+    <i class="tips"></i>
+    <button class="submit">立即创建</button>
+</div>
+
+<script>
+    var option = {
+        "stime": {$option['default_time'] | json_encode},
+        "info": {$option['info'] | raw | json_encode}
+    };
+
+    link_join = "{:url('join')}";
+    link_success = "{:url('create_room_success')}";
+</script>
+{/block}

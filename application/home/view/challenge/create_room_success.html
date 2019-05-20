@@ -1,0 +1,111 @@
+{extend name="public/base" /}
+{block name="header"}
+<title>创建成功</title>
+__BASE_CSS__
+__JQUERY__
+__BASE_JS__
+__LAYER_JS__
+<style>
+    body {
+        text-align: center;
+        background-color: #fff;
+    }
+
+    header {
+        color: #fe6249;
+        line-height: 1.4em;
+    }
+
+    header:before {
+        content: '';
+        display: block;
+        margin: 10px auto 10px;
+        width: 130px;
+        height: 100px;
+        background: url(__PUBLIC__/static/challenge/img/icon-ok.png) left 20px top 50% no-repeat;
+        background-size: contain;
+    }
+
+    .msg {
+        border-top: 1px solid #f4f4f4;
+        line-height: 1.6em;
+        margin: 30px 2%;
+        padding: 30px 0 0;
+    }
+
+    .msg:after {
+        content: '';
+        display: block;
+        margin: 30px auto;
+        width: 100px;
+        height: 100px;
+        background: url(__PUBLIC__/static/challenge/img/icon-redpack.png) 50% no-repeat;
+        background-size: contain;
+    }
+
+    button {
+        background-color: #fe6249;
+        color: #fff;
+        width: 80%;
+        line-height: 44px;
+        border-radius: 5em;
+        font-size: 1.2em;
+    }
+
+    button + p {
+        color: #aaa;
+        margin: 10px 0 0;
+        font-size: 12px;
+    }
+
+    .mysend {
+        display: block;
+        color: #30a9fc;
+        margin: 30px 0 10px;
+        font-size: 1.1em;
+    }
+
+    @media screen and (min-height: 600px) {
+        .mysend {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 10px;
+        }
+    }
+</style>
+{/block}
+{block name="body"}
+<header>
+    创建族群成功<br>你将收取{$leader_rate}%的族群奖励
+</header>
+<div class="msg">
+    发红包邀请好友参与您的族群<br>
+    领的红包可直接提现或抵扣契约金<br>
+    越多人一起参与培养好习惯赚得越多<br>
+</div>
+<button>发红包给朋友（10包）</button>
+<p>红包金额随机最低0.1元</p>
+<a class="mysend" href="{:url('home/redpack/mysend')}">我发过的红包</a>
+{notempty name="wx_share"}
+<script>
+    wx_share = JSON.parse('{$wx_share | raw | json_encode}');
+</script>
+{/notempty}
+{notempty name="wx_config"}
+<script>
+    wx_config = '{$wx_config | raw | json_encode}';
+</script>
+{/notempty}
+<script>
+    $(function () {
+        $('button').click(function () {
+            if (window['interactive']) {
+                interactive.btn_click();
+            } else {
+                open_share();
+            }
+        })
+    })
+</script>
+{/block}

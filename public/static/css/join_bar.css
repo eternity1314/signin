@@ -1,0 +1,439 @@
+.join-bar .bgc-primary {
+    background-color: #fe6249;
+}
+
+.join-bar .bgc-white {
+    background-color: white;
+}
+
+.join-bar .border-primary {
+    border: 1px solid #03D210;
+}
+
+.join-bar .border-white {
+    border: 1px solid white;
+}
+
+.join-bar .color-primary {
+    color: #00d10d;
+}
+
+.join-bar .color-white {
+    color: white;
+}
+
+.join-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1001;
+    background-color: #fff;
+    /*display: none;*/
+    font-size: 14px;
+}
+
+.join-bar * {
+    box-sizing: border-box
+}
+
+/*.join-bar input {*/
+/*display: none;*/
+/*}*/
+
+.join-bar .title {
+    color: #fff;
+    text-align: center;
+    height: 4em;
+    line-height: 3em;
+    font-size: 16px;
+}
+
+.join-bar .title .nickname {
+    color: #ff6a6a;
+}
+
+.join-bar article {
+    padding: 1.2em 2%;
+    align-items: center;
+}
+
+.join-bar article + article {
+    border-top: 1px solid #f5f5f5;
+}
+
+.join-bar article dl {
+    margin: 0 0 10px;
+}
+
+.join-bar article dl right {
+    text-align: right;
+    color: #aaa;
+    font-size: 12px;
+}
+
+.join-bar article div {
+    flex: 1;
+    text-align: right;
+    color: #AAAAAA;
+    font-size: .9em;
+    align-self: center;
+}
+
+.join-bar article .profit {
+    text-align: center;
+    font-weight: bold;
+    font-size: 26px;
+    margin: 36px 0;
+}
+
+.join-bar .label-checkbox {
+    /*display: block;*/
+    font-size: 12px;
+}
+
+/*.join-bar .label-checkbox:first-child {*/
+/*margin-bottom: 10px;*/
+/*}*/
+
+.join-bar .pay-lay .open-rule {
+    background-color: #e7ffe3;
+    padding: 10px 1.4em 10px 1.5em;
+    text-align: center;
+    color: #7c7c7c;
+    background-position: right 2px bottom 2px;
+    font-size: 12px;
+}
+
+.join-bar .pay-lay li + li {
+    color: #aaa;
+    font-size: 12px;
+}
+
+.join-bar .submit {
+    display: block;
+    margin: 0.5em auto 1em;
+    padding: 16px 0;
+    background-color: #fe6249;
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    width: 96%;
+    border: 0;
+    outline: 0;
+    font-size: 16px;
+}
+
+.col-2-5 {
+    flex: 0 40%;
+    width: 40%;
+}
+
+.up-lay {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    padding: 0 0.5em;
+    margin-top: -15px;
+    text-align: center;
+    font-size: 12px;
+}
+
+.up-lay > * {
+    height: 30px;
+    line-height: 30px;
+    padding: 0px 20px;
+    border-radius: 20px;
+    background-color: white;
+    border: 1px solid #fe6249;
+    cursor: pointer;
+}
+
+.up-lay .round {
+    width: 30px;
+    padding: 0;
+    border-radius: 50%;
+    background: 50% 50% #fff no-repeat;
+    background-size: cover;
+}
+
+.panel .cbalance {
+    margin: 20px 0;
+}
+
+.choose label {
+    flex: 1;
+    text-align: center;
+    display: inline-block;
+    width: 16%;
+    align-self: center;
+    font-size: 0;
+}
+
+.choose label + label {
+    margin: 0 0 0 2%;
+}
+
+.choose label em {
+    display: block;
+    border: 1px solid #E1E1E1;
+    border-radius: 2px;
+    height: 8vw;
+    line-height: 8vw;
+    font-size: 13px;
+    color: #7c7c7c;
+}
+
+.choose label input[type=radio]:checked + * {
+    border-color: #fe6249;
+    color: #fe6249;
+    background-color: #fff;
+    position: relative;
+    /*background: url(../../promotion/dui_img.png) no-repeat right bottom;*/
+    background-size: 10px;
+}
+
+.choose label input[type=radio]:checked + *:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 12px;
+    height: 12px;
+    background: #FD482C url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20x%3D'0px'%20y%3D'0px'%20viewBox%3D'0%200%2012%209'%20xml%3Aspace%3D'preserve'%3E%3Cpolygon%20fill%3D'%23fff'%20points%3D'12%2C0.7%2011.3%2C0%203.9%2C7.4%200.7%2C4.2%200%2C4.9%203.9%2C8.8%203.9%2C8.8%203.9%2C8.8%20'%2F%3E%3C%2Fsvg%3E") 50% no-repeat;
+    background-size: 8px;
+}
+
+.label-checkbox .checkbox {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    border-radius: 2px;
+    box-sizing: border-box;
+    border: 1px solid #b7b7b7;
+    z-index: 0;
+    margin: 0;
+    padding: 0;
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    position: relative;
+    vertical-align: middle;
+}
+
+.label-checkbox input[type=checkbox]:checked + .checkbox, li.open-rule {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20x%3D'0px'%20y%3D'0px'%20viewBox%3D'0%200%2012%209'%20xml%3Aspace%3D'preserve'%3E%3Cpolygon%20fill%3D'%23b7b7b7'%20points%3D'12%2C0.7%2011.3%2C0%203.9%2C7.4%200.7%2C4.2%200%2C4.9%203.9%2C8.8%203.9%2C8.8%203.9%2C8.8%20'%2F%3E%3C%2Fsvg%3E");
+    background-size: 9px 9px;
+}
+
+/* 班级费率弹窗 */
+.rate-panel {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1001;
+    transition-duration: 300ms;
+    -webkit-transition-duration: 300ms;
+}
+
+.rate-panel .tips {
+    width: 90%;
+    margin: 20% auto 0;
+    padding: 1em;
+    color: #00d10d;
+    border: 1px solid #00d10d;
+    border-radius: 4px;
+}
+
+.rate-panel .tips h5 {
+    font-size: 1.1em;
+    text-align: center;
+}
+
+.rate-panel ul {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.rate-panel ul li:first-child {
+    background-color: #f1f1f1;
+}
+
+.rate-panel ul li {
+    background-color: #fff;
+    line-height: 3.5em;
+    text-align: center;
+}
+
+.rate-panel ul li + li {
+    border-top: 1px solid #f9f9f9;
+}
+
+.rate-panel ul li.on {
+    color: #00d10d;
+}
+
+/* 白拿 */
+.step-nav {
+    display: flex;
+    padding: 1.2em 0;
+    margin: -1.4em 0 0 0;
+    text-align: center;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.step-nav em {
+    width: 12vw;
+    height: 12vw;
+    overflow: hidden;
+    border: 6px solid #F7F7F7;
+    border-radius: 100%;
+    background-color: #fff;
+    font-size: 12px;
+    color: #aaa;
+    line-height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.step-nav i {
+    width: 4vw;
+    height: 4vw;
+    position: relative;
+    overflow: hidden;
+}
+
+.step-nav i:before {
+    content: "";
+    display: inline-block;
+    border: 4vw solid transparent;
+    border-top-width: 2vw;
+    border-bottom-width: 2vw;
+    border-left-color: #F7F7F7;
+}
+
+.step-nav i:after {
+    content: "";
+    display: inline-block;
+    border: 2vw solid transparent;
+    border-left: 1vw solid white;
+    border-right-width: 1vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.take-tips {
+    font-size: .6em;
+    color: #BDBDBD;
+}
+
+.take-mall-right {
+    color: #898989;
+}
+
+.nav {
+    background-color: #fff;
+    padding: 1.2em 2%;
+    margin: 0px 0 0 0;
+    text-align: center;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav em {
+    width: 12vw;
+    height: 12vw;
+    overflow: hidden;
+    border: 3px solid #f7f7f7;
+    border-radius: 100%;
+    background-color: #fff;
+    font-size: 12px;
+    color: #aaa;
+    line-height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav i {
+    width: 4vw;
+    height: 4vw;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav i:before {
+    content: "";
+    display: inline-block;
+    border: 4vw solid transparent;
+    border-top-width: 2vw;
+    border-bottom-width: 2vw;
+    border-left-color: #f7f7f7;
+}
+
+.nav i:after {
+    content: "";
+    display: inline-block;
+    border: 2vw solid transparent;
+    border-left: 1vw solid #fff;
+    border-right-width: 1vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.pay-method {
+    display: inline-block;
+    width: 36%;
+    border-right: 1px solid #ddd;
+    padding: 0 10px 0 0;
+    /*margin: 0 10px 0 0;*/
+}
+
+.pay-method:before {
+    content: '';
+    display: inline-block;
+    margin: 0 8px 0 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: 50% no-repeat;
+    background-size: contain;
+    vertical-align: middle;
+}
+
+[name=pay_method][value=wx] + .pay-method:before {
+    background-image: url(../img/icon-wxpay-white.png);
+}
+
+[name=pay_method][value=ali] + .pay-method:before {
+    background-image: url(../img/icon-alipay-white.png);
+}
+
+.pay-method:after {
+    content: '';
+    display: inline-block;
+    margin: 0 0 0 14px;
+    border: 7px solid #fff;
+    border-top: 0;
+    border-left-color: transparent;
+    border-right-color: transparent;
+}
